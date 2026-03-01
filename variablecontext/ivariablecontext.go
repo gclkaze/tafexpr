@@ -1,7 +1,24 @@
 package variablecontext
 
+import (
+	"github.com/gclkaze/tafexpr/stackvalue"
+
+	"github.com/gclkaze/evalang/evalangparser/execution/parameters"
+	"github.com/gclkaze/evalang/evalangparser/globals"
+)
+
 type IVariableContext interface {
 	Init(isVerbose bool)
-	GetVariableIntValue(s string) float64
-	EvaluateJSONVariableIntValue(s string, path string) float64
+
+	GetVariable(s string) *parameters.VariableParameterValue
+	SetVariable(s string, v *parameters.VariableParameterValue)
+	SetParameter(s string, v globals.ParameterValue)
+
+	GetVariableValue(s string, secretAware bool) (stackvalue.StackValue, error)
+	GetVariableIntValue(s string) (float64, error)
+	EvaluateJSONVariable(s string, path string, secretAware bool) (stackvalue.StackValue, error)
+	GetLength() int
+	FreeVariable(s string)
+
+	ClearVariableContext()
 }

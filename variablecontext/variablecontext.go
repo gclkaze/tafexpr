@@ -1,6 +1,11 @@
 package variablecontext
 
-import "log"
+import (
+	"github.com/gclkaze/tafexpr/stackvalue"
+
+	"github.com/gclkaze/evalang/evalangparser/execution/parameters"
+	"github.com/gclkaze/evalang/evalangparser/globals"
+)
 
 type VariableContext struct {
 }
@@ -10,12 +15,41 @@ type VariableContext struct {
 func (vc *VariableContext) Init(isVerbose bool) {
 }
 
-func (vc *VariableContext) GetVariableIntValue(s string) float64 {
-	log.Println(s, "=>", 1)
-	return 1
+func (vc *VariableContext) GetVariable(s string) *parameters.VariableParameterValue {
+	return nil
+}
+func (vc *VariableContext) FreeVariable(s string) {
+
+}
+func (vc *VariableContext) SetVariable(s string, v *parameters.VariableParameterValue) {
+
 }
 
-func (vc *VariableContext) EvaluateJSONVariableIntValue(s string, path string) float64 {
-	log.Println(s, path, "=>", 2)
-	return 2
+func (vc *VariableContext) SetParameter(s string, v globals.ParameterValue) {
+
+}
+
+func (vc *VariableContext) GetLength() int {
+	return 0
+}
+
+func (vc *VariableContext) GetVariableIntValue(s string) (res float64, ok error) {
+	//log.Println(s, "=>", 1)
+	return 1, nil
+}
+func (vc *VariableContext) GetVariableValue(s string, secretAware bool) (v stackvalue.StackValue, err error) {
+	return stackvalue.NewIntegerStackValue(1), nil
+}
+
+func (vc *VariableContext) EvaluateJSONVariableIntValue(s string, path string) (res float64, ok error) {
+	//log.Println(s, path, "=>", 2)
+	return 2, nil
+}
+
+func (vc *VariableContext) EvaluateJSONVariable(s string, path string, secretAware bool) (stackvalue.StackValue, error) {
+	return stackvalue.NewIntegerStackValue(2), nil
+}
+
+func (vc *VariableContext) ClearVariableContext() {
+
 }

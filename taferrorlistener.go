@@ -1,6 +1,10 @@
-package main
+package tafexpr
 
-import "github.com/antlr4-go/antlr/v4"
+import (
+	"fmt"
+
+	"github.com/antlr4-go/antlr/v4"
+)
 
 type TAFArgumentError struct {
 	line, column int
@@ -30,4 +34,8 @@ func (c *TAFArgumentErrorListener) RuntimeError(recognizer antlr.Recognizer, off
 		column: column,
 		msg:    msg,
 	})
+}
+
+func (l TAFArgumentError) ToString() string {
+	return fmt.Sprintf("%v", l.msg)
 }

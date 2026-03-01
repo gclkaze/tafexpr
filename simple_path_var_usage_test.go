@@ -1,8 +1,9 @@
-package main
+package tafexpr
 
 import (
-	"tafexpr/variablecontext"
 	"testing"
+
+	"github.com/gclkaze/tafexpr/variablecontext"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -24,7 +25,7 @@ func TestPathVariableDeclarationWithExpr(t *testing.T) {
 func TestPathVariableDeclarationError(t *testing.T) {
 	p := SetupParser()
 	p.VariableContext = SetupVariableContext()
-	assert.Equal(t, false, p.Parse("error$myVar.x.y.z"))
+	assert.Equal(t, false, p.ParseVariableStorageDestination("error$myVar.x.y.z"))
 }
 
 func TestPathVariableArithmeticsSingle(t *testing.T) {
@@ -116,6 +117,26 @@ func TestPathVariableDeclarationWithExprWithMock(t *testing.T) {
 	assert.Equal(t, 2+160+2, p.IntValue)
 }
 
+func TestVarNegationAtEndAfterVar(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$min", 1)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$max", 10)
+
+	assert.Equal(t, true, p.Parse("$min + 1 + $max - 2"))
+	assert.Equal(t, 1+1+10-2, p.IntValue)
+}
+
+func TestVarNegationAtEndAfterVarSingle(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$sum", 5)
+	//p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$max", 10)
+
+	assert.Equal(t, true, p.Parse("$sum-2"))
+	assert.Equal(t, 5-2, p.IntValue)
+}
+
 func TestPathVariableDeclarationWithExprWithMockFromPhone(t *testing.T) {
 	p := SetupParser()
 	p.VariableContext = SetupMockVariableContext()
@@ -172,8 +193,8 @@ func TestPathVariableArithmeticsRecIndexExprComboWithMockAndVarInIndex(t *testin
 	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 3)
 
 	myVar := "$myVar.l.x[$j + 2 + 8 - $i].z"
-	assert.Equal(t, true, p.Parse("(1 + 8 + $j + "+myVar+"  + 5 + 6 + 10 ) * $i"))
-	assert.Equal(t, (1+8+3+60+5+6+10)*2, p.IntValue)
+	assert.Equal(t, true, p.Parse("(1 + 8 + $j + "+myVar+"  + 5 + 6 + 10 ) * ($i*"+myVar+")"))
+	assert.Equal(t, (1+8+3+60+5+6+10)*(2*60), p.IntValue)
 }
 
 func TestPathVariableArithmeticsRecIndexExprComboWithMockTwiceSimpleNoCalculation(t *testing.T) {
@@ -186,64 +207,191 @@ func TestPathVariableArithmeticsRecIndexExprComboWithMockTwiceSimpleNoCalculatio
 	assert.Equal(t, 1+8+60+5+6+60, p.IntValue)
 }
 
-/*
-
-
-
-
-
-func TestPathVariableDeclarationError(t *testing.T) {
+func TestPathVariableArithmeticsRecIndexExprComboMock(t *testing.T) {
 	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	assert.Equal(t, false, p.Parse("error$myVar.x.y.z"))
-}
-
-func TestPathVariableArithmeticsSingle(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	assert.Equal(t, true, p.Parse("$myVar.x [$y.v.c[$l.m[$m.x[10]]]].y.z "))
-	assert.Equal(t, 2, p.IntValue)
-}
-
-func TestPathVariableArithmeticsIndexInteger(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	myVar := "$myVar.x.z[10].y.z"
-	assert.Equal(t, true, p.Parse("1 + "+myVar+" + "+myVar+" + 5 + 6"))
-	assert.Equal(t, 1+2+2+5+6, p.IntValue)
-}
-
-// stress!
-func TestPathVariableArithmeticsRecIndexExpr(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	myVar := "$myVar.x .z [$first.x [$second.y.z [$third.w.b]]].y.z"
-	assert.Equal(t, true, p.Parse("1 + 8 + "+myVar+" + "+myVar+" + 5 + 6"))
-	assert.Equal(t, 1+8+2+2+5+6, p.IntValue)
-}
-
-func TestPathVariableArithmeticsRecIndexExprWithIndexArithmetics(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	myVar := "$myVar.x .z [$first.x [$second.y.z [$third.w.b + 3] + 2 ] + 1].y.z"
-	assert.Equal(t, true, p.Parse("1 + 8 + "+myVar+" + "+myVar+" + 5 + 6"))
-	assert.Equal(t, 1+8+2+2+5+6, p.IntValue)
-}
-
-func TestPathVariableArithmeticsRecIndexExprWithIndexArithmeticsSimple(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
-	myVar := "$myVar.x .z[ $first.y + 10 ].y.z"
-	assert.Equal(t, true, p.Parse("1 + 8 + "+myVar+" + 1"))
-	assert.Equal(t, 1+8+2+1, p.IntValue)
-}
-
-func TestPathVariableArithmeticsRecIndexExprCombo(t *testing.T) {
-	p := SetupParser()
-	p.VariableContext = SetupVariableContext()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar.x[10].y.z[12].z", 60)
 	myVar := "$myVar.x[2 + 8].y.z[3 + 9].z"
 	assert.Equal(t, true, p.Parse("1 + 8 + "+myVar+"  + 5 + 6"))
-	assert.Equal(t, 1+8+2+5+6, p.IntValue)
+	assert.Equal(t, 1+8+60+5+6, p.IntValue)
 }
 
-*/
+// stress
+func TestPathVariableArithmeticsRecIndexExprWithIndexArithmeticsMock(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$third.w.b", 2)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$second.y.z[5]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$first.x[12]", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar.x.z[61].y.z", 60)
+	myVar := "$myVar.x .z [$first.x [$second.y.z [$third.w.b + 3] + 2 ] + 1].y.z"
+	assert.Equal(t, true, p.Parse("1 + 8 + "+myVar+" + "+myVar+" + 5 + 6"))
+	assert.Equal(t, 1+8+60+60+5+6, p.IntValue)
+}
+
+func TestPathVariableArithmeticsWithDeepIndexAnInteger(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$m.x[10]", 2)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l.m[2]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$y.v.c[10]", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar.x[60].y.z", 60)
+	assert.Equal(t, true, p.Parse("$myVar.x [$y.v.c[$l.m[$m.x[10]]]].y.z "))
+	assert.Equal(t, 60, p.IntValue)
+}
+
+func TestPathVariableArithmeticsWithDeepIndexAnIntegerAndFloatNumber(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$m.x[10]", 2)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l.m[2]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$y.v.c[10]", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar.x[60].y.z", 60.05)
+	assert.Equal(t, true, p.Parse("$myVar.x [$y.v.c[$l.m[$m.x[10]]]].y.z "))
+	assert.Equal(t, 60.05, p.DoubleValue)
+}
+
+func TestPathVariableArithmeticsMultiDimSimple(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar[60][10].y.z", 60.05)
+	assert.Equal(t, true, p.Parse("$myVar[$i][10].y.z "))
+	assert.Equal(t, 60.05, p.DoubleValue)
+}
+
+func TestPathVariableArithmeticsWithDeepIndexAnIntegerAndFloatNumberMultiDim(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$m.x[10]", 2)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l.m[2]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$y.v.c[10]", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar.x[60][10].y.z", 60.05)
+	assert.Equal(t, true, p.Parse("$myVar.x [$y.v.c[$l.m[$m.x[10]]]][10].y.z "))
+	assert.Equal(t, 60.05, p.DoubleValue)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndex(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$k", 20)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l", 0)
+
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar[60][10][20].y[0].z", 60.05)
+	assert.Equal(t, true, p.Parse("$myVar[$i][$j][$k].y[$l].z + 5"))
+	assert.Equal(t, 60.05+5, p.DoubleValue)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpression(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$k", 20)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l", 0)
+
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar[60][10][20].y[0].z", 60.05)
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$myVar[$i][$j][$k].y[$l].z + 5"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$myVar[60][10][20].y[0].z", v.VarExpression)
+	assert.Equal(t, "$myVar", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionComposite(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$k", 20)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$l", 0)
+
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$myVar[60][10][20].y[0].z.x.e[120]", 60.05)
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$myVar[$i][$j][$k].y[$l].z.x.e[$i * 2] + 5"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$myVar[60][10][20].y[0].z.x.e[120]", v.VarExpression)
+	assert.Equal(t, "$myVar", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionSimpleJson(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$json.a.b.c[0].l.m", 60.05)
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$json.a.b.c[0].l.m + 5"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$json.a.b.c[0].l.m", v.VarExpression)
+	assert.Equal(t, "$json", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionMultiScopeAttr(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$d[60][10].x", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$tson.a.b.c[10].l.m", 60.05)
+
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$tson.a.b.c[$d[$i][$j].x].l.m"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$tson.a.b.c[10].l.m", v.VarExpression)
+	assert.Equal(t, "$tson", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionMultiScopeAttr2DimValue(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$d[60][10]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$tson.a.b.c[10].l.m", 60.05)
+
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$tson.a.b.c[$d[$i][$j]].l.m"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$tson.a.b.c[10].l.m", v.VarExpression)
+	assert.Equal(t, "$tson", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionMultiScopeSameVarStart(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$d[60][10].x", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$json.a.b.c[10].l.m", 60.05)
+
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$json.a.b.c[$d[$i][$j].x].l.m"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$json.a.b.c[10].l.m", v.VarExpression)
+	assert.Equal(t, "$json", v.VarName)
+}
+
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionMultiScopeSameVarStartMultiDim(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$d[60][10]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$json.a.b.c[10].l.m", 60.05)
+
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$json.a.b.c[$d[$i][$j]].l.m"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$json.a.b.c[10].l.m", v.VarExpression)
+	assert.Equal(t, "$json", v.VarName)
+}
+
+// add test with whitespaces in the index expression
+func TestPathVariableArithmeticsMultiDimTripleIndexVarExpressionMultiScopeSameVarStartMultiDimWhiteSpaces(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$i", 60)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$j", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$d[60][10]", 10)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$json.a.b.c[10].l.m", 60.05)
+
+	assert.Equal(t, true, p.ParseVariableStorageDestination("$json           .        a     .  b. c[   $d[ $i  ][  $j  ]]. l.m"))
+	v := p.VariableStorageDestination
+	assert.Equal(t, "$json.a.b.c[10].l.m", v.VarExpression)
+	assert.Equal(t, "$json", v.VarName)
+}

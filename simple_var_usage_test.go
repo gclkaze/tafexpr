@@ -1,14 +1,23 @@
-package main
+package tafexpr
 
 import (
-	"tafexpr/variablecontext"
 	"testing"
+
+	"github.com/gclkaze/tafexpr/variablecontext"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func SetupVariableContext() variablecontext.IVariableContext {
 	v := &variablecontext.VariableContext{}
+	v.Init(true)
+
+	var context variablecontext.IVariableContext = v
+	return context
+}
+
+func SetupStringVariableContext() variablecontext.IVariableContext {
+	v := &variablecontext.StringVariableContext{}
 	v.Init(true)
 
 	var context variablecontext.IVariableContext = v
@@ -22,6 +31,15 @@ func SetupMockVariableContext() variablecontext.IVariableContext {
 	var context variablecontext.IVariableContext = v
 	return context
 }
+
+func SetupNilVariableContext() variablecontext.IVariableContext {
+	v := &variablecontext.NilVariableContext{}
+	v.Init(true)
+
+	var context variablecontext.IVariableContext = v
+	return context
+}
+
 func TestVariableDeclaration(t *testing.T) {
 	p := SetupParser()
 	p.VariableContext = SetupVariableContext()
