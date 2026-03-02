@@ -10,8 +10,8 @@ import (
 type IVariableContext interface {
 	Init(isVerbose bool)
 
-	GetVariable(s string) *parameters.IVariableParameterValue
-	SetVariable(s string, v *parameters.IVariableParameterValue)
+	GetVariable(s string) parameters.IVariableParameterValue
+	SetVariable(s string, v parameters.IVariableParameterValue)
 	SetParameter(s string, v globals.ParameterValue)
 
 	GetVariableValue(s string, secretAware bool) (stackvalue.StackValue, error)

@@ -15,13 +15,13 @@ type VariableContext struct {
 func (vc *VariableContext) Init(isVerbose bool) {
 }
 
-func (vc *VariableContext) GetVariable(s string) *parameters.IVariableParameterValue {
+func (vc *VariableContext) GetVariable(s string) parameters.IVariableParameterValue {
 	return nil
 }
 func (vc *VariableContext) FreeVariable(s string) {
 
 }
-func (vc *VariableContext) SetVariable(s string, v *parameters.IVariableParameterValue) {
+func (vc *VariableContext) SetVariable(s string, v parameters.IVariableParameterValue) {
 
 }
 

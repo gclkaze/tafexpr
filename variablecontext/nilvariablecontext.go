@@ -24,10 +24,10 @@ func (vc *NilVariableContext) Init(isVerbose bool) {
 	vc.Verbose = isVerbose
 	vc.variableMap = map[string]float64{}
 }
-func (vc *NilVariableContext) GetVariable(s string) *parameters.IVariableParameterValue {
+func (vc *NilVariableContext) GetVariable(s string) parameters.IVariableParameterValue {
 	return nil
 }
-func (vc *NilVariableContext) SetVariable(s string, v *parameters.IVariableParameterValue) {
+func (vc *NilVariableContext) SetVariable(s string, v parameters.IVariableParameterValue) {
 
 }
 func (vc *NilVariableContext) SetParameter(s string, v globals.ParameterValue) {

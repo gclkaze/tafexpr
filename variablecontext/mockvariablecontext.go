@@ -36,10 +36,10 @@ func (vc *MockVariableContext) GetLength() int {
 	return len(vc.variableMap)
 }
 
-func (vc *MockVariableContext) GetVariable(s string) *parameters.IVariableParameterValue {
+func (vc *MockVariableContext) GetVariable(s string) parameters.IVariableParameterValue {
 	return nil
 }
-func (vc *MockVariableContext) SetVariable(s string, v *parameters.IVariableParameterValue) {
+func (vc *MockVariableContext) SetVariable(s string, v parameters.IVariableParameterValue) {
 
 }
 

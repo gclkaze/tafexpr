@@ -36,10 +36,10 @@ func (vc *TruthyVariablecontext) GetLength() int {
 	return len(vc.variableMap)
 }
 
-func (vc *TruthyVariablecontext) GetVariable(s string) *parameters.IVariableParameterValue {
+func (vc *TruthyVariablecontext) GetVariable(s string) parameters.IVariableParameterValue {
 	return nil
 }
-func (vc *TruthyVariablecontext) SetVariable(s string, v *parameters.IVariableParameterValue) {
+func (vc *TruthyVariablecontext) SetVariable(s string, v parameters.IVariableParameterValue) {
 
 }
 
