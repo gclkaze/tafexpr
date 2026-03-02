@@ -7,7 +7,7 @@ import (
 	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	"github.com/gclkaze/evalang-globals/globals"
 )
 
 type JSONArrayStackValue struct {

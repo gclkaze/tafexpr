@@ -5,8 +5,11 @@ import (
 	"testing"
 
 	"github.com/Jeffail/gabs"
-	"github.com/gclkaze/evalang/evalangparser/globals"
-	"github.com/gclkaze/evalang/evalangparser/utils"
+
+	"github.com/gclkaze/evalang-globals/globals"
+
+	"github.com/gclkaze/evalang-globals/utils"
+
 	"github.com/mdaverde/jsonpath"
 	"github.com/stretchr/testify/assert"
 )

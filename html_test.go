@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gclkaze/evalang/evalangparser/utils"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gclkaze/evalang-globals/utils"
 )
 
 func TestHTMLObject(t *testing.T) {

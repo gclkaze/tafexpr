@@ -5,7 +5,7 @@ import (
 
 	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	"github.com/gclkaze/evalang-globals/globals"
 )
 
 type ReferenceStackValue struct {

@@ -3,9 +3,9 @@ package tafexpr
 import (
 	"testing"
 
-	"github.com/gclkaze/evalang/evalangparser/utils"
-
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gclkaze/evalang-globals/utils"
 )
 
 func TestJsonObject(t *testing.T) {

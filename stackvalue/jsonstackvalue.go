@@ -11,7 +11,9 @@ import (
 	"github.com/nsf/jsondiff"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	//	"github.com/gclkaze/evalang/evalangparser/globals"
+
+	"github.com/gclkaze/evalang-globals/globals"
 )
 
 type JSONStackValue struct {

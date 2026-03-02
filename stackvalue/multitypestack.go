@@ -1,7 +1,7 @@
 package stackvalue
 
 import (
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	"github.com/gclkaze/evalang-globals/globals"
 	log "github.com/sirupsen/logrus"
 )
 

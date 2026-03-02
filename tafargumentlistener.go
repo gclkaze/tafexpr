@@ -7,8 +7,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
-	"github.com/gclkaze/evalang/evalangparser/utils"
 	"github.com/gclkaze/tafexpr/parser"
 	"github.com/gclkaze/tafexpr/stackvalue"
 	"github.com/gclkaze/tafexpr/stackvalue/logicalstackvalue"
@@ -16,6 +14,9 @@ import (
 	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 
 	"github.com/gclkaze/tafexpr/variablecontext"
+
+	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/utils"
 
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"

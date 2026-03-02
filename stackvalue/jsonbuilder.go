@@ -1,6 +1,6 @@
 package stackvalue
 
-import "github.com/gclkaze/evalang/evalangparser/globals"
+import "github.com/gclkaze/evalang-globals/globals"
 
 type JSONBuilder struct {
 	o globals.JSONStruct

@@ -3,8 +3,9 @@ package stackvalue
 import (
 	"testing"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
-	"github.com/gclkaze/evalang/evalangparser/utils"
+	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/utils"
+
 	jsoniter "github.com/json-iterator/go"
 	"github.com/stretchr/testify/assert"
 )

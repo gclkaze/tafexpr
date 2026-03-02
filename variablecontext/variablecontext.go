@@ -3,8 +3,8 @@ package variablecontext
 import (
 	"github.com/gclkaze/tafexpr/stackvalue"
 
-	"github.com/gclkaze/evalang/evalangparser/execution/parameters"
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/globals/parameters"
 )
 
 type VariableContext struct {

@@ -4,10 +4,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gclkaze/evalang/evalangparser/utils"
-	regexp "github.com/s-kozlov/goback/regexp"
+	regexp "github.com/skybet/goback/regexp"
 
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gclkaze/evalang-globals/utils"
 )
 
 type IndexValue struct {

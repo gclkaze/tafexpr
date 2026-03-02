@@ -10,7 +10,7 @@ import (
 	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 	"github.com/gclkaze/tafexpr/variablecontext"
 
-	"github.com/gclkaze/evalang/evalangparser/globals"
+	"github.com/gclkaze/evalang-globals/globals"
 
 	"github.com/antlr4-go/antlr/v4"
 	log "github.com/sirupsen/logrus"
