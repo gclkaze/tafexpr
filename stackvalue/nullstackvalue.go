@@ -3,7 +3,9 @@ package stackvalue
 import (
 	"fmt"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type NullStackValue struct {
@@ -13,14 +15,14 @@ func NewNullStackValue() *NullStackValue {
 	return &NullStackValue{}
 }
 
-func (s NullStackValue) GetType() StackValueType {
-	return NULL
+func (s NullStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.NULL
 }
 func (s NullStackValue) ToUintPtr() uintptr {
 	return uintptr(0)
 }
 
-func (s NullStackValue) Copy() StackValue {
+func (s NullStackValue) Copy() stackvalue.StackValue {
 	return NewNullStackValue()
 }
 func (s NullStackValue) ToInteger() (result int64, err error) {
@@ -51,8 +53,8 @@ func (s NullStackValue) IsScalar() bool {
 	return true
 }
 
-func (s NullStackValue) Equals(other StackValue) bool {
-	if other.GetType() != NULL {
+func (s NullStackValue) Equals(other stackvalue.StackValue) bool {
+	if other.GetType() != stackvalue.NULL {
 		inner, ok := other.(*JSONStackValue)
 		if !ok {
 			return false
@@ -71,18 +73,18 @@ func (s NullStackValue) ToJson() *JSONStackValue {
 func (s NullStackValue) GetValue() interface{} {
 	return nil
 }
-func (s NullStackValue) Add(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s NullStackValue) Add(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return other.Copy(), tafargumentlistenererrortypes.NONE, nil
 }
-func (s NullStackValue) Sub(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s NullStackValue) Sub(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return other.Copy(), tafargumentlistenererrortypes.NONE, nil
 }
-func (s NullStackValue) Mul(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s NullStackValue) Mul(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return other.Copy(), tafargumentlistenererrortypes.NONE, nil
 }
-func (s NullStackValue) Div(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s NullStackValue) Div(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return other.Copy(), tafargumentlistenererrortypes.NONE, nil
 }
-func (s NullStackValue) Mod(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s NullStackValue) Mod(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return other.Copy(), tafargumentlistenererrortypes.NONE, nil
 }

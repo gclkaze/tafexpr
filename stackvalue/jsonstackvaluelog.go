@@ -3,11 +3,13 @@ package stackvalue
 import (
 	"fmt"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
-	tafargumenetlistenererrortypes "github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+	tafargumenetlistenererrortypes "github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
-func (me JSONStackValue) LesserThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) LesserThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	/*	i, err := me.GetInnerValue()
 		if err != nil {
 			return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -23,7 +25,7 @@ func (me JSONStackValue) LesserThan(s StackValue) (result StackValue, errorType 
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation < between a JSON Object and a %s", s.GetType().String())
 }
 
-func (me JSONStackValue) LesserThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) LesserThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	/*	i, err := me.GetInnerValue()
 		if err != nil {
 			return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -40,13 +42,13 @@ func (me JSONStackValue) LesserThanEqual(s StackValue) (result StackValue, error
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation <= between a JSON Object and a %s", s.GetType().String())
 }
 
-func (me JSONStackValue) Equal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Equal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	switch s.GetType() {
-	case NULL:
+	case stackvalue.NULL:
 		return NewBoolStackValue(!me.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		return NewBoolStackValue(me.Equals(s)), tafargumenetlistenererrortypes.NONE, nil
-		/*	case INTEGER:
+		/*	case stackvalue.INTEGER:
 			return NewBoolStackValue((me.Equals(s))), tafargumenetlistenererrortypes.NONE, nil*/
 	}
 	i, err := me.GetInnerValue()
@@ -56,17 +58,17 @@ func (me JSONStackValue) Equal(s StackValue) (result StackValue, errorType tafar
 	if i == nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation == between a JSON Object and a %s", s.GetType().String())
 	}
-	if i.GetType() != JSON_OBJECT {
+	if i.GetType() != stackvalue.JSON_OBJECT {
 		return i.Equal(s)
 	}
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation == between a JSON Object and a %s", s.GetType().String()) //i.Equal(s)
 }
 
-func (me JSONStackValue) Unequal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Unequal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	switch s.GetType() {
-	case NULL:
+	case stackvalue.NULL:
 		return NewBoolStackValue(me.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		return NewBoolStackValue(!me.Equals(s)), tafargumenetlistenererrortypes.NONE, nil
 	}
 	i, err := me.GetInnerValue()
@@ -76,14 +78,14 @@ func (me JSONStackValue) Unequal(s StackValue) (result StackValue, errorType taf
 	if i == nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation != between a JSON Object and a %s", s.GetType().String())
 	}
-	if i.GetType() != JSON_OBJECT {
+	if i.GetType() != stackvalue.JSON_OBJECT {
 		return i.Equal(s)
 	}
 
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible operation != between a JSON Object and a %s", s.GetType().String()) //i.Unequal(s)
 }
 
-func (me JSONStackValue) GreaterThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) GreaterThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	/*	i, err := me.GetInnerValue()
 		if err != nil {
 			return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -100,7 +102,7 @@ func (me JSONStackValue) GreaterThan(s StackValue) (result StackValue, errorType
 
 }
 
-func (me JSONStackValue) GreaterThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) GreaterThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	/*	i, err := me.GetInnerValue()
 		if err != nil {
 			return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -118,9 +120,9 @@ func (me JSONStackValue) GreaterThanEqual(s StackValue) (result StackValue, erro
 
 }
 
-func (me JSONStackValue) And(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) And(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	switch s.GetType() {
-	case NULL:
+	case stackvalue.NULL:
 		return NewBoolStackValue(!me.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
 	default:
 		l := me.IsTruthy()
@@ -129,19 +131,19 @@ func (me JSONStackValue) And(s StackValue) (result StackValue, errorType tafargu
 	}
 }
 
-func (me JSONStackValue) Or(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Or(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	if me.IsTruthy() {
 		return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 	}
 	return NewBoolStackValue(s.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
 }
 
-func (me JSONStackValue) Not() (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Not() (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return NewBoolStackValue(!me.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
 
 }
 
-func (me JSONStackValue) Add(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Add(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	i, err := me.GetInnerValue()
 	if err != nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -154,7 +156,7 @@ func (me JSONStackValue) Add(s StackValue) (result StackValue, errorType tafargu
 	return i.Add(s)
 }
 
-func (me JSONStackValue) Sub(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Sub(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	i, err := me.GetInnerValue()
 	if err != nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -167,7 +169,7 @@ func (me JSONStackValue) Sub(s StackValue) (result StackValue, errorType tafargu
 	return i.Sub(s)
 }
 
-func (me JSONStackValue) Mul(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Mul(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	i, err := me.GetInnerValue()
 	if err != nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -179,7 +181,7 @@ func (me JSONStackValue) Mul(s StackValue) (result StackValue, errorType tafargu
 	return i.Mul(s)
 }
 
-func (me JSONStackValue) Div(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Div(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	i, err := me.GetInnerValue()
 	if err != nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err
@@ -191,7 +193,7 @@ func (me JSONStackValue) Div(s StackValue) (result StackValue, errorType tafargu
 	return i.Div(s)
 }
 
-func (me JSONStackValue) Mod(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (me JSONStackValue) Mod(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	i, err := me.GetInnerValue()
 	if err != nil {
 		return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, err

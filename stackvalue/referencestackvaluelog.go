@@ -3,21 +3,23 @@ package stackvalue
 import (
 	"fmt"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
-	tafargumenetlistenererrortypes "github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+	tafargumenetlistenererrortypes "github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
-func (c ReferenceStackValue) LesserThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) LesserThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" lesser than operation does not apply to REFERENCE and %s", t.String())
 }
 
-func (c ReferenceStackValue) LesserThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) LesserThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" lesser than equal operation does not apply to REFERENCE and %s", t.String())
 }
 
-func (c ReferenceStackValue) Equal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) Equal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	ct := c.GetType()
 	if t != ct {
@@ -37,7 +39,7 @@ func (c ReferenceStackValue) Equal(s StackValue) (result StackValue, errorType t
 	return NewBoolStackValue(me.value == other.value), tafargumenetlistenererrortypes.NONE, nil
 
 }
-func (c ReferenceStackValue) Unequal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) Unequal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	b, t, e := c.Equal(s)
 	if b == nil {
 		return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, e
@@ -46,22 +48,22 @@ func (c ReferenceStackValue) Unequal(s StackValue) (result StackValue, errorType
 	return NewBoolStackValue(bb.GetValue()), t, nil
 }
 
-func (c ReferenceStackValue) GreaterThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) GreaterThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than operation does not apply to REFERENCE and %s", t.String())
 }
 
-func (c ReferenceStackValue) GreaterThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) GreaterThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than equal operation does not apply to REFERENCE and %s", t.String())
 }
 
-func (c ReferenceStackValue) And(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) And(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return NewBoolStackValue(c.IsTruthy() && s.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
 }
-func (c ReferenceStackValue) Or(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) Or(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return NewBoolStackValue(c.IsTruthy() || s.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
 }
-func (c ReferenceStackValue) Not() (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c ReferenceStackValue) Not() (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return NewBoolStackValue((!c.IsTruthy())), tafargumenetlistenererrortypes.NONE, nil
 }

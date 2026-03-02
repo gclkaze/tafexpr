@@ -4,8 +4,11 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
-	tafargumenetlistenererrortypes "github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	tafargumenetlistenererrortypes "github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
 	log "github.com/sirupsen/logrus"
 )
 
@@ -43,8 +46,8 @@ func (s BoolStackValue) ToBoolean() (result bool, err error) {
 	return s.IsTruthy(), nil
 }
 
-func (s BoolStackValue) GetType() StackValueType {
-	return BOOL
+func (s BoolStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.BOOL
 }
 
 func (s BoolStackValue) GetValue() bool {
@@ -71,9 +74,9 @@ func (s BoolStackValue) ToJson() *JSONStackValue {
 	return NewJSONStackValue(s.GetValue())
 }
 
-func (s BoolStackValue) Equals(other StackValue) bool {
-	if other.GetType() != BOOL {
-		if other.GetType() == JSON_OBJECT {
+func (s BoolStackValue) Equals(other stackvalue.StackValue) bool {
+	if other.GetType() != stackvalue.BOOL {
+		if other.GetType() == stackvalue.JSON_OBJECT {
 			b, e, x := other.Equal(&s)
 			if e == tafargumentlistenererrortypes.NONE && x == nil {
 				bb := b.(*BoolStackValue)
@@ -92,17 +95,17 @@ func (s BoolStackValue) Equals(other StackValue) bool {
 	return s.value == dV.value
 }
 
-func (s BoolStackValue) Copy() StackValue {
+func (s BoolStackValue) Copy() stackvalue.StackValue {
 	return NewBoolStackValue(s.value)
 }
 
-func (b BoolStackValue) Add(s StackValue) (result StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b BoolStackValue) Add(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
 	intValue := 0
 	if b.value {
 		intValue = 1
 	}
 	switch s.GetType() {
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		{
 			v, ok := s.(*JSONStackValue)
 			if !ok {
@@ -117,19 +120,19 @@ func (b BoolStackValue) Add(s StackValue) (result StackValue, errorType tafargum
 			}
 			return b.Add(inner)
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
 		}
 		return NewIntegerStackValue(intV.GetValue() + intValue), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
 		}
 		return NewIntegerStackValue(int(doubleV.GetValue()) + intValue), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
@@ -138,7 +141,7 @@ func (b BoolStackValue) Add(s StackValue) (result StackValue, errorType tafargum
 			intValue++
 		}
 		return NewIntegerStackValue(intValue), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
@@ -148,13 +151,13 @@ func (b BoolStackValue) Add(s StackValue) (result StackValue, errorType tafargum
 	}
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible add operation between a boolean and a %s", s.GetType().String())
 }
-func (b BoolStackValue) Sub(s StackValue) (result StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b BoolStackValue) Sub(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
 	intValue := 0
 	if b.value {
 		intValue = 1
 	}
 	switch s.GetType() {
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		{
 			v, ok := s.(*JSONStackValue)
 			if !ok {
@@ -169,19 +172,19 @@ func (b BoolStackValue) Sub(s StackValue) (result StackValue, errorType tafargum
 			}
 			return b.Sub(inner)
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
 		}
 		return NewIntegerStackValue(-intV.GetValue() + intValue), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
 		}
 		return NewIntegerStackValue(int(-doubleV.GetValue()) + intValue), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
@@ -190,7 +193,7 @@ func (b BoolStackValue) Sub(s StackValue) (result StackValue, errorType tafargum
 			intValue--
 		}
 		return NewIntegerStackValue(intValue), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
@@ -201,13 +204,13 @@ func (b BoolStackValue) Sub(s StackValue) (result StackValue, errorType tafargum
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible sub operation between a boolean and a %s", s.GetType().String())
 
 }
-func (b BoolStackValue) Mul(s StackValue) (result StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b BoolStackValue) Mul(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
 	intValue := 0
 	if b.value {
 		intValue = 1
 	}
 	switch s.GetType() {
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		{
 			v, ok := s.(*JSONStackValue)
 			if !ok {
@@ -222,19 +225,19 @@ func (b BoolStackValue) Mul(s StackValue) (result StackValue, errorType tafargum
 			}
 			return b.Mul(inner)
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
 		}
 		return NewIntegerStackValue(intV.GetValue() * intValue), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
 		}
 		return NewIntegerStackValue(int(doubleV.GetValue()) * intValue), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
@@ -243,7 +246,7 @@ func (b BoolStackValue) Mul(s StackValue) (result StackValue, errorType tafargum
 			intValue = 0
 		}
 		return NewIntegerStackValue(intValue), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
@@ -254,13 +257,13 @@ func (b BoolStackValue) Mul(s StackValue) (result StackValue, errorType tafargum
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible mul operation between a boolean and a %s", s.GetType().String())
 }
 
-func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b BoolStackValue) Div(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
 	intValue := 0
 	if b.value {
 		intValue = 1
 	}
 	switch s.GetType() {
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		{
 			v, ok := s.(*JSONStackValue)
 			if !ok {
@@ -275,7 +278,7 @@ func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargum
 			}
 			return b.Div(inner)
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
@@ -285,7 +288,7 @@ func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(intValue / rhsIntValue), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
@@ -295,7 +298,7 @@ func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(int(intValue) / int(rhsIntValue)), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
@@ -304,7 +307,7 @@ func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(intValue), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
@@ -315,13 +318,13 @@ func (b BoolStackValue) Div(s StackValue) (result StackValue, errorType tafargum
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible div operation between a boolean and a %s", s.GetType().String())
 
 }
-func (b BoolStackValue) Mod(s StackValue) (result StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b BoolStackValue) Mod(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumenetlistenererrortypes.TAFArgumentListenerError, err error) {
 	intValue := 0
 	if b.value {
 		intValue = 1
 	}
 	switch s.GetType() {
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		{
 			v, ok := s.(*JSONStackValue)
 			if !ok {
@@ -336,7 +339,7 @@ func (b BoolStackValue) Mod(s StackValue) (result StackValue, errorType tafargum
 			}
 			return b.Mod(inner)
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
@@ -346,7 +349,7 @@ func (b BoolStackValue) Mod(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(intValue % rhsIntValue), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
@@ -356,7 +359,7 @@ func (b BoolStackValue) Mod(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(int(intValue) % int(rhsIntValue)), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
@@ -365,7 +368,7 @@ func (b BoolStackValue) Mod(s StackValue) (result StackValue, errorType tafargum
 			return nil, tafargumenetlistenererrortypes.DIVISION_BY_ZERO, fmt.Errorf(" division by zero ")
 		}
 		return NewIntegerStackValue(intValue), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")

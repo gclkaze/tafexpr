@@ -3,7 +3,9 @@ package variablecontext
 import (
 	"errors"
 
-	"github.com/gclkaze/tafexpr/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+
+	mine "github.com/gclkaze/tafexpr/stackvalue"
 
 	"github.com/gclkaze/evalang-globals/globals"
 	"github.com/gclkaze/evalang-globals/globals/parameters"
@@ -58,7 +60,7 @@ func (vc *NilVariableContext) EvaluateJSONVariableIntValue(s string, path string
 	return vc.GetVariableIntValue(s + "." + path)
 }
 func (vc *NilVariableContext) EvaluateJSONVariable(s string, path string, secretAware bool) (stackvalue.StackValue, error) {
-	return stackvalue.NewNullStackValue(), nil
+	return mine.NewNullStackValue(), nil
 }
 func (vc *NilVariableContext) ClearVariableContext() {
 

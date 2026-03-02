@@ -1,7 +1,9 @@
 package variablecontext
 
 import (
-	"github.com/gclkaze/tafexpr/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+
+	mine "github.com/gclkaze/tafexpr/stackvalue"
 
 	"github.com/gclkaze/evalang-globals/globals"
 	"github.com/gclkaze/evalang-globals/globals/parameters"
@@ -37,7 +39,7 @@ func (vc *StringVariableContext) GetVariableIntValue(s string) (res float64, ok 
 	return 1, nil
 }
 func (vc *StringVariableContext) GetVariableValue(s string, secretAware bool) (v stackvalue.StackValue, err error) {
-	return stackvalue.NewStringStackValue("value"), nil
+	return mine.NewStringStackValue("value"), nil
 }
 
 func (vc *StringVariableContext) EvaluateJSONVariableIntValue(s string, path string) (res float64, ok error) {
@@ -46,7 +48,7 @@ func (vc *StringVariableContext) EvaluateJSONVariableIntValue(s string, path str
 }
 
 func (vc *StringVariableContext) EvaluateJSONVariable(s string, path string, secretAware bool) (stackvalue.StackValue, error) {
-	return stackvalue.NewStringStackValue("value"), nil
+	return mine.NewStringStackValue("value"), nil
 }
 
 func (vc *StringVariableContext) ClearVariableContext() {

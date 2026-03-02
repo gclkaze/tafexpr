@@ -3,9 +3,10 @@ package stackvalue
 import (
 	"fmt"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 
 	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type ReferenceStackValue struct {
@@ -38,8 +39,8 @@ func (s ReferenceStackValue) ToBoolean() (result bool, err error) {
 	return s.IsTruthy(), nil
 }
 
-func (s ReferenceStackValue) GetType() StackValueType {
-	return REFERENCE
+func (s ReferenceStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.REFERENCE
 	/*	p := s.value
 		if p == nil || *p == nil {
 			return REFERENCE
@@ -47,39 +48,39 @@ func (s ReferenceStackValue) GetType() StackValueType {
 
 		t := (*p).GetType()
 		switch t {
-		case globals.STRING:
+		case stackvalue.globals.STRING:
 			return STRING
-		case globals.INTEGER:
+		case stackvalue.globals.INTEGER:
 			return INTEGER
-		case globals.DOUBLE:
+		case stackvalue.globals.DOUBLE:
 			return DOUBLE
-		case globals.JSON:
+		case stackvalue.globals.JSON:
 			return JSON_OBJECT
-		case globals.JSON_ARRAY:
+		case stackvalue.globals.JSON_ARRAY:
 			return JSON_ARRAY
-		case globals.BOOLEAN:
+		case stackvalue.globals.BOOLEAN:
 			return BOOL
-		case globals.DB:
+		case stackvalue.globals.DB:
 			return DB
-		case globals.BROWSER:
+		case stackvalue.globals.BROWSER:
 			return BROWSER
-		case globals.NULL:
+		case stackvalue.globals.NULL:
 			return NULL
-		case globals.REFERENCE:
+		case stackvalue.globals.REFERENCE:
 			return REFERENCE
-		case globals.HTML_ELEM:
-		case globals.DATE:
-		case globals.VARIABLE:
-		case globals.VARIABLE_STORAGE:
-		case globals.NUMBER:
-		case globals.LIST:
-		case globals.CALCULATED:
-		case globals.EXPRESSION:
+		case stackvalue.globals.HTML_ELEM:
+		case stackvalue.globals.DATE:
+		case stackvalue.globals.VARIABLE:
+		case stackvalue.globals.VARIABLE_STORAGE:
+		case stackvalue.globals.NUMBER:
+		case stackvalue.globals.LIST:
+		case stackvalue.globals.CALCULATED:
+		case stackvalue.globals.EXPRESSION:
 		}
 		return REFERENCE*/
 }
 
-func (s ReferenceStackValue) Copy() StackValue {
+func (s ReferenceStackValue) Copy() stackvalue.StackValue {
 	return NewReferenceStackValue(s.value)
 }
 
@@ -107,7 +108,7 @@ func (s ReferenceStackValue) IsScalar() bool {
 	return false
 }
 
-func (s ReferenceStackValue) Equals(other StackValue) bool {
+func (s ReferenceStackValue) Equals(other stackvalue.StackValue) bool {
 	b, _, _ := s.Equal(other)
 	if b == nil {
 		return false
@@ -123,23 +124,23 @@ func (s ReferenceStackValue) ToJson() *JSONStackValue {
 func (s *ReferenceStackValue) GetValue() *globals.ParameterValue {
 	return s.value
 }
-func (s ReferenceStackValue) Add(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s ReferenceStackValue) Add(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" add operation does not apply to REFERENCE and %s", t.String())
 }
-func (s ReferenceStackValue) Sub(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s ReferenceStackValue) Sub(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" sub operation does not apply to REFERENCE and %s", t.String())
 }
-func (s ReferenceStackValue) Mul(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s ReferenceStackValue) Mul(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" mul operation does not apply to REFERENCE and %s", t.String())
 }
-func (s ReferenceStackValue) Div(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s ReferenceStackValue) Div(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" div operation does not apply to REFERENCE and %s", t.String())
 }
-func (s ReferenceStackValue) Mod(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s ReferenceStackValue) Mod(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" mod operation does not apply to REFERENCE and %s", t.String())
 }

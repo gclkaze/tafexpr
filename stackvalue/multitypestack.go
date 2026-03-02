@@ -1,15 +1,17 @@
 package stackvalue
 
 import (
-	"github.com/gclkaze/evalang-globals/globals"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type MultiTypeStack struct {
-	stack     []StackValue
+	stack     []stackvalue.StackValue
 	onError   bool
-	hierarchy []*[]StackValue
-	current   *[]StackValue
+	hierarchy []*[]stackvalue.StackValue
+	current   *[]stackvalue.StackValue
 }
 
 func (s MultiTypeStack) OnError() bool {
@@ -27,14 +29,14 @@ func (s MultiTypeStack) IsEmpty() bool {
 	return len(s.stack) == 0
 }
 
-func (s *MultiTypeStack) Push(st StackValue) {
+func (s *MultiTypeStack) Push(st stackvalue.StackValue) {
 	*s.current = append(*s.current, st)
 }
 
 func (s *MultiTypeStack) CreateStack() {
 
 	//var st StackValue = NewEmptyJSONArrayStackValue()
-	newStack := &[]StackValue{}
+	newStack := &[]stackvalue.StackValue{}
 	s.current = newStack
 
 	//*s.current = append(*s.current, NewEmptyJSONArrayStackValue())
@@ -72,7 +74,7 @@ func (s *MultiTypeStack) PushBool(b bool) {
 	*s.current = append(*s.current, NewBoolStackValue(b))
 }
 
-func (s *MultiTypeStack) Pop() StackValue {
+func (s *MultiTypeStack) Pop() stackvalue.StackValue {
 	if len(*s.current) < 1 {
 		s.onError = true
 		return nil

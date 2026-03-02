@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 )
 
 type JSONArrayStackValue struct {
@@ -30,7 +31,7 @@ func (s JSONArrayStackValue) ToUintPtr() uintptr {
 	return uintptr(0)
 }
 
-func NewJSONArrayStackValueFromStackvalue(st *[]StackValue) *globals.JSONArrayGen {
+func NewJSONArrayStackValueFromStackvalue(st *[]stackvalue.StackValue) *globals.JSONArrayGen {
 	inst := globals.JSONArrayGen{}
 	for i := 0; i < len(*st); i++ {
 		p := (*st)[i]
@@ -111,14 +112,14 @@ func (s JSONArrayStackValue) GetPtrGen() *globals.JSONArrayGen {
 	return &a
 }
 
-func (s JSONArrayStackValue) GetType() StackValueType {
-	return JSON_ARRAY
+func (s JSONArrayStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.JSON_ARRAY
 }
 
 func (s JSONArrayStackValue) GetValue() globals.JSONArrayGen {
 	return *s.ptr
 }
-func (s JSONArrayStackValue) Copy() StackValue {
+func (s JSONArrayStackValue) Copy() stackvalue.StackValue {
 	inst := &JSONArrayStackValue{}
 	for i := 0; i < len(s.value); i++ {
 		inst.value = append(inst.value, *NewJSONStackValue(s.value[i].GetValue()))
@@ -130,9 +131,9 @@ func (s JSONArrayStackValue) IsTruthy() bool {
 	return s.value != nil && len(s.value) != 0
 }
 
-func (s JSONArrayStackValue) Equals(other StackValue) bool {
-	if other.GetType() != JSON_ARRAY {
-		if other.GetType() == JSON_OBJECT {
+func (s JSONArrayStackValue) Equals(other stackvalue.StackValue) bool {
+	if other.GetType() != stackvalue.JSON_ARRAY {
+		if other.GetType() == stackvalue.JSON_OBJECT {
 			b, e, x := other.Equal(&s)
 			if e == tafargumentlistenererrortypes.NONE && x == nil {
 				bb := b.(*BoolStackValue)

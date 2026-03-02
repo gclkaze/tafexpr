@@ -8,16 +8,20 @@ import (
 	"strings"
 
 	"github.com/gclkaze/tafexpr/parser"
-	"github.com/gclkaze/tafexpr/stackvalue"
+
 	"github.com/gclkaze/tafexpr/stackvalue/logicalstackvalue"
 	"github.com/gclkaze/tafexpr/stackvalue/numberstackvalue"
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 
 	"github.com/gclkaze/tafexpr/variablecontext"
 
 	"github.com/gclkaze/evalang-globals/globals"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 	"github.com/gclkaze/evalang-globals/utils"
 
+	mine "github.com/gclkaze/tafexpr/stackvalue"
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 )
@@ -58,7 +62,7 @@ type TAFArgumentListener struct {
 	*parser.BaseTafexprListener
 	//	stack           []float64
 	Escaped                          bool
-	stack                            *stackvalue.MultiTypeStack
+	stack                            *mine.MultiTypeStack
 	IsFloat                          bool
 	OnError                          bool
 	ErrorMsgs                        []TAFParserArgumentError
@@ -96,7 +100,7 @@ func (l TAFArgumentListener) StackIsEmpty() bool {
 	return l.stack == nil || l.stack.IsEmpty()
 }
 func (s *TAFArgumentListener) EnterTaf_expression(ctx *parser.Taf_expressionContext) {
-	s.stack = stackvalue.NewMultiTypeStack()
+	s.stack = mine.NewMultiTypeStack()
 }
 
 func (s *TAFArgumentListener) GetLastVariableDestinationExpresison() VarExpression {
@@ -161,14 +165,14 @@ func (l *TAFArgumentListener) _pop() any {
 
 	last := l.stack.Pop()
 	if last.GetType() == stackvalue.INTEGER {
-		i, ok := last.(*stackvalue.IntegerStackValue)
+		i, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic(666)
 		}
 		return i.GetValue()
 	}
 	if last.GetType() == stackvalue.DOUBLE {
-		i, ok := last.(*stackvalue.DoubleStackValue)
+		i, ok := last.(*mine.DoubleStackValue)
 		if !ok {
 			panic(777)
 		}
@@ -193,7 +197,7 @@ func (l *TAFArgumentListener) popFloat() float64 {
 
 	last := l.stack.Pop()
 	if last.GetType() == stackvalue.DOUBLE {
-		i, ok := last.(*stackvalue.DoubleStackValue)
+		i, ok := last.(*mine.DoubleStackValue)
 		if !ok {
 			panic(433)
 		}
@@ -203,7 +207,7 @@ func (l *TAFArgumentListener) popFloat() float64 {
 		result, _ := strconv.ParseFloat(a.String(), 64)
 		return result
 	} else {
-		i, ok := last.(*stackvalue.IntegerStackValue)
+		i, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic(4344)
 		}
@@ -259,7 +263,7 @@ func (l *TAFArgumentListener) ExitHandleFindByXPATH(c *parser.HandleFindByXPATHC
 		payload = append(payload, result[i])
 	}
 
-	l.stack.Push(stackvalue.NewJSONArrayStackValue(payload))
+	l.stack.Push(mine.NewJSONArrayStackValue(payload))
 }
 
 func (l *TAFArgumentListener) ExitHandleFindOneByXPATH(c *parser.HandleFindOneByXPATHContext) {
@@ -836,7 +840,7 @@ func (l *TAFArgumentListener) ExitHandleNegation(c *parser.HandleNegationContext
 		l.ErrorMsgs = append(l.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf("not a numerical expression: %s ", c.GetText()), Type: tafargumentlistenererrortypes.CONVERSION_ERROR})
 		return
 	}
-	neg := stackvalue.NewIntegerStackValue(-1)
+	neg := mine.NewIntegerStackValue(-1)
 	negated, st, err := numValue.Mul(neg)
 	if err != nil {
 		l.OnError = true
@@ -1053,13 +1057,13 @@ func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) 
 		strValue = strings.TrimPrefix(strValue, "\"")
 	}
 
-	l.pushValue(stackvalue.NewStringStackValue(strValue))
+	l.pushValue(mine.NewStringStackValue(strValue))
 }
 
 func (l *TAFArgumentListener) ExitHandleNull(ctx *parser.HandleNullContext) {
 	l.LastExit = "Null"
 
-	l.pushValue(stackvalue.NewNullStackValue())
+	l.pushValue(mine.NewNullStackValue())
 }
 
 func (l *TAFArgumentListener) ExitHandleBool(c *parser.HandleBoolContext) {
@@ -1068,9 +1072,9 @@ func (l *TAFArgumentListener) ExitHandleBool(c *parser.HandleBoolContext) {
 	b := c.GetText()
 	b = strings.ToLower(b)
 	if strings.Compare(b, "true") == 0 {
-		l.pushValue(stackvalue.NewBoolStackValue(true))
+		l.pushValue(mine.NewBoolStackValue(true))
 	} else if strings.Compare(b, "false") == 0 {
-		l.pushValue(stackvalue.NewBoolStackValue(false))
+		l.pushValue(mine.NewBoolStackValue(false))
 	} else {
 		panic("Unhandled boolean expression")
 	}
@@ -1292,9 +1296,9 @@ func (l *TAFArgumentListener) GetIndex(st stackvalue.StackValue) (index int, err
 	if l.OnError {
 		return
 	}
-	indexdV, ok := st.(*stackvalue.DoubleStackValue)
+	indexdV, ok := st.(*mine.DoubleStackValue)
 	if !ok {
-		indexiV, ok := st.(*stackvalue.IntegerStackValue)
+		indexiV, ok := st.(*mine.IntegerStackValue)
 		if !ok {
 			return -1, fmt.Errorf("index needs to be a number")
 		}
@@ -1376,7 +1380,7 @@ func (l *TAFArgumentListener) ExitHandleObjectPair(ctx *parser.HandleObjectPairC
 	current := l.jsonStack[len(l.jsonStack)-1]
 	key := ctx.STRING().GetText()
 	val := l.popStack()
-	tj := stackvalue.GetGenericValue(val)
+	tj := mine.GetGenericValue(val)
 	//fmt.Printf("tj: %v\n", tj)
 	key = strings.TrimLeft(key, "\"")
 	key = strings.TrimRight(key, "\"")
@@ -1403,9 +1407,9 @@ func (l *TAFArgumentListener) ExitHandleObject(ctx *parser.HandleObjectContext) 
 	last := l.jsonStack[len(l.jsonStack)-1]
 	l.jsonStack = l.jsonStack[:len(l.jsonStack)-1]
 	if len(l.jsonStack) == 0 {
-		l.stack.Push(stackvalue.NewJSONStackValue(*last))
+		l.stack.Push(mine.NewJSONStackValue(*last))
 	} else {
-		l.stack.Push(stackvalue.NewJSONStackValue(*last))
+		l.stack.Push(mine.NewJSONStackValue(*last))
 	}
 }
 
@@ -1430,12 +1434,12 @@ func (l *TAFArgumentListener) ExitHandleArray(ctx *parser.HandleArrayContext) {
 	var payload globals.JSONArrayGen
 
 	if st != nil {
-		l.stack.Push(stackvalue.NewJSONArrayStackValue(*st))
+		l.stack.Push(mine.NewJSONArrayStackValue(*st))
 		return
 	}
 	err := json.Unmarshal([]byte(x), &payload)
 	if err == nil {
-		l.stack.Push(stackvalue.NewJSONArrayStackValue(payload))
+		l.stack.Push(mine.NewJSONArrayStackValue(payload))
 	} else {
 		l.ErrorMsgs = append(l.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf(" couldn't import JSON Array"), Type: tafargumentlistenererrortypes.JSON_ARRAY_IMPORT_ERROR})
 		l.OnError = true

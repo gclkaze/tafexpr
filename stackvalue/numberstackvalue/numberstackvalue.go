@@ -1,8 +1,8 @@
 package numberstackvalue
 
 import (
-	"github.com/gclkaze/tafexpr/stackvalue"
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 )
 
 type NumberStackValue interface {

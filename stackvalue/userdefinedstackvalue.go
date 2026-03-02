@@ -3,7 +3,9 @@ package stackvalue
 import (
 	"fmt"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type UserDefinedStackValue struct {
@@ -37,11 +39,11 @@ func (s UserDefinedStackValue) ToBoolean() (result bool, err error) {
 	return s.IsTruthy(), nil
 }
 
-func (s UserDefinedStackValue) GetType() StackValueType {
-	return USER_DEFINED
+func (s UserDefinedStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.USER_DEFINED
 }
 
-func (s UserDefinedStackValue) Copy() StackValue {
+func (s UserDefinedStackValue) Copy() stackvalue.StackValue {
 	return NewUserDefinedStackValue(s.ptr)
 }
 
@@ -70,7 +72,7 @@ func (s UserDefinedStackValue) IsScalar() bool {
 	return false
 }
 
-func (s UserDefinedStackValue) Equals(other StackValue) bool {
+func (s UserDefinedStackValue) Equals(other stackvalue.StackValue) bool {
 	b, _, _ := s.Equal(other)
 	if b == nil {
 		return false
@@ -86,23 +88,23 @@ func (s UserDefinedStackValue) ToJson() *JSONStackValue {
 func (s *UserDefinedStackValue) GetValue() uintptr {
 	return s.ptr
 }
-func (s UserDefinedStackValue) Add(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s UserDefinedStackValue) Add(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" add operation does not apply to UserDefined and %s", t.String())
 }
-func (s UserDefinedStackValue) Sub(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s UserDefinedStackValue) Sub(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" sub operation does not apply to UserDefined and %s", t.String())
 }
-func (s UserDefinedStackValue) Mul(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s UserDefinedStackValue) Mul(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" mul operation does not apply to UserDefined and %s", t.String())
 }
-func (s UserDefinedStackValue) Div(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s UserDefinedStackValue) Div(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" div operation does not apply to UserDefined and %s", t.String())
 }
-func (s UserDefinedStackValue) Mod(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s UserDefinedStackValue) Mod(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" mod operation does not apply to UserDefined and %s", t.String())
 }

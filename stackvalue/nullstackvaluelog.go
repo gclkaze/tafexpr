@@ -4,16 +4,17 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+	tafargumenetlistenererrortypes "github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 
-	tafargumenetlistenererrortypes "github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
-func (c NullStackValue) LesserThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) LesserThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -21,7 +22,7 @@ func (c NullStackValue) LesserThan(s StackValue) (result StackValue, errorType t
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) < 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -29,7 +30,7 @@ func (c NullStackValue) LesserThan(s StackValue) (result StackValue, errorType t
 			}
 			return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -38,7 +39,7 @@ func (c NullStackValue) LesserThan(s StackValue) (result StackValue, errorType t
 			return NewBoolStackValue(0 < other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -50,11 +51,11 @@ func (c NullStackValue) LesserThan(s StackValue) (result StackValue, errorType t
 	}
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" lesser than operation does not apply to NULL and %s", t.String())
 }
-func (c NullStackValue) LesserThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) LesserThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -62,7 +63,7 @@ func (c NullStackValue) LesserThanEqual(s StackValue) (result StackValue, errorT
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) <= 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -70,7 +71,7 @@ func (c NullStackValue) LesserThanEqual(s StackValue) (result StackValue, errorT
 			}
 			return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -79,7 +80,7 @@ func (c NullStackValue) LesserThanEqual(s StackValue) (result StackValue, errorT
 			return NewBoolStackValue(0 <= other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -92,11 +93,11 @@ func (c NullStackValue) LesserThanEqual(s StackValue) (result StackValue, errorT
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" lesser than equals operation does not apply to NULL and %s", t.String())
 }
 
-func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) Equal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -104,7 +105,7 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) == 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -112,7 +113,7 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 			}
 			return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -121,7 +122,7 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 			return NewBoolStackValue(other.GetValue() == 0), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -131,7 +132,7 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 
 		}
 
-	case BOOL:
+	case stackvalue.BOOL:
 		{
 			other, ok := s.(*BoolStackValue)
 			if !ok {
@@ -140,13 +141,13 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 			return NewBoolStackValue(!other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case JSON_ARRAY:
+	case stackvalue.JSON_ARRAY:
 		arrV, ok := s.(*JSONArrayStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json array")
 		}
 		return NewBoolStackValue(!arrV.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		oV, ok := s.(*JSONStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json object")
@@ -157,10 +158,10 @@ func (c NullStackValue) Equal(s StackValue) (result StackValue, errorType tafarg
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than operation does not apply to NULL and %s", t.String())
 }
 
-func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) Unequal(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -168,7 +169,7 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) != 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -176,7 +177,7 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 			}
 			return NewBoolStackValue(false), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -185,7 +186,7 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 			return NewBoolStackValue(other.GetValue() != 0), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -195,7 +196,7 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 
 		}
 
-	case BOOL:
+	case stackvalue.BOOL:
 		{
 			other, ok := s.(*BoolStackValue)
 			if !ok {
@@ -204,13 +205,13 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 			return NewBoolStackValue(other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case JSON_ARRAY:
+	case stackvalue.JSON_ARRAY:
 		arrV, ok := s.(*JSONArrayStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json array")
 		}
 		return NewBoolStackValue(arrV.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		oV, ok := s.(*JSONStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json object")
@@ -220,11 +221,11 @@ func (c NullStackValue) Unequal(s StackValue) (result StackValue, errorType tafa
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than operation does not apply to NULL and %s", t.String())
 }
 
-func (c NullStackValue) GreaterThan(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) GreaterThan(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -232,7 +233,7 @@ func (c NullStackValue) GreaterThan(s StackValue) (result StackValue, errorType 
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) > 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -240,7 +241,7 @@ func (c NullStackValue) GreaterThan(s StackValue) (result StackValue, errorType 
 			}
 			return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -249,7 +250,7 @@ func (c NullStackValue) GreaterThan(s StackValue) (result StackValue, errorType 
 			return NewBoolStackValue(0 > other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -262,11 +263,11 @@ func (c NullStackValue) GreaterThan(s StackValue) (result StackValue, errorType 
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than operation does not apply to NULL and %s", t.String())
 }
 
-func (c NullStackValue) GreaterThanEqual(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (c NullStackValue) GreaterThanEqual(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 
 	t := s.GetType()
 	switch t {
-	case STRING:
+	case stackvalue.STRING:
 		{
 			otherS, ok := s.(*StringStackValue)
 			if !ok {
@@ -274,7 +275,7 @@ func (c NullStackValue) GreaterThanEqual(s StackValue) (result StackValue, error
 			}
 			return NewBoolStackValue(strings.Compare("", otherS.value) >= 0), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case NULL:
+	case stackvalue.NULL:
 		{
 			_, ok := s.(*NullStackValue)
 			if !ok {
@@ -282,7 +283,7 @@ func (c NullStackValue) GreaterThanEqual(s StackValue) (result StackValue, error
 			}
 			return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 		}
-	case INTEGER:
+	case stackvalue.INTEGER:
 		{
 			other, ok := s.(*IntegerStackValue)
 			if !ok {
@@ -291,7 +292,7 @@ func (c NullStackValue) GreaterThanEqual(s StackValue) (result StackValue, error
 			return NewBoolStackValue(0 >= other.GetValue()), tafargumenetlistenererrortypes.NONE, nil
 
 		}
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		{
 			other, ok := s.(*DoubleStackValue)
 			if !ok {
@@ -304,47 +305,47 @@ func (c NullStackValue) GreaterThanEqual(s StackValue) (result StackValue, error
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" greater than equals operation does not apply to NULL and %s", t.String())
 }
 
-func (b NullStackValue) And(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b NullStackValue) And(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	isTruthy := false
 	switch s.GetType() {
-	case STRING:
+	case stackvalue.STRING:
 		strValue, ok := s.(*StringStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to string")
 		}
 		return NewBoolStackValue(isTruthy && strValue.GetValue() != ""), tafargumenetlistenererrortypes.NONE, nil
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
 		}
 		return NewBoolStackValue(isTruthy && intV.GetValue() > 0), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
 		}
 		return NewBoolStackValue(isTruthy && doubleV.GetValue() > 0), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
 		}
 
 		return NewBoolStackValue(isTruthy && boolV.GetValue()), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
 		}
 		return NewBoolStackValue(false), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_ARRAY:
+	case stackvalue.JSON_ARRAY:
 		arrV, ok := s.(*JSONArrayStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json array")
 		}
 		return NewBoolStackValue(false && !arrV.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		oV, ok := s.(*JSONStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json object")
@@ -354,47 +355,47 @@ func (b NullStackValue) And(s StackValue) (result StackValue, errorType tafargum
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" and operation does not apply to NULL and %s", s.GetType().String())
 }
 
-func (b NullStackValue) Or(s StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b NullStackValue) Or(s stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	switch s.GetType() {
-	case STRING:
+	case stackvalue.STRING:
 		strValue, ok := s.(*StringStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to string")
 		}
 		return NewBoolStackValue(strValue.GetValue() != ""), tafargumenetlistenererrortypes.NONE, nil
-	case INTEGER:
+	case stackvalue.INTEGER:
 		intV, ok := s.(*IntegerStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to integer")
 		}
 		return NewBoolStackValue(intV.GetValue() > 0), tafargumenetlistenererrortypes.NONE, nil
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		doubleV, ok := s.(*DoubleStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to double")
 		}
 		return NewBoolStackValue(doubleV.GetValue() > 0), tafargumenetlistenererrortypes.NONE, nil
-	case BOOL:
+	case stackvalue.BOOL:
 		boolV, ok := s.(*BoolStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to bool")
 		}
 
 		return NewBoolStackValue(boolV.GetValue()), tafargumenetlistenererrortypes.NONE, nil
-	case NULL:
+	case stackvalue.NULL:
 		_, ok := s.(*NullStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to null")
 		}
 
 		return NewBoolStackValue(false), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_ARRAY:
+	case stackvalue.JSON_ARRAY:
 		arrV, ok := s.(*JSONArrayStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json array")
 		}
 		return NewBoolStackValue(arrV.IsTruthy()), tafargumenetlistenererrortypes.NONE, nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		oV, ok := s.(*JSONStackValue)
 		if !ok {
 			return nil, tafargumenetlistenererrortypes.CONVERSION_ERROR, fmt.Errorf(" couldn't convert stack value to json object")
@@ -404,6 +405,6 @@ func (b NullStackValue) Or(s StackValue) (result StackValue, errorType tafargume
 	return nil, tafargumentlistenererrortypes.CONVERSION_ERROR, fmt.Errorf("or operation does not apply to NULL and %s", s.GetType().String())
 }
 
-func (b NullStackValue) Not() (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (b NullStackValue) Not() (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return NewBoolStackValue(true), tafargumenetlistenererrortypes.NONE, nil
 }

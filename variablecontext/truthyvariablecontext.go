@@ -4,7 +4,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/gclkaze/tafexpr/stackvalue"
+	mine "github.com/gclkaze/tafexpr/stackvalue"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 
 	"github.com/gclkaze/evalang-globals/globals"
 	"github.com/gclkaze/evalang-globals/globals/parameters"
@@ -47,9 +49,9 @@ func (vc *TruthyVariablecontext) GetVariableValue(s string, secretAware bool) (v
 	val, ok := vc.variableMap[s]
 	if !ok {
 		vc.SetValue(s, 1.0)
-		return stackvalue.NewDoubleStackValue(val), nil
+		return mine.NewDoubleStackValue(val), nil
 	}
-	return stackvalue.NewDoubleStackValue(val), nil
+	return mine.NewDoubleStackValue(val), nil
 }
 
 func (vc *TruthyVariablecontext) Init(isVerbose bool) {

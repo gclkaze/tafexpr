@@ -27,7 +27,7 @@ require (
 
 require (
 	github.com/antlr4-go/antlr/v4 v4.13.1
-	github.com/gclkaze/evalang-globals v0.9.0
+	github.com/gclkaze/evalang-globals v0.9.2
 	github.com/json-iterator/go v1.1.12
 	github.com/skybet/goback v0.0.0-20200717093532-747602018047
 	github.com/stretchr/testify v1.11.1

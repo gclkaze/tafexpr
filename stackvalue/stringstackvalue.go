@@ -5,9 +5,12 @@ import (
 	"strconv"
 	"unsafe"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
-	tafargumenetlistenererrortypes "github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+	tafargumenetlistenererrortypes "github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type StringStackValue struct {
@@ -18,8 +21,8 @@ func NewStringStackValue(v string) *StringStackValue {
 	return &StringStackValue{value: v}
 }
 
-func (s StringStackValue) GetType() StackValueType {
-	return STRING
+func (s StringStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.STRING
 }
 
 func (s StringStackValue) Length() (result int, err error) {
@@ -33,7 +36,7 @@ func (s StringStackValue) IsScalar() bool {
 func (s StringStackValue) GetValue() string {
 	return s.value
 }
-func (s StringStackValue) Copy() StackValue {
+func (s StringStackValue) Copy() stackvalue.StackValue {
 	return NewStringStackValue(s.value)
 }
 
@@ -68,9 +71,9 @@ func (s StringStackValue) IsTruthy() bool {
 func (s StringStackValue) ToJson() *JSONStackValue {
 	return NewJSONStackValue(s.GetValue())
 }
-func (s StringStackValue) Equals(other StackValue) bool {
-	if other.GetType() != STRING {
-		if other.GetType() == JSON_OBJECT {
+func (s StringStackValue) Equals(other stackvalue.StackValue) bool {
+	if other.GetType() != stackvalue.STRING {
+		if other.GetType() == stackvalue.JSON_OBJECT {
 			b, e, x := other.Equal(&s)
 			if e == tafargumentlistenererrortypes.NONE && x == nil {
 				bb := b.(*BoolStackValue)
@@ -89,18 +92,18 @@ func (s StringStackValue) Equals(other StackValue) bool {
 	return s.value == strV.value
 }
 
-func (s StringStackValue) Add(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s StringStackValue) Add(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible add operation between a string and a %s", s.GetType().String())
 }
-func (s StringStackValue) Sub(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s StringStackValue) Sub(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible sub operation between a string and a %s", s.GetType().String())
 }
-func (s StringStackValue) Mul(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s StringStackValue) Mul(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible mul operation between a string and a %s", s.GetType().String())
 }
-func (s StringStackValue) Div(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s StringStackValue) Div(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible div operation between a string and a %s", s.GetType().String())
 }
-func (s StringStackValue) Mod(other StackValue) (result StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
+func (s StringStackValue) Mod(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible mod operation between a string and a %s", s.GetType().String())
 }

@@ -6,14 +6,18 @@ import (
 	"strings"
 
 	"github.com/gclkaze/tafexpr/parser"
-	"github.com/gclkaze/tafexpr/stackvalue"
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
+
 	"github.com/gclkaze/tafexpr/variablecontext"
+
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
 
 	"github.com/gclkaze/evalang-globals/globals"
 
 	"github.com/antlr4-go/antlr/v4"
 	log "github.com/sirupsen/logrus"
+
+	mine "github.com/gclkaze/tafexpr/stackvalue"
 )
 
 type TAFArgumentParser struct {
@@ -138,7 +142,7 @@ func (ap *TAFArgumentParser) CanParse(arg string) bool {
 
 	} else {
 		last := l.popStack()
-		i, ok := last.(*stackvalue.IntegerStackValue)
+		i, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -431,38 +435,38 @@ func (ap *TAFArgumentParser) Parse(arg string) bool {
 	switch last.GetType() {
 	case stackvalue.REFERENCE:
 		{
-			i, ok := last.(*stackvalue.ReferenceStackValue)
+			i, ok := last.(*mine.ReferenceStackValue)
 			if !ok {
 				panic("cannot cast to reference in the parser")
 			}
 			ap.RefValue = i.GetValue()
 		}
 	case stackvalue.JSON_OBJECT:
-		i, ok := last.(*stackvalue.JSONStackValue)
+		i, ok := last.(*mine.JSONStackValue)
 		if !ok {
 			panic("cannot cast to json in the parser")
 		}
 		ap.JSONValue = i.GetValue()
 	case stackvalue.JSON_ARRAY:
-		i, ok := last.(*stackvalue.JSONArrayStackValue)
+		i, ok := last.(*mine.JSONArrayStackValue)
 		if !ok {
 			panic("cannot cast to json array in the parser")
 		}
 		ap.JSONArray = i.GetValue()
 	case stackvalue.INTEGER:
-		i, ok := last.(*stackvalue.IntegerStackValue)
+		i, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
 		ap.IntValue = i.GetValue()
 	case stackvalue.BOOL:
-		i, ok := last.(*stackvalue.BoolStackValue)
+		i, ok := last.(*mine.BoolStackValue)
 		if !ok {
 			panic("cannot cast to bool in the parser")
 		}
 		ap.BoolValue = i.GetValue()
 	case stackvalue.DOUBLE:
-		i, ok := last.(*stackvalue.DoubleStackValue)
+		i, ok := last.(*mine.DoubleStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -471,13 +475,13 @@ func (ap *TAFArgumentParser) Parse(arg string) bool {
 			ap.IntValue = int(ap.DoubleValue)
 		}
 	case stackvalue.NULL:
-		_, ok := last.(*stackvalue.NullStackValue)
+		_, ok := last.(*mine.NullStackValue)
 		if !ok {
 			panic("cannot cast to null in the parser")
 		}
 		ap.IntValue = 0
 	case stackvalue.STRING:
-		i, ok := last.(*stackvalue.StringStackValue)
+		i, ok := last.(*mine.StringStackValue)
 		if !ok {
 			panic("cannot cast to string in the parser")
 		}
@@ -573,7 +577,7 @@ func (ap *TAFArgumentParser) ParseExpressionAndCheckAgainstContract(arg string, 
 	}
 	switch last.GetType() {
 	case stackvalue.INTEGER:
-		_, ok := last.(*stackvalue.IntegerStackValue)
+		_, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -582,7 +586,7 @@ func (ap *TAFArgumentParser) ParseExpressionAndCheckAgainstContract(arg string, 
 		}
 		ap.ErrorMsgs = append(ap.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf("%s is not a %s Expression", arg, contract), Type: tafargumentlistenererrortypes.RUNTIME_ERROR})
 	case stackvalue.STRING:
-		_, ok := last.(*stackvalue.StringStackValue)
+		_, ok := last.(*mine.StringStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -591,7 +595,7 @@ func (ap *TAFArgumentParser) ParseExpressionAndCheckAgainstContract(arg string, 
 		}
 		ap.ErrorMsgs = append(ap.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf("%s is not a %s Expression", arg, contract), Type: tafargumentlistenererrortypes.RUNTIME_ERROR})
 	case stackvalue.DOUBLE:
-		_, ok := last.(*stackvalue.DoubleStackValue)
+		_, ok := last.(*mine.DoubleStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -600,7 +604,7 @@ func (ap *TAFArgumentParser) ParseExpressionAndCheckAgainstContract(arg string, 
 		}
 		ap.ErrorMsgs = append(ap.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf("%s is not a %s Expression", arg, contract), Type: tafargumentlistenererrortypes.RUNTIME_ERROR})
 	case stackvalue.BOOL:
-		_, ok := last.(*stackvalue.BoolStackValue)
+		_, ok := last.(*mine.BoolStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
@@ -683,20 +687,20 @@ func (ap *TAFArgumentParser) ParsePotentialIntegerExpression(arg string) bool {
 	switch last.GetType() {
 	case stackvalue.REFERENCE:
 		{
-			i, ok := last.(*stackvalue.ReferenceStackValue)
+			i, ok := last.(*mine.ReferenceStackValue)
 			if !ok {
 				panic("cannot cast to reference in the parser")
 			}
 			ap.RefValue = i.GetValue()
 		}
 	case stackvalue.INTEGER:
-		i, ok := last.(*stackvalue.IntegerStackValue)
+		i, ok := last.(*mine.IntegerStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}
 		ap.IntValue = i.GetValue()
 	case stackvalue.DOUBLE:
-		i, ok := last.(*stackvalue.DoubleStackValue)
+		i, ok := last.(*mine.DoubleStackValue)
 		if !ok {
 			panic("cannot cast to int in the parser")
 		}

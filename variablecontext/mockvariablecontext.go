@@ -5,7 +5,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/gclkaze/tafexpr/stackvalue"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
+
+	mine "github.com/gclkaze/tafexpr/stackvalue"
 
 	"github.com/gclkaze/evalang-globals/globals"
 	"github.com/gclkaze/evalang-globals/globals/parameters"
@@ -48,7 +50,7 @@ func (vc *MockVariableContext) GetVariableValue(s string, secretAware bool) (v s
 	if !ok {
 		return nil, fmt.Errorf("didn't find elem with key %s", s)
 	}
-	return stackvalue.NewDoubleStackValue(val), nil
+	return mine.NewDoubleStackValue(val), nil
 }
 
 func (vc *MockVariableContext) Init(isVerbose bool) {

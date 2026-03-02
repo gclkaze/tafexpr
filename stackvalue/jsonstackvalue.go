@@ -6,14 +6,16 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gclkaze/tafexpr/tafargumentlistenererrortypes"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/nsf/jsondiff"
 	log "github.com/sirupsen/logrus"
 
 	//	"github.com/gclkaze/evalang/evalangparser/globals"
 
+	"github.com/gclkaze/evalang-globals/globals/tafargumentlistenererrortypes"
+
 	"github.com/gclkaze/evalang-globals/globals"
+	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
 type JSONStackValue struct {
@@ -88,51 +90,51 @@ func NewJSONStackValueFromStackValue(v globals.JSONObjectGen) *JSONStackValue {
 	return NewJSONStackValue(v)
 }
 
-func GetGenericValue(v StackValue) globals.JSONObjectGen {
+func GetGenericValue(v stackvalue.StackValue) globals.JSONObjectGen {
 	t := v.GetType()
 	switch t {
-	case USER_DEFINED:
+	case stackvalue.USER_DEFINED:
 		i, ok := v.(*UserDefinedStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
 
-	case INTEGER:
+	case stackvalue.INTEGER:
 		i, ok := v.(*IntegerStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
 
-	case BOOL:
+	case stackvalue.BOOL:
 		i, ok := v.(*BoolStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
-	case DOUBLE:
+	case stackvalue.DOUBLE:
 		i, ok := v.(*DoubleStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
 
-	case JSON_ARRAY:
+	case stackvalue.JSON_ARRAY:
 		i, ok := v.(*JSONArrayStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
-	case STRING:
+	case stackvalue.STRING:
 		i, ok := v.(*StringStackValue)
 		if !ok {
 			return nil
 		}
 		return i.GetValue()
-	case NULL:
+	case stackvalue.NULL:
 		return nil
-	case JSON_OBJECT:
+	case stackvalue.JSON_OBJECT:
 		i, ok := v.(*JSONStackValue)
 		if !ok {
 			return nil
@@ -186,7 +188,7 @@ func (s JSONStackValue) IsScalar() bool {
 	return false
 }
 
-func (s JSONStackValue) GetInnerValue() (st StackValue, err error) {
+func (s JSONStackValue) GetInnerValue() (st stackvalue.StackValue, err error) {
 	actualValue := s.value
 
 	if actualValue == nil {
@@ -211,8 +213,8 @@ func (s JSONStackValue) GetInnerValue() (st StackValue, err error) {
 
 }
 
-func (s JSONStackValue) GetType() StackValueType {
-	return JSON_OBJECT
+func (s JSONStackValue) GetType() stackvalue.StackValueType {
+	return stackvalue.JSON_OBJECT
 }
 
 func (s JSONStackValue) GetValue() globals.JSONObjectGen {
@@ -223,7 +225,7 @@ func (s *JSONStackValue) GetStorageValue() *globals.JSONObjectGen {
 	return &s.value
 }
 
-func (s JSONStackValue) Copy() StackValue {
+func (s JSONStackValue) Copy() stackvalue.StackValue {
 	return NewJSONStackValue(s.value)
 }
 
@@ -232,8 +234,8 @@ func (s JSONStackValue) IsTruthy() bool {
 	return s.value != nil && err == nil && inner != nil
 }
 
-func (s JSONStackValue) Equals(other StackValue) bool {
-	if other.GetType() != JSON_OBJECT {
+func (s JSONStackValue) Equals(other stackvalue.StackValue) bool {
+	if other.GetType() != stackvalue.JSON_OBJECT {
 		i, err := s.GetInnerValue()
 		if err != nil {
 			//check if other is null stack value
