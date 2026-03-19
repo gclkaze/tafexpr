@@ -9,8 +9,8 @@ github.com/antlr4-go/antlr/v4 v4.13.1/go.mod h1:GKmUxMtwp6ZgGwZSva4eWPC5mS6vUAmO
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/gclkaze/evalang-globals v0.9.3 h1:nT8Ci0XOGdDn1VDCY0V23gY/yg0McQ+2jHPQuH6RTTo=
-github.com/gclkaze/evalang-globals v0.9.3/go.mod h1:/jKdC8JmgKKthkFq1yIas8v2puoGHG2gVkazN++SNnc=
+github.com/gclkaze/evalang-globals v0.9.4 h1:uxIVraN0zwSCpP6F3xRQaKlfnjrMuM5PzMVCLCYY8AY=
+github.com/gclkaze/evalang-globals v0.9.4/go.mod h1:/jKdC8JmgKKthkFq1yIas8v2puoGHG2gVkazN++SNnc=
 github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da h1:oI5xCqsCo564l8iNU+DwB5epxmsaqB+rhGL0m5jtYqE=
 github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da/go.mod h1:cIg4eruTrX1D+g88fzRXU5OdNfaM+9IcxsU14FzY7Hc=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
