@@ -44,7 +44,7 @@ STRING
   : UnterminatedStringLiteral '"'
   ;
 
-UnterminatedStringLiteral
+fragment UnterminatedStringLiteral
   : '"' (~["\\\r\n] | '\\' (. | EOF))*
   ;
 

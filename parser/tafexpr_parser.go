@@ -45,11 +45,11 @@ func tafexprParserInit() {
 	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "", "", "", "", "MUL", "DIV", "MOD", "ADD",
-		"SUB", "INTEGER", "DOUBLE", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN",
+		"SUB", "DOUBLE", "INTEGER", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN",
 		"LESSER_THAN", "LESSER_THAN_EQUAL", "EQUAL", "UNEQUAL", "GREATER_THAN",
 		"GREATER_THAN_EQUAL", "LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR",
-		"STRING", "UnterminatedStringLiteral", "BOOLEAN", "NUMBER", "VARIABLE_NAME",
-		"PROP", "EXCEPT_QUOTE", "JSON_NUMBER", "WS", "UNKNOWN",
+		"STRING", "BOOLEAN", "NUMBER", "VARIABLE_NAME", "PROP", "EXCEPT_QUOTE",
+		"JSON_NUMBER", "WS", "UNKNOWN",
 	}
 	staticData.RuleNames = []string{
 		"taf_expression", "libfunc", "expression", "var_expression", "indx_expr",
@@ -58,7 +58,7 @@ func tafexprParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 59, 281, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 58, 281, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		1, 0, 1, 0, 3, 0, 35, 8, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -96,8 +96,8 @@ func tafexprParserInit() {
 		39, 40, 5, 2, 0, 0, 40, 41, 3, 4, 2, 0, 41, 42, 5, 3, 0, 0, 42, 43, 3,
 		4, 2, 0, 43, 44, 5, 4, 0, 0, 44, 3, 1, 0, 0, 0, 45, 46, 6, 2, -1, 0, 46,
 		47, 5, 32, 0, 0, 47, 60, 3, 4, 2, 34, 48, 49, 5, 48, 0, 0, 49, 60, 3, 4,
-		2, 33, 50, 60, 3, 2, 1, 0, 51, 60, 5, 33, 0, 0, 52, 60, 5, 34, 0, 0, 53,
-		60, 3, 18, 9, 0, 54, 60, 3, 6, 3, 0, 55, 60, 5, 52, 0, 0, 56, 60, 5, 39,
+		2, 33, 50, 60, 3, 2, 1, 0, 51, 60, 5, 34, 0, 0, 52, 60, 5, 33, 0, 0, 53,
+		60, 3, 18, 9, 0, 54, 60, 3, 6, 3, 0, 55, 60, 5, 51, 0, 0, 56, 60, 5, 39,
 		0, 0, 57, 60, 5, 50, 0, 0, 58, 60, 3, 22, 11, 0, 59, 45, 1, 0, 0, 0, 59,
 		48, 1, 0, 0, 0, 59, 50, 1, 0, 0, 0, 59, 51, 1, 0, 0, 0, 59, 52, 1, 0, 0,
 		0, 59, 53, 1, 0, 0, 0, 59, 54, 1, 0, 0, 0, 59, 55, 1, 0, 0, 0, 59, 56,
@@ -145,7 +145,7 @@ func tafexprParserInit() {
 		0, 0, 176, 146, 1, 0, 0, 0, 176, 153, 1, 0, 0, 0, 176, 160, 1, 0, 0, 0,
 		176, 167, 1, 0, 0, 0, 176, 170, 1, 0, 0, 0, 176, 173, 1, 0, 0, 0, 177,
 		180, 1, 0, 0, 0, 178, 176, 1, 0, 0, 0, 178, 179, 1, 0, 0, 0, 179, 5, 1,
-		0, 0, 0, 180, 178, 1, 0, 0, 0, 181, 182, 5, 54, 0, 0, 182, 183, 3, 8, 4,
+		0, 0, 0, 180, 178, 1, 0, 0, 0, 181, 182, 5, 53, 0, 0, 182, 183, 3, 8, 4,
 		0, 183, 7, 1, 0, 0, 0, 184, 185, 5, 36, 0, 0, 185, 186, 3, 16, 8, 0, 186,
 		193, 5, 37, 0, 0, 187, 188, 5, 36, 0, 0, 188, 189, 3, 16, 8, 0, 189, 190,
 		5, 37, 0, 0, 190, 192, 1, 0, 0, 0, 191, 187, 1, 0, 0, 0, 192, 195, 1, 0,
@@ -156,8 +156,8 @@ func tafexprParserInit() {
 		6, 0, 203, 204, 5, 38, 0, 0, 204, 206, 3, 12, 6, 0, 205, 203, 1, 0, 0,
 		0, 206, 209, 1, 0, 0, 0, 207, 205, 1, 0, 0, 0, 207, 208, 1, 0, 0, 0, 208,
 		11, 1, 0, 0, 0, 209, 207, 1, 0, 0, 0, 210, 213, 3, 14, 7, 0, 211, 213,
-		5, 55, 0, 0, 212, 210, 1, 0, 0, 0, 212, 211, 1, 0, 0, 0, 213, 13, 1, 0,
-		0, 0, 214, 215, 5, 55, 0, 0, 215, 216, 5, 36, 0, 0, 216, 217, 3, 16, 8,
+		5, 54, 0, 0, 212, 210, 1, 0, 0, 0, 212, 211, 1, 0, 0, 0, 213, 13, 1, 0,
+		0, 0, 214, 215, 5, 54, 0, 0, 215, 216, 5, 36, 0, 0, 216, 217, 3, 16, 8,
 		0, 217, 224, 5, 37, 0, 0, 218, 219, 5, 36, 0, 0, 219, 220, 3, 16, 8, 0,
 		220, 221, 5, 37, 0, 0, 221, 223, 1, 0, 0, 0, 222, 218, 1, 0, 0, 0, 223,
 		226, 1, 0, 0, 0, 224, 222, 1, 0, 0, 0, 224, 225, 1, 0, 0, 0, 225, 15, 1,
@@ -219,66 +219,65 @@ func NewTafexprParser(input antlr.TokenStream) *TafexprParser {
 
 // TafexprParser tokens.
 const (
-	TafexprParserEOF                       = antlr.TokenEOF
-	TafexprParserT__0                      = 1
-	TafexprParserT__1                      = 2
-	TafexprParserT__2                      = 3
-	TafexprParserT__3                      = 4
-	TafexprParserT__4                      = 5
-	TafexprParserT__5                      = 6
-	TafexprParserT__6                      = 7
-	TafexprParserT__7                      = 8
-	TafexprParserT__8                      = 9
-	TafexprParserT__9                      = 10
-	TafexprParserT__10                     = 11
-	TafexprParserT__11                     = 12
-	TafexprParserT__12                     = 13
-	TafexprParserT__13                     = 14
-	TafexprParserT__14                     = 15
-	TafexprParserT__15                     = 16
-	TafexprParserT__16                     = 17
-	TafexprParserT__17                     = 18
-	TafexprParserT__18                     = 19
-	TafexprParserT__19                     = 20
-	TafexprParserT__20                     = 21
-	TafexprParserT__21                     = 22
-	TafexprParserT__22                     = 23
-	TafexprParserT__23                     = 24
-	TafexprParserT__24                     = 25
-	TafexprParserT__25                     = 26
-	TafexprParserT__26                     = 27
-	TafexprParserMUL                       = 28
-	TafexprParserDIV                       = 29
-	TafexprParserMOD                       = 30
-	TafexprParserADD                       = 31
-	TafexprParserSUB                       = 32
-	TafexprParserINTEGER                   = 33
-	TafexprParserDOUBLE                    = 34
-	TafexprParserWHITESPACE                = 35
-	TafexprParserLBR                       = 36
-	TafexprParserRBR                       = 37
-	TafexprParserCON                       = 38
-	TafexprParserNULL_TOKEN                = 39
-	TafexprParserLESSER_THAN               = 40
-	TafexprParserLESSER_THAN_EQUAL         = 41
-	TafexprParserEQUAL                     = 42
-	TafexprParserUNEQUAL                   = 43
-	TafexprParserGREATER_THAN              = 44
-	TafexprParserGREATER_THAN_EQUAL        = 45
-	TafexprParserLOGICAL_AND               = 46
-	TafexprParserLOGICAL_OR                = 47
-	TafexprParserLOGICAL_NOT               = 48
-	TafexprParserDOLLAR                    = 49
-	TafexprParserSTRING                    = 50
-	TafexprParserUnterminatedStringLiteral = 51
-	TafexprParserBOOLEAN                   = 52
-	TafexprParserNUMBER                    = 53
-	TafexprParserVARIABLE_NAME             = 54
-	TafexprParserPROP                      = 55
-	TafexprParserEXCEPT_QUOTE              = 56
-	TafexprParserJSON_NUMBER               = 57
-	TafexprParserWS                        = 58
-	TafexprParserUNKNOWN                   = 59
+	TafexprParserEOF                = antlr.TokenEOF
+	TafexprParserT__0               = 1
+	TafexprParserT__1               = 2
+	TafexprParserT__2               = 3
+	TafexprParserT__3               = 4
+	TafexprParserT__4               = 5
+	TafexprParserT__5               = 6
+	TafexprParserT__6               = 7
+	TafexprParserT__7               = 8
+	TafexprParserT__8               = 9
+	TafexprParserT__9               = 10
+	TafexprParserT__10              = 11
+	TafexprParserT__11              = 12
+	TafexprParserT__12              = 13
+	TafexprParserT__13              = 14
+	TafexprParserT__14              = 15
+	TafexprParserT__15              = 16
+	TafexprParserT__16              = 17
+	TafexprParserT__17              = 18
+	TafexprParserT__18              = 19
+	TafexprParserT__19              = 20
+	TafexprParserT__20              = 21
+	TafexprParserT__21              = 22
+	TafexprParserT__22              = 23
+	TafexprParserT__23              = 24
+	TafexprParserT__24              = 25
+	TafexprParserT__25              = 26
+	TafexprParserT__26              = 27
+	TafexprParserMUL                = 28
+	TafexprParserDIV                = 29
+	TafexprParserMOD                = 30
+	TafexprParserADD                = 31
+	TafexprParserSUB                = 32
+	TafexprParserDOUBLE             = 33
+	TafexprParserINTEGER            = 34
+	TafexprParserWHITESPACE         = 35
+	TafexprParserLBR                = 36
+	TafexprParserRBR                = 37
+	TafexprParserCON                = 38
+	TafexprParserNULL_TOKEN         = 39
+	TafexprParserLESSER_THAN        = 40
+	TafexprParserLESSER_THAN_EQUAL  = 41
+	TafexprParserEQUAL              = 42
+	TafexprParserUNEQUAL            = 43
+	TafexprParserGREATER_THAN       = 44
+	TafexprParserGREATER_THAN_EQUAL = 45
+	TafexprParserLOGICAL_AND        = 46
+	TafexprParserLOGICAL_OR         = 47
+	TafexprParserLOGICAL_NOT        = 48
+	TafexprParserDOLLAR             = 49
+	TafexprParserSTRING             = 50
+	TafexprParserBOOLEAN            = 51
+	TafexprParserNUMBER             = 52
+	TafexprParserVARIABLE_NAME      = 53
+	TafexprParserPROP               = 54
+	TafexprParserEXCEPT_QUOTE       = 55
+	TafexprParserJSON_NUMBER        = 56
+	TafexprParserWS                 = 57
+	TafexprParserUNKNOWN            = 58
 )
 
 // TafexprParser rules.

@@ -23,8 +23,8 @@ public class TafexprParser extends Parser {
 		DOUBLE=33, INTEGER=34, WHITESPACE=35, LBR=36, RBR=37, CON=38, NULL_TOKEN=39, 
 		LESSER_THAN=40, LESSER_THAN_EQUAL=41, EQUAL=42, UNEQUAL=43, GREATER_THAN=44, 
 		GREATER_THAN_EQUAL=45, LOGICAL_AND=46, LOGICAL_OR=47, LOGICAL_NOT=48, 
-		DOLLAR=49, STRING=50, UnterminatedStringLiteral=51, BOOLEAN=52, NUMBER=53, 
-		VARIABLE_NAME=54, PROP=55, EXCEPT_QUOTE=56, JSON_NUMBER=57, WS=58, UNKNOWN=59;
+		DOLLAR=49, STRING=50, BOOLEAN=51, NUMBER=52, VARIABLE_NAME=53, PROP=54, 
+		EXCEPT_QUOTE=55, JSON_NUMBER=56, WS=57, UNKNOWN=58;
 	public static final int
 		RULE_taf_expression = 0, RULE_libfunc = 1, RULE_expression = 2, RULE_var_expression = 3, 
 		RULE_indx_expr = 4, RULE_var_path = 5, RULE_jsonpath_expr = 6, RULE_identifierWithQualifier = 7, 
@@ -59,9 +59,9 @@ public class TafexprParser extends Parser {
 			null, null, null, null, "MUL", "DIV", "MOD", "ADD", "SUB", "DOUBLE", 
 			"INTEGER", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN", "LESSER_THAN", 
 			"LESSER_THAN_EQUAL", "EQUAL", "UNEQUAL", "GREATER_THAN", "GREATER_THAN_EQUAL", 
-			"LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR", "STRING", "UnterminatedStringLiteral", 
-			"BOOLEAN", "NUMBER", "VARIABLE_NAME", "PROP", "EXCEPT_QUOTE", "JSON_NUMBER", 
-			"WS", "UNKNOWN"
+			"LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR", "STRING", "BOOLEAN", 
+			"NUMBER", "VARIABLE_NAME", "PROP", "EXCEPT_QUOTE", "JSON_NUMBER", "WS", 
+			"UNKNOWN"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1918,7 +1918,7 @@ public class TafexprParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001;\u0119\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001:\u0119\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
@@ -1982,7 +1982,7 @@ public class TafexprParser extends Parser {
 		"./\u0005 \u0000\u0000/<\u0003\u0004\u0002\"01\u00050\u0000\u00001<\u0003"+
 		"\u0004\u0002!2<\u0003\u0002\u0001\u00003<\u0005\"\u0000\u00004<\u0005"+
 		"!\u0000\u00005<\u0003\u0012\t\u00006<\u0003\u0006\u0003\u00007<\u0005"+
-		"4\u0000\u00008<\u0005\'\u0000\u00009<\u00052\u0000\u0000:<\u0003\u0016"+
+		"3\u0000\u00008<\u0005\'\u0000\u00009<\u00052\u0000\u0000:<\u0003\u0016"+
 		"\u000b\u0000;-\u0001\u0000\u0000\u0000;0\u0001\u0000\u0000\u0000;2\u0001"+
 		"\u0000\u0000\u0000;3\u0001\u0000\u0000\u0000;4\u0001\u0000\u0000\u0000"+
 		";5\u0001\u0000\u0000\u0000;6\u0001\u0000\u0000\u0000;7\u0001\u0000\u0000"+
@@ -2047,7 +2047,7 @@ public class TafexprParser extends Parser {
 		"\u0001\u0000\u0000\u0000\u00b1\u00b4\u0001\u0000\u0000\u0000\u00b2\u00b0"+
 		"\u0001\u0000\u0000\u0000\u00b2\u00b3\u0001\u0000\u0000\u0000\u00b3\u0005"+
 		"\u0001\u0000\u0000\u0000\u00b4\u00b2\u0001\u0000\u0000\u0000\u00b5\u00b6"+
-		"\u00056\u0000\u0000\u00b6\u00b7\u0003\b\u0004\u0000\u00b7\u0007\u0001"+
+		"\u00055\u0000\u0000\u00b6\u00b7\u0003\b\u0004\u0000\u00b7\u0007\u0001"+
 		"\u0000\u0000\u0000\u00b8\u00b9\u0005$\u0000\u0000\u00b9\u00ba\u0003\u0010"+
 		"\b\u0000\u00ba\u00c1\u0005%\u0000\u0000\u00bb\u00bc\u0005$\u0000\u0000"+
 		"\u00bc\u00bd\u0003\u0010\b\u0000\u00bd\u00be\u0005%\u0000\u0000\u00be"+
@@ -2063,9 +2063,9 @@ public class TafexprParser extends Parser {
 		"\u0000\u00ce\u00d1\u0001\u0000\u0000\u0000\u00cf\u00cd\u0001\u0000\u0000"+
 		"\u0000\u00cf\u00d0\u0001\u0000\u0000\u0000\u00d0\u000b\u0001\u0000\u0000"+
 		"\u0000\u00d1\u00cf\u0001\u0000\u0000\u0000\u00d2\u00d5\u0003\u000e\u0007"+
-		"\u0000\u00d3\u00d5\u00057\u0000\u0000\u00d4\u00d2\u0001\u0000\u0000\u0000"+
+		"\u0000\u00d3\u00d5\u00056\u0000\u0000\u00d4\u00d2\u0001\u0000\u0000\u0000"+
 		"\u00d4\u00d3\u0001\u0000\u0000\u0000\u00d5\r\u0001\u0000\u0000\u0000\u00d6"+
-		"\u00d7\u00057\u0000\u0000\u00d7\u00d8\u0005$\u0000\u0000\u00d8\u00d9\u0003"+
+		"\u00d7\u00056\u0000\u0000\u00d7\u00d8\u0005$\u0000\u0000\u00d8\u00d9\u0003"+
 		"\u0010\b\u0000\u00d9\u00e0\u0005%\u0000\u0000\u00da\u00db\u0005$\u0000"+
 		"\u0000\u00db\u00dc\u0003\u0010\b\u0000\u00dc\u00dd\u0005%\u0000\u0000"+
 		"\u00dd\u00df\u0001\u0000\u0000\u0000\u00de\u00da\u0001\u0000\u0000\u0000"+
