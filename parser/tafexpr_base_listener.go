@@ -289,12 +289,6 @@ func (s *BaseTafexprListener) EnterParenthesisExpression(ctx *ParenthesisExpress
 // ExitParenthesisExpression is called when production parenthesisExpression is exited.
 func (s *BaseTafexprListener) ExitParenthesisExpression(ctx *ParenthesisExpressionContext) {}
 
-// EnterAny is called when production any is entered.
-func (s *BaseTafexprListener) EnterAny(ctx *AnyContext) {}
-
-// ExitAny is called when production any is exited.
-func (s *BaseTafexprListener) ExitAny(ctx *AnyContext) {}
-
 // EnterHandleObject is called when production HandleObject is entered.
 func (s *BaseTafexprListener) EnterHandleObject(ctx *HandleObjectContext) {}
 

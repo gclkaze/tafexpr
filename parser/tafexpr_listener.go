@@ -137,9 +137,6 @@ type TafexprListener interface {
 	// EnterParenthesisExpression is called when entering the parenthesisExpression production.
 	EnterParenthesisExpression(c *ParenthesisExpressionContext)
 
-	// EnterAny is called when entering the any production.
-	EnterAny(c *AnyContext)
-
 	// EnterHandleObject is called when entering the HandleObject production.
 	EnterHandleObject(c *HandleObjectContext)
 
@@ -292,9 +289,6 @@ type TafexprListener interface {
 
 	// ExitParenthesisExpression is called when exiting the parenthesisExpression production.
 	ExitParenthesisExpression(c *ParenthesisExpressionContext)
-
-	// ExitAny is called when exiting the any production.
-	ExitAny(c *AnyContext)
 
 	// ExitHandleObject is called when exiting the HandleObject production.
 	ExitHandleObject(c *HandleObjectContext)

@@ -122,12 +122,12 @@ PROP: SINGLELETTER (SINGLELETTER|INTEGER|UNDERSCORE)*;
 parenthesisExpression: 
                       '(' (parenthesisExpression | expression) ')' 
                       ;
-EXCEPT_QUOTE: ( ~[\\"] );
-
+/*EXCEPT_QUOTE: ( ~[\\"] );
+*/
 /*fragment ANYCHAR : .;
 fragment COLON: ':';*/
 
-any :  ':' | LBR | RBR | '{' | '}' | '"'  ;
+/*any :  ':' | LBR | RBR | '{' | '}' | '"'  ;*/
 
 /*string_interpolation: any*? match_interpolation any*? match_interpolation any*?;
 interpolation:  string_interpolation+ EOF #HandleStringInterpolation;
