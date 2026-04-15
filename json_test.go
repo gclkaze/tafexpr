@@ -48,3 +48,13 @@ func TestJsonToString(t *testing.T) {
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.StringValue)
 }
+
+func TestJJsonToString(t *testing.T) {
+	p := SetupParser()
+	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	expr := "{\"a\":{\"b\":{\"c\":666}}}.toString"
+	res := p.Parse(expr)
+	assert.Equal(t, true, res)
+	assert.NotNil(t, p.StringValue)
+
+}

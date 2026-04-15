@@ -20,7 +20,7 @@ public class TafexprParser extends Parser {
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, MUL=28, DIV=29, MOD=30, ADD=31, SUB=32, 
-		INTEGER=33, DOUBLE=34, WHITESPACE=35, LBR=36, RBR=37, CON=38, NULL_TOKEN=39, 
+		DOUBLE=33, INTEGER=34, WHITESPACE=35, LBR=36, RBR=37, CON=38, NULL_TOKEN=39, 
 		LESSER_THAN=40, LESSER_THAN_EQUAL=41, EQUAL=42, UNEQUAL=43, GREATER_THAN=44, 
 		GREATER_THAN_EQUAL=45, LOGICAL_AND=46, LOGICAL_OR=47, LOGICAL_NOT=48, 
 		DOLLAR=49, STRING=50, UnterminatedStringLiteral=51, BOOLEAN=52, NUMBER=53, 
@@ -56,8 +56,8 @@ public class TafexprParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, "MUL", "DIV", "MOD", "ADD", "SUB", "INTEGER", 
-			"DOUBLE", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN", "LESSER_THAN", 
+			null, null, null, null, "MUL", "DIV", "MOD", "ADD", "SUB", "DOUBLE", 
+			"INTEGER", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN", "LESSER_THAN", 
 			"LESSER_THAN_EQUAL", "EQUAL", "UNEQUAL", "GREATER_THAN", "GREATER_THAN_EQUAL", 
 			"LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR", "STRING", "UnterminatedStringLiteral", 
 			"BOOLEAN", "NUMBER", "VARIABLE_NAME", "PROP", "EXCEPT_QUOTE", "JSON_NUMBER", 
@@ -1980,9 +1980,9 @@ public class TafexprParser extends Parser {
 		")*\u0005\u0003\u0000\u0000*+\u0003\u0004\u0002\u0000+,\u0005\u0004\u0000"+
 		"\u0000,\u0003\u0001\u0000\u0000\u0000-.\u0006\u0002\uffff\uffff\u0000"+
 		"./\u0005 \u0000\u0000/<\u0003\u0004\u0002\"01\u00050\u0000\u00001<\u0003"+
-		"\u0004\u0002!2<\u0003\u0002\u0001\u00003<\u0005!\u0000\u00004<\u0005\""+
-		"\u0000\u00005<\u0003\u0012\t\u00006<\u0003\u0006\u0003\u00007<\u00054"+
-		"\u0000\u00008<\u0005\'\u0000\u00009<\u00052\u0000\u0000:<\u0003\u0016"+
+		"\u0004\u0002!2<\u0003\u0002\u0001\u00003<\u0005\"\u0000\u00004<\u0005"+
+		"!\u0000\u00005<\u0003\u0012\t\u00006<\u0003\u0006\u0003\u00007<\u0005"+
+		"4\u0000\u00008<\u0005\'\u0000\u00009<\u00052\u0000\u0000:<\u0003\u0016"+
 		"\u000b\u0000;-\u0001\u0000\u0000\u0000;0\u0001\u0000\u0000\u0000;2\u0001"+
 		"\u0000\u0000\u0000;3\u0001\u0000\u0000\u0000;4\u0001\u0000\u0000\u0000"+
 		";5\u0001\u0000\u0000\u0000;6\u0001\u0000\u0000\u0000;7\u0001\u0000\u0000"+
