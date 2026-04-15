@@ -4,7 +4,6 @@ package stackvalue
 import (
 	"fmt"
 	"strconv"
-	"strings"
 
 	jsoniter "github.com/json-iterator/go"
 	"github.com/nsf/jsondiff"
@@ -152,7 +151,7 @@ func (s JSONStackValue) ToString() string {
 		return ""
 	}
 	st := string(v)
-	st = strings.ReplaceAll(st, "\"", "\\\"")
+	//st = strings.ReplaceAll(st, "\"", "\\\"")
 	return st
 }
 

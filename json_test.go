@@ -31,3 +31,20 @@ func TestJsonArrayScalar(t *testing.T) {
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.JSONArray)
 }
+
+func TestJsonComplex(t *testing.T) {
+	p := SetupParser()
+	s := utils.ReadFile("jsonexprs\\complex.json")
+	res := p.Parse(*s)
+	assert.Equal(t, true, res)
+	assert.NotNil(t, p.JSONValue)
+}
+
+func TestJsonToString(t *testing.T) {
+	p := SetupParser()
+	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	expr := "{\"2\":3}.toString"
+	res := p.Parse(expr)
+	assert.Equal(t, true, res)
+	assert.NotNil(t, p.StringValue)
+}
