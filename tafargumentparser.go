@@ -316,7 +316,7 @@ func (ap *TAFArgumentParser) ParsePureVariableStorageDestination(arg string) boo
 	return true
 }
 
-func (ap *TAFArgumentParser) Interpolate(arg string) bool {
+func (ap *TAFArgumentParser) Interpolate2(arg string) bool {
 	r := regexp.MustCompile(`\{\{(.*?)\}\}`)
 	submatches := r.FindAllString(arg, -1)
 	indices := r.FindAllStringIndex(arg, -1)
@@ -363,6 +363,60 @@ func (ap *TAFArgumentParser) Interpolate(arg string) bool {
 	}
 	//l.interpolationApplied = true
 	//fmt.Printf("substring: %v\n", substring)
+	ap.StringValue = substring
+	ap.interpolationApplied = arg != substring
+	return true
+}
+
+func (ap *TAFArgumentParser) Interpolate(arg string) bool {
+	r := regexp.MustCompile(`\{\{(.*?)\}\}`)
+	submatches := r.FindAllString(arg, -1)
+	indices := r.FindAllStringIndex(arg, -1)
+	inter := []InterpolationToken{}
+	for i := 0; i < len(submatches); i++ {
+		trimmed := strings.Trim(submatches[i], "{")
+		trimmed = strings.Trim(trimmed, "}")
+
+		parsed := ap.Parse(trimmed)
+		if parsed {
+			inter = append(inter, *NewInterpolationToken(indices[i][0], indices[i][1], submatches[i], ap.Result))
+		}
+	}
+	if len(inter) == 0 {
+		ap.interpolationApplied = false
+		ap.StringValue = arg
+		return true
+	}
+	current := 0
+	substring := ""
+	tok := inter[0]
+	for i := 0; i < len(arg); i++ {
+		if i == tok.GetStart() {
+			prefix := arg[:tok.GetStart()]
+			quoteCount := strings.Count(prefix, "\"")
+			insideString := quoteCount%2 != 0
+
+			value := tok.GetValue().ToString()
+			if insideString {
+				value = strings.ReplaceAll(value, `"`, `\"`)
+			}
+			substring += value
+			i = tok.GetEnd() - 1
+			current++
+			if current == len(inter) {
+				if i+1 >= len(arg) {
+					break
+				}
+				lastPart := arg[i+1:]
+				substring += lastPart
+				substring = strings.TrimSuffix(substring, "<EOF>")
+				break
+			}
+			tok = inter[current]
+			continue
+		}
+		substring += string(arg[i])
+	}
 	ap.StringValue = substring
 	ap.interpolationApplied = arg != substring
 	return true
