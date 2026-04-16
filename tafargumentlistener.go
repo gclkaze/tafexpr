@@ -1058,8 +1058,9 @@ func (l *TAFArgumentListener) EnterHandleJJ(ctx *parser.HandleJJContext) {
 func prepareForTafexpr(value string) string {
 	trimmed := strings.TrimPrefix(value, "\xef\xbb\xbf")
 	trimmed = strings.TrimSpace(trimmed)
-	trimmed = strings.ReplaceAll(trimmed, `\n`, "")
-	trimmed = strings.ReplaceAll(trimmed, `\r`, "")
+	trimmed = strings.ReplaceAll(trimmed, "\r\n", "")
+	trimmed = strings.ReplaceAll(trimmed, "\n", "")
+	trimmed = strings.ReplaceAll(trimmed, "\r", "")
 	if strings.HasPrefix(trimmed, "\"") && strings.HasSuffix(trimmed, "\"") {
 		return trimmed
 	}
