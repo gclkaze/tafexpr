@@ -135,9 +135,12 @@ func TestRandomTokens(t *testing.T) {
 func TestParseJJSONString(t *testing.T) {
 	t.Skip("This does not pass")
 	p := SetupParser()
-	actual := "\\\"{\\\"a\\\":{\\\"b\\\":{\\\"c\\\":666}}}\""
+	actual := "\"{\"a\":{\"b\":{\"c\":666}}}\""
+	expected := "{\"a\":{\"b\":{\"c\":666}}}"
+
+	/*actual := "\\\"{\\\"a\\\":{\\\"b\\\":{\\\"c\\\":666}}}\""
 	expected := "{\\\"a\\\":{\\\"b\\\":{\\\"c\\\":666}}}"
-	assert.Equal(t, true, p.Parse(actual))
+	*/assert.Equal(t, true, p.Parse(actual))
 	assert.Equal(t, expected, p.StringValue)
 
 }

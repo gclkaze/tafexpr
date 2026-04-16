@@ -1042,11 +1042,21 @@ func (l *TAFArgumentListener) EnterHandleJJ(ctx *parser.HandleJJContext) {
 	//strValue := ctx.GetText()
 	//fmt.Println("WHAT??" + strValue)
 }
+func prepareForTafexpr(value string) string {
+	// if the value was a string (outer quotes stripped), re-wrap it
+	// so Tafexpr can parse it as a STRING expression
+	escaped := strings.ReplaceAll(value, `"`, `\"`)
+	return `"` + escaped + `"`
+}
 
 func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) {
 	l.LastExit = "String"
 
 	strValue := ctx.GetText()
+	if strValue != "" && strValue != "\"\"" && strValue != "''" {
+		strValue = prepareForTafexpr(strValue)
+	}
+
 	/*	strValue = strings.TrimSuffix(strValue, "\"")
 		strValue = strings.TrimPrefix(strValue, "\"")*/
 	if l.Escaped {
