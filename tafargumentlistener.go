@@ -1045,6 +1045,11 @@ func (l *TAFArgumentListener) EnterHandleJJ(ctx *parser.HandleJJContext) {
 func prepareForTafexpr(value string) string {
 	// if the value was a string (outer quotes stripped), re-wrap it
 	// so Tafexpr can parse it as a STRING expression
+
+	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+		// already a quoted string, pass as-is
+		return value
+	}
 	escaped := strings.ReplaceAll(value, `"`, `\"`)
 	return `"` + escaped + `"`
 }

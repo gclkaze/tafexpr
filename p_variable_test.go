@@ -16,6 +16,18 @@ func TestVarArg(t *testing.T) {
 	assert.Equal(t, 13, p.IntValue)
 }
 
+func TestP(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$result.EVA_TEST_ALL", 13)
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$value", 13)
+
+	ex := "	$result.EVA_TEST_ALL == $value"
+	assert.Equal(t, true, p.Parse(ex))
+	assert.NotNil(t, p.BoolValue)
+	assert.Equal(t, true, p.BoolValue)
+}
+
 func TestListVarArgIndexLiteral(t *testing.T) {
 	p := SetupParser()
 	p.VariableContext = SetupMockVariableContext()
