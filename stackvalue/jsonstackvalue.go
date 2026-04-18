@@ -146,10 +146,21 @@ func GetGenericValue(v stackvalue.StackValue) globals.JSONObjectGen {
 
 func (s JSONStackValue) ToString() string {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary
+	switch vt := s.value.(type) {
+	case int:
+		return strconv.Itoa(vt)
+	case float64:
+		return strconv.FormatFloat(vt, 'f', -1, 64)
+	case bool:
+		return strconv.FormatBool(vt)
+	case string:
+		return vt
+	}
 	v, err := json.Marshal(s.value)
 	if err != nil {
 		return ""
 	}
+
 	st := string(v)
 	//st = strings.ReplaceAll(st, "\"", "\\\"")
 	return st
