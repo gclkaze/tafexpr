@@ -56,5 +56,13 @@ func TestJJsonToString(t *testing.T) {
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.StringValue)
+}
 
+func TestJSONArrayLength(t *testing.T) {
+	p := SetupParser()
+	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	expr := "[1,2,3].length == [4,5,6].length"
+	res := p.Parse(expr)
+	assert.Equal(t, true, res)
+	assert.NotNil(t, p.BoolValue)
 }

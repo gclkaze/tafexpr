@@ -63,13 +63,8 @@ libfunc:  'randomDoubleInRange' '(' expression ',' expression ')' #HandleRandomD
 
 expression
    : 
-       SUB expression #HandleNegation
-       | LOGICAL_NOT expression #HandleLogicalNegation
-   | expression op=(LOGICAL_AND|LOGICAL_OR) expression #HandleLogical
-   | expression op=(MUL|DIV|MOD) expression #MulDiv
-   | expression op=(ADD|SUB) expression #AddSub
-   | expression op=(LESSER_THAN|LESSER_THAN_EQUAL|EQUAL|GREATER_THAN|GREATER_THAN_EQUAL|UNEQUAL) expression #LogicalOperation
-   | expression '.' 'length' #HandleLength
+
+    expression '.' 'length' #HandleLength
    | expression '.' 'findOneByXPATH' '(' expression ')'#HandleFindOneByXPATH
    | expression '.' 'findOneStringByXPATH' '(' expression ')'#HandleFindOneStringByXPATH
    | expression '.' 'findOneDoubleByXPATH' '(' expression ')'#HandleFindOneDoubleByXPATH
@@ -86,9 +81,17 @@ expression
    | expression '.' 'startsWith' '(' expression ')'#HandleStartsWith
    | expression '.' 'endsWith' '(' expression ')'#HandleEndsWith
    | expression '.' 'trimLeft'#HandleTrimLeft
-   | libfunc #HandleLibfunc
    | expression '.' 'trimRight'#HandleTrimRight
    | expression '.' 'trim'#HandleTrim
+
+
+|       SUB expression #HandleNegation
+       | LOGICAL_NOT expression #HandleLogicalNegation
+   | expression op=(LOGICAL_AND|LOGICAL_OR) expression #HandleLogical
+   | expression op=(MUL|DIV|MOD) expression #MulDiv
+   | expression op=(ADD|SUB) expression #AddSub
+   | expression op=(LESSER_THAN|LESSER_THAN_EQUAL|EQUAL|GREATER_THAN|GREATER_THAN_EQUAL|UNEQUAL) expression #LogicalOperation
+
    | INTEGER                             #Number
    | DOUBLE                              #DoubleValue
    | parenthesisExpression              #OrderedEvaluation
@@ -97,6 +100,8 @@ expression
    | NULL_TOKEN #HandleNull
    | STRING #HandleString
      | json #HandleJson
+   | libfunc #HandleLibfunc
+
    ;
    
 

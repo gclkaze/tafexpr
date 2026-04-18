@@ -94,48 +94,48 @@ func tafexprParserInit() {
 		1, 0, 0, 0, 34, 35, 5, 0, 0, 1, 35, 1, 1, 0, 0, 0, 36, 37, 5, 1, 0, 0,
 		37, 38, 5, 2, 0, 0, 38, 39, 3, 4, 2, 0, 39, 40, 5, 3, 0, 0, 40, 41, 3,
 		4, 2, 0, 41, 42, 5, 4, 0, 0, 42, 3, 1, 0, 0, 0, 43, 44, 6, 2, -1, 0, 44,
-		45, 5, 31, 0, 0, 45, 58, 3, 4, 2, 34, 46, 47, 5, 47, 0, 0, 47, 58, 3, 4,
-		2, 33, 48, 58, 3, 2, 1, 0, 49, 58, 5, 33, 0, 0, 50, 58, 5, 32, 0, 0, 51,
-		58, 3, 18, 9, 0, 52, 58, 3, 6, 3, 0, 53, 58, 5, 50, 0, 0, 54, 58, 5, 38,
-		0, 0, 55, 58, 5, 49, 0, 0, 56, 58, 3, 20, 10, 0, 57, 43, 1, 0, 0, 0, 57,
+		45, 5, 31, 0, 0, 45, 58, 3, 4, 2, 15, 46, 47, 5, 47, 0, 0, 47, 58, 3, 4,
+		2, 14, 48, 58, 5, 33, 0, 0, 49, 58, 5, 32, 0, 0, 50, 58, 3, 18, 9, 0, 51,
+		58, 3, 6, 3, 0, 52, 58, 5, 50, 0, 0, 53, 58, 5, 38, 0, 0, 54, 58, 5, 49,
+		0, 0, 55, 58, 3, 20, 10, 0, 56, 58, 3, 2, 1, 0, 57, 43, 1, 0, 0, 0, 57,
 		46, 1, 0, 0, 0, 57, 48, 1, 0, 0, 0, 57, 49, 1, 0, 0, 0, 57, 50, 1, 0, 0,
 		0, 57, 51, 1, 0, 0, 0, 57, 52, 1, 0, 0, 0, 57, 53, 1, 0, 0, 0, 57, 54,
 		1, 0, 0, 0, 57, 55, 1, 0, 0, 0, 57, 56, 1, 0, 0, 0, 58, 176, 1, 0, 0, 0,
-		59, 60, 10, 32, 0, 0, 60, 61, 7, 0, 0, 0, 61, 175, 3, 4, 2, 33, 62, 63,
-		10, 31, 0, 0, 63, 64, 7, 1, 0, 0, 64, 175, 3, 4, 2, 32, 65, 66, 10, 30,
-		0, 0, 66, 67, 7, 2, 0, 0, 67, 175, 3, 4, 2, 31, 68, 69, 10, 29, 0, 0, 69,
-		70, 7, 3, 0, 0, 70, 175, 3, 4, 2, 30, 71, 72, 10, 28, 0, 0, 72, 73, 5,
-		37, 0, 0, 73, 175, 5, 5, 0, 0, 74, 75, 10, 27, 0, 0, 75, 76, 5, 37, 0,
+		59, 60, 10, 13, 0, 0, 60, 61, 7, 0, 0, 0, 61, 175, 3, 4, 2, 14, 62, 63,
+		10, 12, 0, 0, 63, 64, 7, 1, 0, 0, 64, 175, 3, 4, 2, 13, 65, 66, 10, 11,
+		0, 0, 66, 67, 7, 2, 0, 0, 67, 175, 3, 4, 2, 12, 68, 69, 10, 10, 0, 0, 69,
+		70, 7, 3, 0, 0, 70, 175, 3, 4, 2, 11, 71, 72, 10, 34, 0, 0, 72, 73, 5,
+		37, 0, 0, 73, 175, 5, 5, 0, 0, 74, 75, 10, 33, 0, 0, 75, 76, 5, 37, 0,
 		0, 76, 77, 5, 6, 0, 0, 77, 78, 5, 2, 0, 0, 78, 79, 3, 4, 2, 0, 79, 80,
-		5, 4, 0, 0, 80, 175, 1, 0, 0, 0, 81, 82, 10, 26, 0, 0, 82, 83, 5, 37, 0,
+		5, 4, 0, 0, 80, 175, 1, 0, 0, 0, 81, 82, 10, 32, 0, 0, 82, 83, 5, 37, 0,
 		0, 83, 84, 5, 7, 0, 0, 84, 85, 5, 2, 0, 0, 85, 86, 3, 4, 2, 0, 86, 87,
-		5, 4, 0, 0, 87, 175, 1, 0, 0, 0, 88, 89, 10, 25, 0, 0, 89, 90, 5, 37, 0,
+		5, 4, 0, 0, 87, 175, 1, 0, 0, 0, 88, 89, 10, 31, 0, 0, 89, 90, 5, 37, 0,
 		0, 90, 91, 5, 8, 0, 0, 91, 92, 5, 2, 0, 0, 92, 93, 3, 4, 2, 0, 93, 94,
-		5, 4, 0, 0, 94, 175, 1, 0, 0, 0, 95, 96, 10, 24, 0, 0, 96, 97, 5, 37, 0,
+		5, 4, 0, 0, 94, 175, 1, 0, 0, 0, 95, 96, 10, 30, 0, 0, 96, 97, 5, 37, 0,
 		0, 97, 98, 5, 9, 0, 0, 98, 99, 5, 2, 0, 0, 99, 100, 3, 4, 2, 0, 100, 101,
-		5, 4, 0, 0, 101, 175, 1, 0, 0, 0, 102, 103, 10, 23, 0, 0, 103, 104, 5,
+		5, 4, 0, 0, 101, 175, 1, 0, 0, 0, 102, 103, 10, 29, 0, 0, 103, 104, 5,
 		37, 0, 0, 104, 105, 5, 10, 0, 0, 105, 106, 5, 2, 0, 0, 106, 107, 3, 4,
-		2, 0, 107, 108, 5, 4, 0, 0, 108, 175, 1, 0, 0, 0, 109, 110, 10, 22, 0,
+		2, 0, 107, 108, 5, 4, 0, 0, 108, 175, 1, 0, 0, 0, 109, 110, 10, 28, 0,
 		0, 110, 111, 5, 37, 0, 0, 111, 112, 5, 11, 0, 0, 112, 113, 5, 2, 0, 0,
 		113, 114, 3, 4, 2, 0, 114, 115, 5, 4, 0, 0, 115, 175, 1, 0, 0, 0, 116,
-		117, 10, 21, 0, 0, 117, 118, 5, 37, 0, 0, 118, 119, 5, 12, 0, 0, 119, 120,
+		117, 10, 27, 0, 0, 117, 118, 5, 37, 0, 0, 118, 119, 5, 12, 0, 0, 119, 120,
 		5, 2, 0, 0, 120, 121, 3, 4, 2, 0, 121, 122, 5, 4, 0, 0, 122, 175, 1, 0,
-		0, 0, 123, 124, 10, 20, 0, 0, 124, 125, 5, 37, 0, 0, 125, 126, 5, 13, 0,
+		0, 0, 123, 124, 10, 26, 0, 0, 124, 125, 5, 37, 0, 0, 125, 126, 5, 13, 0,
 		0, 126, 127, 5, 2, 0, 0, 127, 128, 3, 4, 2, 0, 128, 129, 5, 3, 0, 0, 129,
 		130, 3, 4, 2, 0, 130, 131, 5, 4, 0, 0, 131, 175, 1, 0, 0, 0, 132, 133,
-		10, 19, 0, 0, 133, 134, 5, 37, 0, 0, 134, 175, 5, 14, 0, 0, 135, 136, 10,
-		18, 0, 0, 136, 137, 5, 37, 0, 0, 137, 175, 5, 15, 0, 0, 138, 139, 10, 17,
-		0, 0, 139, 140, 5, 37, 0, 0, 140, 175, 5, 16, 0, 0, 141, 142, 10, 16, 0,
-		0, 142, 143, 5, 37, 0, 0, 143, 175, 5, 17, 0, 0, 144, 145, 10, 15, 0, 0,
+		10, 25, 0, 0, 133, 134, 5, 37, 0, 0, 134, 175, 5, 14, 0, 0, 135, 136, 10,
+		24, 0, 0, 136, 137, 5, 37, 0, 0, 137, 175, 5, 15, 0, 0, 138, 139, 10, 23,
+		0, 0, 139, 140, 5, 37, 0, 0, 140, 175, 5, 16, 0, 0, 141, 142, 10, 22, 0,
+		0, 142, 143, 5, 37, 0, 0, 143, 175, 5, 17, 0, 0, 144, 145, 10, 21, 0, 0,
 		145, 146, 5, 37, 0, 0, 146, 147, 5, 18, 0, 0, 147, 148, 5, 2, 0, 0, 148,
 		149, 3, 4, 2, 0, 149, 150, 5, 4, 0, 0, 150, 175, 1, 0, 0, 0, 151, 152,
-		10, 14, 0, 0, 152, 153, 5, 37, 0, 0, 153, 154, 5, 19, 0, 0, 154, 155, 5,
+		10, 20, 0, 0, 152, 153, 5, 37, 0, 0, 153, 154, 5, 19, 0, 0, 154, 155, 5,
 		2, 0, 0, 155, 156, 3, 4, 2, 0, 156, 157, 5, 4, 0, 0, 157, 175, 1, 0, 0,
-		0, 158, 159, 10, 13, 0, 0, 159, 160, 5, 37, 0, 0, 160, 161, 5, 20, 0, 0,
+		0, 158, 159, 10, 19, 0, 0, 159, 160, 5, 37, 0, 0, 160, 161, 5, 20, 0, 0,
 		161, 162, 5, 2, 0, 0, 162, 163, 3, 4, 2, 0, 163, 164, 5, 4, 0, 0, 164,
-		175, 1, 0, 0, 0, 165, 166, 10, 12, 0, 0, 166, 167, 5, 37, 0, 0, 167, 175,
-		5, 21, 0, 0, 168, 169, 10, 10, 0, 0, 169, 170, 5, 37, 0, 0, 170, 175, 5,
-		22, 0, 0, 171, 172, 10, 9, 0, 0, 172, 173, 5, 37, 0, 0, 173, 175, 5, 23,
+		175, 1, 0, 0, 0, 165, 166, 10, 18, 0, 0, 166, 167, 5, 37, 0, 0, 167, 175,
+		5, 21, 0, 0, 168, 169, 10, 17, 0, 0, 169, 170, 5, 37, 0, 0, 170, 175, 5,
+		22, 0, 0, 171, 172, 10, 16, 0, 0, 172, 173, 5, 37, 0, 0, 173, 175, 5, 23,
 		0, 0, 174, 59, 1, 0, 0, 0, 174, 62, 1, 0, 0, 0, 174, 65, 1, 0, 0, 0, 174,
 		68, 1, 0, 0, 0, 174, 71, 1, 0, 0, 0, 174, 74, 1, 0, 0, 0, 174, 81, 1, 0,
 		0, 0, 174, 88, 1, 0, 0, 0, 174, 95, 1, 0, 0, 0, 174, 102, 1, 0, 0, 0, 174,
@@ -2760,7 +2760,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		}
 		{
 			p.SetState(45)
-			p.expression(34)
+			p.expression(15)
 		}
 
 	case TafexprParserLOGICAL_NOT:
@@ -2777,16 +2777,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		}
 		{
 			p.SetState(47)
-			p.expression(33)
-		}
-
-	case TafexprParserT__0:
-		localctx = NewHandleLibfuncContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
-			p.SetState(48)
-			p.Libfunc()
+			p.expression(14)
 		}
 
 	case TafexprParserINTEGER:
@@ -2794,7 +2785,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(49)
+			p.SetState(48)
 			p.Match(TafexprParserINTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2807,7 +2798,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(50)
+			p.SetState(49)
 			p.Match(TafexprParserDOUBLE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2820,7 +2811,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(51)
+			p.SetState(50)
 			p.ParenthesisExpression()
 		}
 
@@ -2829,7 +2820,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(52)
+			p.SetState(51)
 			p.Var_expression()
 		}
 
@@ -2838,7 +2829,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(53)
+			p.SetState(52)
 			p.Match(TafexprParserBOOLEAN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2851,7 +2842,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(54)
+			p.SetState(53)
 			p.Match(TafexprParserNULL_TOKEN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2864,7 +2855,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(55)
+			p.SetState(54)
 			p.Match(TafexprParserSTRING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2877,8 +2868,17 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(56)
+			p.SetState(55)
 			p.Json()
+		}
+
+	case TafexprParserT__0:
+		localctx = NewHandleLibfuncContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
+		{
+			p.SetState(56)
+			p.Libfunc()
 		}
 
 	default:
@@ -2913,8 +2913,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(59)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 32)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 32)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
 					goto errorExit
 				}
 				{
@@ -2937,7 +2937,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(61)
-					p.expression(33)
+					p.expression(14)
 				}
 
 			case 2:
@@ -2945,8 +2945,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(62)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 31)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 31)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
 					goto errorExit
 				}
 				{
@@ -2969,7 +2969,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(64)
-					p.expression(32)
+					p.expression(13)
 				}
 
 			case 3:
@@ -2977,8 +2977,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(65)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 30)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 30)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
 					goto errorExit
 				}
 				{
@@ -3001,7 +3001,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(67)
-					p.expression(31)
+					p.expression(12)
 				}
 
 			case 4:
@@ -3009,8 +3009,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(68)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 29)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 29)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
 					goto errorExit
 				}
 				{
@@ -3033,7 +3033,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(70)
-					p.expression(30)
+					p.expression(11)
 				}
 
 			case 5:
@@ -3041,8 +3041,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(71)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 28)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 28)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 34)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 34)", ""))
 					goto errorExit
 				}
 				{
@@ -3067,8 +3067,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(74)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 27)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 27)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 33)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 33)", ""))
 					goto errorExit
 				}
 				{
@@ -3113,8 +3113,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(81)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 26)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 26)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 32)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 32)", ""))
 					goto errorExit
 				}
 				{
@@ -3159,8 +3159,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(88)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 25)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 25)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 31)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 31)", ""))
 					goto errorExit
 				}
 				{
@@ -3205,8 +3205,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(95)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 24)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 24)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 30)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 30)", ""))
 					goto errorExit
 				}
 				{
@@ -3251,8 +3251,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(102)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 23)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 23)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 29)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 29)", ""))
 					goto errorExit
 				}
 				{
@@ -3297,8 +3297,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(109)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 22)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 22)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 28)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 28)", ""))
 					goto errorExit
 				}
 				{
@@ -3343,8 +3343,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(116)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 21)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 21)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 27)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 27)", ""))
 					goto errorExit
 				}
 				{
@@ -3389,8 +3389,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(123)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 20)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 20)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 26)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 26)", ""))
 					goto errorExit
 				}
 				{
@@ -3447,8 +3447,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(132)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 19)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 19)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 25)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 25)", ""))
 					goto errorExit
 				}
 				{
@@ -3473,8 +3473,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(135)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 18)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 18)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 24)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 24)", ""))
 					goto errorExit
 				}
 				{
@@ -3499,8 +3499,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(138)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 17)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 17)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 23)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 23)", ""))
 					goto errorExit
 				}
 				{
@@ -3525,8 +3525,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(141)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 16)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 16)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 22)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 22)", ""))
 					goto errorExit
 				}
 				{
@@ -3551,8 +3551,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(144)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 15)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 15)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 21)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 21)", ""))
 					goto errorExit
 				}
 				{
@@ -3597,8 +3597,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(151)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 14)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 14)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 20)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 20)", ""))
 					goto errorExit
 				}
 				{
@@ -3643,8 +3643,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(158)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 19)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 19)", ""))
 					goto errorExit
 				}
 				{
@@ -3689,8 +3689,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(165)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 18)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 18)", ""))
 					goto errorExit
 				}
 				{
@@ -3715,8 +3715,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(168)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 17)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 17)", ""))
 					goto errorExit
 				}
 				{
@@ -3741,8 +3741,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(171)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 9)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 9)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 16)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 16)", ""))
 					goto errorExit
 				}
 				{
@@ -5992,73 +5992,73 @@ func (p *TafexprParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex
 func (p *TafexprParser) Expression_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 32)
-
-	case 1:
-		return p.Precpred(p.GetParserRuleContext(), 31)
-
-	case 2:
-		return p.Precpred(p.GetParserRuleContext(), 30)
-
-	case 3:
-		return p.Precpred(p.GetParserRuleContext(), 29)
-
-	case 4:
-		return p.Precpred(p.GetParserRuleContext(), 28)
-
-	case 5:
-		return p.Precpred(p.GetParserRuleContext(), 27)
-
-	case 6:
-		return p.Precpred(p.GetParserRuleContext(), 26)
-
-	case 7:
-		return p.Precpred(p.GetParserRuleContext(), 25)
-
-	case 8:
-		return p.Precpred(p.GetParserRuleContext(), 24)
-
-	case 9:
-		return p.Precpred(p.GetParserRuleContext(), 23)
-
-	case 10:
-		return p.Precpred(p.GetParserRuleContext(), 22)
-
-	case 11:
-		return p.Precpred(p.GetParserRuleContext(), 21)
-
-	case 12:
-		return p.Precpred(p.GetParserRuleContext(), 20)
-
-	case 13:
-		return p.Precpred(p.GetParserRuleContext(), 19)
-
-	case 14:
-		return p.Precpred(p.GetParserRuleContext(), 18)
-
-	case 15:
-		return p.Precpred(p.GetParserRuleContext(), 17)
-
-	case 16:
-		return p.Precpred(p.GetParserRuleContext(), 16)
-
-	case 17:
-		return p.Precpred(p.GetParserRuleContext(), 15)
-
-	case 18:
-		return p.Precpred(p.GetParserRuleContext(), 14)
-
-	case 19:
 		return p.Precpred(p.GetParserRuleContext(), 13)
 
-	case 20:
+	case 1:
 		return p.Precpred(p.GetParserRuleContext(), 12)
 
-	case 21:
+	case 2:
+		return p.Precpred(p.GetParserRuleContext(), 11)
+
+	case 3:
 		return p.Precpred(p.GetParserRuleContext(), 10)
 
+	case 4:
+		return p.Precpred(p.GetParserRuleContext(), 34)
+
+	case 5:
+		return p.Precpred(p.GetParserRuleContext(), 33)
+
+	case 6:
+		return p.Precpred(p.GetParserRuleContext(), 32)
+
+	case 7:
+		return p.Precpred(p.GetParserRuleContext(), 31)
+
+	case 8:
+		return p.Precpred(p.GetParserRuleContext(), 30)
+
+	case 9:
+		return p.Precpred(p.GetParserRuleContext(), 29)
+
+	case 10:
+		return p.Precpred(p.GetParserRuleContext(), 28)
+
+	case 11:
+		return p.Precpred(p.GetParserRuleContext(), 27)
+
+	case 12:
+		return p.Precpred(p.GetParserRuleContext(), 26)
+
+	case 13:
+		return p.Precpred(p.GetParserRuleContext(), 25)
+
+	case 14:
+		return p.Precpred(p.GetParserRuleContext(), 24)
+
+	case 15:
+		return p.Precpred(p.GetParserRuleContext(), 23)
+
+	case 16:
+		return p.Precpred(p.GetParserRuleContext(), 22)
+
+	case 17:
+		return p.Precpred(p.GetParserRuleContext(), 21)
+
+	case 18:
+		return p.Precpred(p.GetParserRuleContext(), 20)
+
+	case 19:
+		return p.Precpred(p.GetParserRuleContext(), 19)
+
+	case 20:
+		return p.Precpred(p.GetParserRuleContext(), 18)
+
+	case 21:
+		return p.Precpred(p.GetParserRuleContext(), 17)
+
 	case 22:
-		return p.Precpred(p.GetParserRuleContext(), 9)
+		return p.Precpred(p.GetParserRuleContext(), 16)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))
