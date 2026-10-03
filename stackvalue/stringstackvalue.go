@@ -3,6 +3,7 @@ package stackvalue
 import (
 	"fmt"
 	"strconv"
+	"syscall"
 	"unsafe"
 
 	log "github.com/sirupsen/logrus"
@@ -44,8 +45,11 @@ func (s StringStackValue) ToUintPtr() uintptr {
 	if s.value == "" {
 		return uintptr(0)
 	}
-	ptr := uintptr(unsafe.Pointer(&[]byte(s.value)[0]))
-	return ptr
+	bptr, err := syscall.BytePtrFromString(s.value)
+	if err != nil {
+		return uintptr(0)
+	}
+	return uintptr(unsafe.Pointer(bptr))
 }
 
 func (s StringStackValue) ToString() string {
