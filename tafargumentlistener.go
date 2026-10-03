@@ -1068,7 +1068,7 @@ func prepareForTafexpr(value string) string {
 	return `"` + escaped + `"`
 }
 
-func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) {
+/*func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) {
 	l.LastExit = "String"
 
 	strValue := ctx.GetText()
@@ -1076,8 +1076,8 @@ func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) 
 		strValue = prepareForTafexpr(strValue)
 	}
 
-	/*	strValue = strings.TrimSuffix(strValue, "\"")
-		strValue = strings.TrimPrefix(strValue, "\"")*/
+	//	strValue = strings.TrimSuffix(strValue, "\"")
+	//	strValue = strings.TrimPrefix(strValue, "\"")
 	if l.Escaped {
 		strValue = strings.TrimSuffix(strValue, "\\\"")
 		strValue = strings.TrimPrefix(strValue, "\"")
@@ -1087,6 +1087,63 @@ func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) 
 	}
 
 	l.pushValue(mine.NewStringStackValue(strValue))
+}*/
+
+func (l *TAFArgumentListener) ExitHandleString(ctx *parser.HandleStringContext) {
+	l.LastExit = "String"
+
+	strValue := ctx.GetText()
+	if strValue != "" && strValue != "\"\"" && strValue != "''" {
+		strValue = prepareForTafexpr(strValue)
+	}
+
+	if l.Escaped {
+		strValue = strings.TrimSuffix(strValue, "\\\"")
+		strValue = strings.TrimPrefix(strValue, "\"")
+	} else {
+		strValue = strings.TrimSuffix(strValue, "\"")
+		strValue = strings.TrimPrefix(strValue, "\"")
+	}
+
+	strValue = unescapeStringLiteral(strValue)
+
+	l.pushValue(mine.NewStringStackValue(strValue))
+}
+
+// unescapeStringLiteral converts backslash-escape sequences in a parsed
+// STRING token's body into their real characters: \" -> ", \\ -> \,
+// \n -> newline, \t -> tab. Processes left-to-right so a literal \\"
+// (escaped backslash followed by a real quote) unescapes correctly to
+// \" rather than being mishandled by a naive global ReplaceAll.
+func unescapeStringLiteral(s string) string {
+	var b strings.Builder
+	b.Grow(len(s))
+	for i := 0; i < len(s); i++ {
+		if s[i] == '\\' && i+1 < len(s) {
+			switch s[i+1] {
+			case '"':
+				b.WriteByte('"')
+				i++
+			case '\\':
+				b.WriteByte('\\')
+				i++
+			case 'n':
+				b.WriteByte('\n')
+				i++
+			case 't':
+				b.WriteByte('\t')
+				i++
+			case 'r':
+				b.WriteByte('\r')
+				i++
+			default:
+				b.WriteByte(s[i])
+			}
+			continue
+		}
+		b.WriteByte(s[i])
+	}
+	return b.String()
 }
 
 func (l *TAFArgumentListener) ExitHandleNull(ctx *parser.HandleNullContext) {

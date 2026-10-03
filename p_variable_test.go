@@ -59,7 +59,27 @@ func TestListVarArgIndexLiteralArrayAccessLiteral(t *testing.T) {
 	assert.Equal(t, 20, p.IntValue)
 }
 
-/*
+func TestToStringExpressionInList(t *testing.T) {
+	p := SetupParser()
+	p.VariableContext = SetupMockVariableContext()
+	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$options", 10)
+	assert.Equal(t, true, p.Parse("[$options.toString]"))
+	assert.Equal(t, "10", p.JSONArray[0].(string))
+}
+
+func TestToStringJSONExpressionInList(t *testing.T) {
+	p := SetupParser()
+
+	p.VariableContext = SetupJSONObjectMockVariableContext()
+	p.VariableContext.(*variablecontext.JSONObjectMockVariableContext).SetValue("$options",
+		variablecontext.NewJSONObjectBuilder().
+			Set("addr", "localhost:6379").
+			Set("db", 0).Build())
+
+	assert.Equal(t, true, p.Parse("[$options.toString]"))
+	assert.Equal(t, `{"addr":"localhost:6379","db":0}`, p.JSONArray[0].(string))
+}
+
 func TestListVarArgIndexExpression(t *testing.T) {
 	p := SetupParser()
 	assert.Equal(t, true, p.Parse("100 + 200 +3090"))
@@ -70,4 +90,4 @@ func TestListVarArgComposite(t *testing.T) {
 	p := SetupParser()
 	assert.Equal(t, true, p.Parse("100 + 200 +3090"))
 	assert.Equal(t, 100+200+3090, p.IntValue)
-}*/
+}

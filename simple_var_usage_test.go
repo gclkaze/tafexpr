@@ -32,6 +32,14 @@ func SetupMockVariableContext() variablecontext.IVariableContext {
 	return context
 }
 
+func SetupJSONObjectMockVariableContext() variablecontext.IVariableContext {
+	v := &variablecontext.JSONObjectMockVariableContext{}
+	v.Init(true)
+
+	var context variablecontext.IVariableContext = v
+	return context
+}
+
 func SetupNilVariableContext() variablecontext.IVariableContext {
 	v := &variablecontext.NilVariableContext{}
 	v.Init(true)
