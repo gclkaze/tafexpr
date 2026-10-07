@@ -264,3 +264,16 @@ func TestJSONPathDelete(t *testing.T) {
 	assert.Equal(t, "d", (*paths)[7].Value)
 }
 */
+func TestEmptyJSONArrayRendersAsEmptyList(t *testing.T) {
+	var nilSlice globals.JSONArrayGen
+	for name, a := range map[string]*JSONArrayStackValue{
+		"nil slice":   NewJSONArrayStackValue(nilSlice),
+		"empty slice": NewJSONArrayStackValue(globals.JSONArrayGen{}),
+		"empty":       NewEmptyJSONArrayStackValue(),
+		"zero value":  {},
+	} {
+		if got := a.ToString(); got != "[]" {
+			t.Errorf("%s: got %q, want []", name, got)
+		}
+	}
+}

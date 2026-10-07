@@ -67,7 +67,11 @@ func (s JSONArrayStackValue) ToBoolean() (result bool, err error) {
 }
 
 func (s JSONArrayStackValue) ToString() string {
-	b, err := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(s.GetValue())
+	g := s.GetValue()
+	if g == nil {
+		return "[]" // json.Marshal renders a nil slice as null
+	}
+	b, err := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(g)
 	if err != nil {
 		return ""
 	}
@@ -113,6 +117,9 @@ func (s JSONArrayStackValue) GetType() stackvalue.StackValueType {
 }
 
 func (s JSONArrayStackValue) GetValue() globals.JSONArrayGen {
+	if s.ptr == nil {
+		return globals.JSONArrayGen{}
+	}
 	return *s.ptr
 }
 func (s JSONArrayStackValue) Copy() stackvalue.StackValue {
