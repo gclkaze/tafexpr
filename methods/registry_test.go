@@ -26,7 +26,8 @@ func str(s string) stackvalue.StackValue { return mk(stackvalue.STRING, s) }
 func num(s string) stackvalue.StackValue { return mk(stackvalue.INTEGER, s) }
 func null() stackvalue.StackValue        { return mk(stackvalue.NULL, "") }
 
-func init() {
+// registerFixtures adds the test-only methods to whatever tables are active.
+func registerFixtures() {
 	// trim([cutset])  -- optional parameter with a default
 	Register("trim", Method{
 		Group: "string", Returns: "STRING",
@@ -87,6 +88,17 @@ func init() {
 	})
 }
 
+// withFixtures gives the calling test private tables holding only the fixtures, and restores the
+// real registrations afterwards. Tests about the REAL registrations (aliases, reserved words,
+// legacy names) deliberately do not call it.
+func withFixtures(t *testing.T) {
+	t.Helper()
+	sb, sa, sf, sal := byRecv, anyRecv, funcs, aliases
+	byRecv, anyRecv, funcs, aliases = map[key]Method{}, map[string]Method{}, map[string]Method{}, map[string]string{}
+	t.Cleanup(func() { byRecv, anyRecv, funcs, aliases = sb, sa, sf, sal })
+	registerFixtures()
+}
+
 type errMissing string
 
 func (e errMissing) Error() string { return "no such key: " + string(e) }
@@ -98,6 +110,7 @@ func boolStr(b bool) string {
 }
 
 func TestOptionalParamUsesDefault(t *testing.T) {
+	withFixtures(t)
 	r, err := Invoke(str("  hi  "), "trim", nil)
 	if err != nil || r.ToString() != "hi" {
 		t.Fatalf("got %v, %v", r, err)
@@ -109,6 +122,7 @@ func TestOptionalParamUsesDefault(t *testing.T) {
 }
 
 func TestHasDistinguishesOmittedFromNull(t *testing.T) {
+	withFixtures(t)
 	obj := mk(stackvalue.JSON_OBJECT, "")
 	if _, err := Invoke(obj, "get", []stackvalue.StackValue{str("nope")}); err == nil {
 		t.Fatal("omitted default should fail on a missing key")
@@ -124,6 +138,7 @@ func TestHasDistinguishesOmittedFromNull(t *testing.T) {
 }
 
 func TestArityMessages(t *testing.T) {
+	withFixtures(t)
 	cases := []struct {
 		recv stackvalue.StackValue
 		name string
@@ -143,6 +158,7 @@ func TestArityMessages(t *testing.T) {
 }
 
 func TestArgumentTypeCheck(t *testing.T) {
+	withFixtures(t)
 	_, err := Invoke(str("abc"), "contains", []stackvalue.StackValue{num("1")})
 	want := "String.contains: argument 1 (needle) must be String, got Integer"
 	if err == nil || err.Error() != want {
@@ -151,6 +167,7 @@ func TestArgumentTypeCheck(t *testing.T) {
 }
 
 func TestSameNameDispatchesOnReceiverType(t *testing.T) {
+	withFixtures(t)
 	a, _ := Invoke(mk(stackvalue.JSON_ARRAY, ""), "get", []stackvalue.StackValue{num("3")})
 	o, _ := Invoke(mk(stackvalue.JSON_OBJECT, ""), "get", []stackvalue.StackValue{str("present")})
 	if a.ToString() != "item3" || o.ToString() != "found" {
@@ -159,6 +176,7 @@ func TestSameNameDispatchesOnReceiverType(t *testing.T) {
 }
 
 func TestAliasAndAnyReceiver(t *testing.T) {
+	withFixtures(t)
 	r, err := Invoke(str("hello"), "containsString", []stackvalue.StackValue{str("ell")})
 	if err != nil || r.ToString() != "true" {
 		t.Fatalf("alias failed: %v %v", r, err)
@@ -172,6 +190,7 @@ func TestAliasAndAnyReceiver(t *testing.T) {
 }
 
 func TestUnknownMethodListsWhatExists(t *testing.T) {
+	withFixtures(t)
 	_, err := Invoke(str("a"), "trimm", nil)
 	if err == nil || !strings.Contains(err.Error(), `String has no method "trimm"`) || !strings.Contains(err.Error(), "trim") {
 		t.Fatalf("got %v", err)
@@ -183,6 +202,7 @@ func TestUnknownMethodListsWhatExists(t *testing.T) {
 }
 
 func TestFreeFunctionDefaults(t *testing.T) {
+	withFixtures(t)
 	r, _ := InvokeFunc("randomInRange", nil)
 	if r.ToString() != "0..1" {
 		t.Fatalf("got %v", r)
@@ -194,6 +214,7 @@ func TestFreeFunctionDefaults(t *testing.T) {
 }
 
 func TestRegistrationGuards(t *testing.T) {
+	withFixtures(t)
 	mustPanic := func(name string, f func()) {
 		defer func() {
 			if recover() == nil {
@@ -214,6 +235,7 @@ func TestRegistrationGuards(t *testing.T) {
 }
 
 func TestCatalogForTooling(t *testing.T) {
+	withFixtures(t)
 	var found bool
 	for _, e := range Catalog() {
 		if e.Receiver == "String" && e.Name == "trim" && e.Group == "string" && len(e.Params) == 1 && e.Params[0].Optional {
@@ -226,6 +248,7 @@ func TestCatalogForTooling(t *testing.T) {
 }
 
 func TestCompileTimeCheckMethod(t *testing.T) {
+	withFixtures(t)
 	cases := []struct {
 		name string
 		argc int
@@ -253,6 +276,7 @@ func TestCompileTimeCheckMethod(t *testing.T) {
 }
 
 func TestMethodNamesAreCaseSensitive(t *testing.T) {
+	withFixtures(t)
 	err := CheckMethod("TRIM", 0)
 	if err == nil || !strings.Contains(err.Error(), "did you mean: trim") {
 		t.Fatalf("TRIM is unknown (names are case-sensitive) but should suggest trim, got %v", err)
@@ -260,6 +284,7 @@ func TestMethodNamesAreCaseSensitive(t *testing.T) {
 }
 
 func TestCompileTimeCheckFunc(t *testing.T) {
+	withFixtures(t)
 	if err := CheckFunc("randomInRange", 2); err != nil {
 		t.Fatal(err)
 	}
@@ -349,6 +374,7 @@ func TestReservedWordsMatchGrammar(t *testing.T) {
 }
 
 func TestMethodPanicBecomesError(t *testing.T) {
+	withFixtures(t)
 	Register("boom", Method{
 		Group: "test",
 		Fn: func(c *Call) (stackvalue.StackValue, error) {
