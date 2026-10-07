@@ -2,8 +2,8 @@ package stackvalue
 
 import (
 	"fmt"
-	"strings"
 
+	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/gclkaze/evalang-globals/globals"
@@ -67,15 +67,11 @@ func (s JSONArrayStackValue) ToBoolean() (result bool, err error) {
 }
 
 func (s JSONArrayStackValue) ToString() string {
-	var ar []string
-	for i := 0; i < len(s.value); i++ {
-		s := s.value[i].ToString()
-		ar = append(ar, s)
+	b, err := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(s.GetValue())
+	if err != nil {
+		return ""
 	}
-	//	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	jsonn := "[" + strings.Join(ar, ",") + "]"
-
-	return jsonn
+	return string(b)
 }
 
 func (s JSONArrayStackValue) Length() (result int, err error) {
@@ -91,12 +87,12 @@ func (s JSONArrayStackValue) ToJson() *JSONStackValue {
 }
 
 func NewEmptyJSONArrayStackValue() *JSONArrayStackValue {
-	inst := &JSONArrayStackValue{}
-	return inst
+	return NewJSONArrayStackValue(globals.JSONArrayGen{})
 }
 
 func (s *JSONArrayStackValue) Push(v globals.JSONObjectGen) {
 	s.value = append(s.value, *NewJSONStackValue(v))
+	*s.ptr = append(*s.ptr, v)
 }
 
 func (s JSONArrayStackValue) GetPtr() *globals.JSONArrayGen {
@@ -120,11 +116,8 @@ func (s JSONArrayStackValue) GetValue() globals.JSONArrayGen {
 	return *s.ptr
 }
 func (s JSONArrayStackValue) Copy() stackvalue.StackValue {
-	inst := &JSONArrayStackValue{}
-	for i := 0; i < len(s.value); i++ {
-		inst.value = append(inst.value, *NewJSONStackValue(s.value[i].GetValue()))
-	}
-	return inst
+	g := append(globals.JSONArrayGen{}, s.GetValue()...) // new backing array, so copies don't alias
+	return NewJSONArrayStackValue(g)
 }
 
 func (s JSONArrayStackValue) IsTruthy() bool {
