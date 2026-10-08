@@ -160,7 +160,7 @@ func TestParseRandomDoubleInRangeCastToInteger(t *testing.T) {
 	p := SetupParser()
 	min := 1
 	max := 10
-	actual := "randomDoubleInRange(" + strconv.Itoa(min) + " , " + strconv.Itoa(max) + ").toInteger"
+	actual := "randomDoubleInRange(" + strconv.Itoa(min) + " , " + strconv.Itoa(max) + ").toInteger()"
 	res := p.Parse(actual)
 	assert.Equal(t, true, res)
 	val := p.IntValue

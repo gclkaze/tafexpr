@@ -43,7 +43,7 @@ func TestJsonComplex(t *testing.T) {
 func TestJsonToString(t *testing.T) {
 	p := SetupParser()
 	//	s := utils.ReadFile("jsonexprs\\complex.json")
-	expr := "{\"2\":3}.toString"
+	expr := "{\"2\":3}.toString()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.StringValue)
@@ -52,7 +52,7 @@ func TestJsonToString(t *testing.T) {
 func TestJJsonToString(t *testing.T) {
 	p := SetupParser()
 	//	s := utils.ReadFile("jsonexprs\\complex.json")
-	expr := "{\"a\":{\"b\":{\"c\":666}}}.toString"
+	expr := "{\"a\":{\"b\":{\"c\":666}}}.toString()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.StringValue)
@@ -61,7 +61,7 @@ func TestJJsonToString(t *testing.T) {
 func TestJSONArrayLength(t *testing.T) {
 	p := SetupParser()
 	//	s := utils.ReadFile("jsonexprs\\complex.json")
-	expr := "[1,2,3].length == [4,5,6].length"
+	expr := "[1,2,3].length() == [4,5,6].length()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.BoolValue)

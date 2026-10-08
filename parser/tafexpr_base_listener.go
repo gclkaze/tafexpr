@@ -1,7 +1,6 @@
 // Code generated from grammar/Tafexpr.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // Tafexpr
-
 import "github.com/antlr4-go/antlr/v4"
 
 // BaseTafexprListener is a complete listener for a parse tree produced by TafexprParser.
@@ -27,23 +26,17 @@ func (s *BaseTafexprListener) EnterTaf_expression(ctx *Taf_expressionContext) {}
 // ExitTaf_expression is called when production taf_expression is exited.
 func (s *BaseTafexprListener) ExitTaf_expression(ctx *Taf_expressionContext) {}
 
-// EnterHandleRandomDoubleInRange is called when production HandleRandomDoubleInRange is entered.
-func (s *BaseTafexprListener) EnterHandleRandomDoubleInRange(ctx *HandleRandomDoubleInRangeContext) {}
+// EnterHandleLogicalNegation is called when production HandleLogicalNegation is entered.
+func (s *BaseTafexprListener) EnterHandleLogicalNegation(ctx *HandleLogicalNegationContext) {}
 
-// ExitHandleRandomDoubleInRange is called when production HandleRandomDoubleInRange is exited.
-func (s *BaseTafexprListener) ExitHandleRandomDoubleInRange(ctx *HandleRandomDoubleInRangeContext) {}
+// ExitHandleLogicalNegation is called when production HandleLogicalNegation is exited.
+func (s *BaseTafexprListener) ExitHandleLogicalNegation(ctx *HandleLogicalNegationContext) {}
 
-// EnterHandleFindOneByXPATH is called when production HandleFindOneByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindOneByXPATH(ctx *HandleFindOneByXPATHContext) {}
+// EnterHandleNegation is called when production HandleNegation is entered.
+func (s *BaseTafexprListener) EnterHandleNegation(ctx *HandleNegationContext) {}
 
-// ExitHandleFindOneByXPATH is called when production HandleFindOneByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindOneByXPATH(ctx *HandleFindOneByXPATHContext) {}
-
-// EnterHandleTrim is called when production HandleTrim is entered.
-func (s *BaseTafexprListener) EnterHandleTrim(ctx *HandleTrimContext) {}
-
-// ExitHandleTrim is called when production HandleTrim is exited.
-func (s *BaseTafexprListener) ExitHandleTrim(ctx *HandleTrimContext) {}
+// ExitHandleNegation is called when production HandleNegation is exited.
+func (s *BaseTafexprListener) ExitHandleNegation(ctx *HandleNegationContext) {}
 
 // EnterHandleVarExpression is called when production HandleVarExpression is entered.
 func (s *BaseTafexprListener) EnterHandleVarExpression(ctx *HandleVarExpressionContext) {}
@@ -51,13 +44,11 @@ func (s *BaseTafexprListener) EnterHandleVarExpression(ctx *HandleVarExpressionC
 // ExitHandleVarExpression is called when production HandleVarExpression is exited.
 func (s *BaseTafexprListener) ExitHandleVarExpression(ctx *HandleVarExpressionContext) {}
 
-// EnterHandleFindOneDoubleByXPATH is called when production HandleFindOneDoubleByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindOneDoubleByXPATH(ctx *HandleFindOneDoubleByXPATHContext) {
-}
+// EnterHandleMethodCall is called when production HandleMethodCall is entered.
+func (s *BaseTafexprListener) EnterHandleMethodCall(ctx *HandleMethodCallContext) {}
 
-// ExitHandleFindOneDoubleByXPATH is called when production HandleFindOneDoubleByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindOneDoubleByXPATH(ctx *HandleFindOneDoubleByXPATHContext) {
-}
+// ExitHandleMethodCall is called when production HandleMethodCall is exited.
+func (s *BaseTafexprListener) ExitHandleMethodCall(ctx *HandleMethodCallContext) {}
 
 // EnterMulDiv is called when production MulDiv is entered.
 func (s *BaseTafexprListener) EnterMulDiv(ctx *MulDivContext) {}
@@ -65,31 +56,23 @@ func (s *BaseTafexprListener) EnterMulDiv(ctx *MulDivContext) {}
 // ExitMulDiv is called when production MulDiv is exited.
 func (s *BaseTafexprListener) ExitMulDiv(ctx *MulDivContext) {}
 
-// EnterHandleFindOneStringByXPATH is called when production HandleFindOneStringByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindOneStringByXPATH(ctx *HandleFindOneStringByXPATHContext) {
-}
+// EnterAddSub is called when production AddSub is entered.
+func (s *BaseTafexprListener) EnterAddSub(ctx *AddSubContext) {}
 
-// ExitHandleFindOneStringByXPATH is called when production HandleFindOneStringByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindOneStringByXPATH(ctx *HandleFindOneStringByXPATHContext) {
-}
+// ExitAddSub is called when production AddSub is exited.
+func (s *BaseTafexprListener) ExitAddSub(ctx *AddSubContext) {}
 
-// EnterHandleToString is called when production HandleToString is entered.
-func (s *BaseTafexprListener) EnterHandleToString(ctx *HandleToStringContext) {}
+// EnterHandleFunctionCall is called when production HandleFunctionCall is entered.
+func (s *BaseTafexprListener) EnterHandleFunctionCall(ctx *HandleFunctionCallContext) {}
 
-// ExitHandleToString is called when production HandleToString is exited.
-func (s *BaseTafexprListener) ExitHandleToString(ctx *HandleToStringContext) {}
+// ExitHandleFunctionCall is called when production HandleFunctionCall is exited.
+func (s *BaseTafexprListener) ExitHandleFunctionCall(ctx *HandleFunctionCallContext) {}
 
-// EnterHandleLibfunc is called when production HandleLibfunc is entered.
-func (s *BaseTafexprListener) EnterHandleLibfunc(ctx *HandleLibfuncContext) {}
+// EnterHandleNull is called when production HandleNull is entered.
+func (s *BaseTafexprListener) EnterHandleNull(ctx *HandleNullContext) {}
 
-// ExitHandleLibfunc is called when production HandleLibfunc is exited.
-func (s *BaseTafexprListener) ExitHandleLibfunc(ctx *HandleLibfuncContext) {}
-
-// EnterHandleFindByXPATH is called when production HandleFindByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindByXPATH(ctx *HandleFindByXPATHContext) {}
-
-// ExitHandleFindByXPATH is called when production HandleFindByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindByXPATH(ctx *HandleFindByXPATHContext) {}
+// ExitHandleNull is called when production HandleNull is exited.
+func (s *BaseTafexprListener) ExitHandleNull(ctx *HandleNullContext) {}
 
 // EnterHandleString is called when production HandleString is entered.
 func (s *BaseTafexprListener) EnterHandleString(ctx *HandleStringContext) {}
@@ -97,11 +80,17 @@ func (s *BaseTafexprListener) EnterHandleString(ctx *HandleStringContext) {}
 // ExitHandleString is called when production HandleString is exited.
 func (s *BaseTafexprListener) ExitHandleString(ctx *HandleStringContext) {}
 
-// EnterHandleExtractOneByREGEX is called when production HandleExtractOneByREGEX is entered.
-func (s *BaseTafexprListener) EnterHandleExtractOneByREGEX(ctx *HandleExtractOneByREGEXContext) {}
+// EnterOrderedEvaluation is called when production OrderedEvaluation is entered.
+func (s *BaseTafexprListener) EnterOrderedEvaluation(ctx *OrderedEvaluationContext) {}
 
-// ExitHandleExtractOneByREGEX is called when production HandleExtractOneByREGEX is exited.
-func (s *BaseTafexprListener) ExitHandleExtractOneByREGEX(ctx *HandleExtractOneByREGEXContext) {}
+// ExitOrderedEvaluation is called when production OrderedEvaluation is exited.
+func (s *BaseTafexprListener) ExitOrderedEvaluation(ctx *OrderedEvaluationContext) {}
+
+// EnterLogicalOperation is called when production LogicalOperation is entered.
+func (s *BaseTafexprListener) EnterLogicalOperation(ctx *LogicalOperationContext) {}
+
+// ExitLogicalOperation is called when production LogicalOperation is exited.
+func (s *BaseTafexprListener) ExitLogicalOperation(ctx *LogicalOperationContext) {}
 
 // EnterHandleBool is called when production HandleBool is entered.
 func (s *BaseTafexprListener) EnterHandleBool(ctx *HandleBoolContext) {}
@@ -121,131 +110,17 @@ func (s *BaseTafexprListener) EnterHandleJson(ctx *HandleJsonContext) {}
 // ExitHandleJson is called when production HandleJson is exited.
 func (s *BaseTafexprListener) ExitHandleJson(ctx *HandleJsonContext) {}
 
-// EnterHandleLogical is called when production HandleLogical is entered.
-func (s *BaseTafexprListener) EnterHandleLogical(ctx *HandleLogicalContext) {}
-
-// ExitHandleLogical is called when production HandleLogical is exited.
-func (s *BaseTafexprListener) ExitHandleLogical(ctx *HandleLogicalContext) {}
-
-// EnterHandleToBoolean is called when production HandleToBoolean is entered.
-func (s *BaseTafexprListener) EnterHandleToBoolean(ctx *HandleToBooleanContext) {}
-
-// ExitHandleToBoolean is called when production HandleToBoolean is exited.
-func (s *BaseTafexprListener) ExitHandleToBoolean(ctx *HandleToBooleanContext) {}
-
-// EnterHandleTrimLeft is called when production HandleTrimLeft is entered.
-func (s *BaseTafexprListener) EnterHandleTrimLeft(ctx *HandleTrimLeftContext) {}
-
-// ExitHandleTrimLeft is called when production HandleTrimLeft is exited.
-func (s *BaseTafexprListener) ExitHandleTrimLeft(ctx *HandleTrimLeftContext) {}
-
-// EnterHandleFindOneBooleanByXPATH is called when production HandleFindOneBooleanByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindOneBooleanByXPATH(ctx *HandleFindOneBooleanByXPATHContext) {
-}
-
-// ExitHandleFindOneBooleanByXPATH is called when production HandleFindOneBooleanByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindOneBooleanByXPATH(ctx *HandleFindOneBooleanByXPATHContext) {
-}
-
-// EnterHandleLogicalNegation is called when production HandleLogicalNegation is entered.
-func (s *BaseTafexprListener) EnterHandleLogicalNegation(ctx *HandleLogicalNegationContext) {}
-
-// ExitHandleLogicalNegation is called when production HandleLogicalNegation is exited.
-func (s *BaseTafexprListener) ExitHandleLogicalNegation(ctx *HandleLogicalNegationContext) {}
-
-// EnterHandleLength is called when production HandleLength is entered.
-func (s *BaseTafexprListener) EnterHandleLength(ctx *HandleLengthContext) {}
-
-// ExitHandleLength is called when production HandleLength is exited.
-func (s *BaseTafexprListener) ExitHandleLength(ctx *HandleLengthContext) {}
-
-// EnterHandleNegation is called when production HandleNegation is entered.
-func (s *BaseTafexprListener) EnterHandleNegation(ctx *HandleNegationContext) {}
-
-// ExitHandleNegation is called when production HandleNegation is exited.
-func (s *BaseTafexprListener) ExitHandleNegation(ctx *HandleNegationContext) {}
-
-// EnterAddSub is called when production AddSub is entered.
-func (s *BaseTafexprListener) EnterAddSub(ctx *AddSubContext) {}
-
-// ExitAddSub is called when production AddSub is exited.
-func (s *BaseTafexprListener) ExitAddSub(ctx *AddSubContext) {}
-
-// EnterHandleFindOneIntegerByXPATH is called when production HandleFindOneIntegerByXPATH is entered.
-func (s *BaseTafexprListener) EnterHandleFindOneIntegerByXPATH(ctx *HandleFindOneIntegerByXPATHContext) {
-}
-
-// ExitHandleFindOneIntegerByXPATH is called when production HandleFindOneIntegerByXPATH is exited.
-func (s *BaseTafexprListener) ExitHandleFindOneIntegerByXPATH(ctx *HandleFindOneIntegerByXPATHContext) {
-}
-
-// EnterHandleNull is called when production HandleNull is entered.
-func (s *BaseTafexprListener) EnterHandleNull(ctx *HandleNullContext) {}
-
-// ExitHandleNull is called when production HandleNull is exited.
-func (s *BaseTafexprListener) ExitHandleNull(ctx *HandleNullContext) {}
-
-// EnterHandleToDouble is called when production HandleToDouble is entered.
-func (s *BaseTafexprListener) EnterHandleToDouble(ctx *HandleToDoubleContext) {}
-
-// ExitHandleToDouble is called when production HandleToDouble is exited.
-func (s *BaseTafexprListener) ExitHandleToDouble(ctx *HandleToDoubleContext) {}
-
-// EnterHandleEndsWith is called when production HandleEndsWith is entered.
-func (s *BaseTafexprListener) EnterHandleEndsWith(ctx *HandleEndsWithContext) {}
-
-// ExitHandleEndsWith is called when production HandleEndsWith is exited.
-func (s *BaseTafexprListener) ExitHandleEndsWith(ctx *HandleEndsWithContext) {}
-
-// EnterHandleContainsString is called when production HandleContainsString is entered.
-func (s *BaseTafexprListener) EnterHandleContainsString(ctx *HandleContainsStringContext) {}
-
-// ExitHandleContainsString is called when production HandleContainsString is exited.
-func (s *BaseTafexprListener) ExitHandleContainsString(ctx *HandleContainsStringContext) {}
-
-// EnterOrderedEvaluation is called when production OrderedEvaluation is entered.
-func (s *BaseTafexprListener) EnterOrderedEvaluation(ctx *OrderedEvaluationContext) {}
-
-// ExitOrderedEvaluation is called when production OrderedEvaluation is exited.
-func (s *BaseTafexprListener) ExitOrderedEvaluation(ctx *OrderedEvaluationContext) {}
-
-// EnterLogicalOperation is called when production LogicalOperation is entered.
-func (s *BaseTafexprListener) EnterLogicalOperation(ctx *LogicalOperationContext) {}
-
-// ExitLogicalOperation is called when production LogicalOperation is exited.
-func (s *BaseTafexprListener) ExitLogicalOperation(ctx *LogicalOperationContext) {}
-
-// EnterHandleToInteger is called when production HandleToInteger is entered.
-func (s *BaseTafexprListener) EnterHandleToInteger(ctx *HandleToIntegerContext) {}
-
-// ExitHandleToInteger is called when production HandleToInteger is exited.
-func (s *BaseTafexprListener) ExitHandleToInteger(ctx *HandleToIntegerContext) {}
-
-// EnterHandleTrimRight is called when production HandleTrimRight is entered.
-func (s *BaseTafexprListener) EnterHandleTrimRight(ctx *HandleTrimRightContext) {}
-
-// ExitHandleTrimRight is called when production HandleTrimRight is exited.
-func (s *BaseTafexprListener) ExitHandleTrimRight(ctx *HandleTrimRightContext) {}
-
-// EnterHandleStartsWith is called when production HandleStartsWith is entered.
-func (s *BaseTafexprListener) EnterHandleStartsWith(ctx *HandleStartsWithContext) {}
-
-// ExitHandleStartsWith is called when production HandleStartsWith is exited.
-func (s *BaseTafexprListener) ExitHandleStartsWith(ctx *HandleStartsWithContext) {}
-
 // EnterDoubleValue is called when production DoubleValue is entered.
 func (s *BaseTafexprListener) EnterDoubleValue(ctx *DoubleValueContext) {}
 
 // ExitDoubleValue is called when production DoubleValue is exited.
 func (s *BaseTafexprListener) ExitDoubleValue(ctx *DoubleValueContext) {}
 
-// EnterHandleReplaceAllStringOccurrences is called when production HandleReplaceAllStringOccurrences is entered.
-func (s *BaseTafexprListener) EnterHandleReplaceAllStringOccurrences(ctx *HandleReplaceAllStringOccurrencesContext) {
-}
+// EnterHandleLogical is called when production HandleLogical is entered.
+func (s *BaseTafexprListener) EnterHandleLogical(ctx *HandleLogicalContext) {}
 
-// ExitHandleReplaceAllStringOccurrences is called when production HandleReplaceAllStringOccurrences is exited.
-func (s *BaseTafexprListener) ExitHandleReplaceAllStringOccurrences(ctx *HandleReplaceAllStringOccurrencesContext) {
-}
+// ExitHandleLogical is called when production HandleLogical is exited.
+func (s *BaseTafexprListener) ExitHandleLogical(ctx *HandleLogicalContext) {}
 
 // EnterVar_expression is called when production var_expression is entered.
 func (s *BaseTafexprListener) EnterVar_expression(ctx *Var_expressionContext) {}

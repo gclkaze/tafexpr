@@ -1,7 +1,6 @@
 // Code generated from grammar/Tafexpr.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // Tafexpr
-
 import (
 	"fmt"
 	"strconv"
@@ -33,153 +32,110 @@ var TafexprParserStaticData struct {
 func tafexprParserInit() {
 	staticData := &TafexprParserStaticData
 	staticData.LiteralNames = []string{
-		"", "'randomDoubleInRange'", "'('", "','", "')'", "'length'", "'findOneByXPATH'",
-		"'findOneStringByXPATH'", "'findOneDoubleByXPATH'", "'findOneIntegerByXPATH'",
-		"'findOneBooleanByXPATH'", "'findByXPATH'", "'extractOneByREGEX'", "'replaceAllStringOccurrences'",
-		"'toString'", "'toBoolean'", "'toInteger'", "'toDouble'", "'containsString'",
-		"'startsWith'", "'endsWith'", "'trimLeft'", "'trimRight'", "'trim'",
-		"'{'", "'}'", "':'", "'*'", "'/'", "'%'", "'+'", "'-'", "", "", "",
-		"'['", "']'", "'.'", "'null'", "'<'", "'<='", "'=='", "'!='", "'>'",
-		"'>='", "'&&'", "'||'", "'!'", "'$'",
+		"", "'('", "','", "')'", "'{'", "'}'", "':'", "'*'", "'/'", "'%'", "'+'",
+		"'-'", "", "", "", "'['", "']'", "'.'", "'null'", "'<'", "'<='", "'=='",
+		"'!='", "'>'", "'>='", "'&&'", "'||'", "'!'", "'$'",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-		"", "", "", "", "", "", "", "", "", "", "MUL", "DIV", "MOD", "ADD",
-		"SUB", "DOUBLE", "INTEGER", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN",
-		"LESSER_THAN", "LESSER_THAN_EQUAL", "EQUAL", "UNEQUAL", "GREATER_THAN",
-		"GREATER_THAN_EQUAL", "LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR",
-		"STRING", "BOOLEAN", "NUMBER", "VARIABLE_NAME", "PROP", "JSON_NUMBER",
-		"WS", "UNKNOWN",
+		"", "", "", "", "", "", "", "MUL", "DIV", "MOD", "ADD", "SUB", "DOUBLE",
+		"INTEGER", "WHITESPACE", "LBR", "RBR", "CON", "NULL_TOKEN", "LESSER_THAN",
+		"LESSER_THAN_EQUAL", "EQUAL", "UNEQUAL", "GREATER_THAN", "GREATER_THAN_EQUAL",
+		"LOGICAL_AND", "LOGICAL_OR", "LOGICAL_NOT", "DOLLAR", "STRING", "BOOLEAN",
+		"NUMBER", "VARIABLE_NAME", "PROP", "JSON_NUMBER", "WS", "UNKNOWN",
 	}
 	staticData.RuleNames = []string{
-		"taf_expression", "libfunc", "expression", "var_expression", "indx_expr",
-		"var_path", "jsonpath_expr", "identifierWithQualifier", "index_expression",
-		"parenthesisExpression", "json", "obj", "pair", "arr", "value",
+		"taf_expression", "expression", "var_expression", "indx_expr", "var_path",
+		"jsonpath_expr", "identifierWithQualifier", "index_expression", "parenthesisExpression",
+		"json", "obj", "pair", "arr", "value",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 56, 277, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 36, 195, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
-		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 1, 0, 1, 0,
-		3, 0, 33, 8, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-		2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
-		2, 1, 2, 3, 2, 58, 8, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 5, 2,
-		175, 8, 2, 10, 2, 12, 2, 178, 9, 2, 1, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4,
-		1, 4, 1, 4, 1, 4, 1, 4, 5, 4, 190, 8, 4, 10, 4, 12, 4, 193, 9, 4, 3, 4,
-		195, 8, 4, 1, 4, 1, 4, 3, 4, 199, 8, 4, 1, 5, 1, 5, 1, 5, 5, 5, 204, 8,
-		5, 10, 5, 12, 5, 207, 9, 5, 1, 6, 1, 6, 3, 6, 211, 8, 6, 1, 7, 1, 7, 1,
-		7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 5, 7, 221, 8, 7, 10, 7, 12, 7, 224, 9,
-		7, 1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 3, 9, 231, 8, 9, 1, 9, 1, 9, 1, 10, 1,
-		10, 3, 10, 237, 8, 10, 1, 11, 1, 11, 1, 11, 1, 11, 5, 11, 243, 8, 11, 10,
-		11, 12, 11, 246, 9, 11, 1, 11, 1, 11, 1, 11, 1, 11, 3, 11, 252, 8, 11,
-		1, 12, 1, 12, 1, 12, 1, 12, 1, 13, 1, 13, 1, 13, 1, 13, 5, 13, 262, 8,
-		13, 10, 13, 12, 13, 265, 9, 13, 1, 13, 1, 13, 1, 13, 1, 13, 3, 13, 271,
-		8, 13, 1, 14, 1, 14, 3, 14, 275, 8, 14, 1, 14, 0, 1, 4, 15, 0, 2, 4, 6,
-		8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 0, 4, 1, 0, 45, 46, 1, 0, 27,
-		29, 1, 0, 30, 31, 1, 0, 39, 44, 308, 0, 32, 1, 0, 0, 0, 2, 36, 1, 0, 0,
-		0, 4, 57, 1, 0, 0, 0, 6, 179, 1, 0, 0, 0, 8, 194, 1, 0, 0, 0, 10, 200,
-		1, 0, 0, 0, 12, 210, 1, 0, 0, 0, 14, 212, 1, 0, 0, 0, 16, 225, 1, 0, 0,
-		0, 18, 227, 1, 0, 0, 0, 20, 236, 1, 0, 0, 0, 22, 251, 1, 0, 0, 0, 24, 253,
-		1, 0, 0, 0, 26, 270, 1, 0, 0, 0, 28, 274, 1, 0, 0, 0, 30, 33, 3, 2, 1,
-		0, 31, 33, 3, 4, 2, 0, 32, 30, 1, 0, 0, 0, 32, 31, 1, 0, 0, 0, 33, 34,
-		1, 0, 0, 0, 34, 35, 5, 0, 0, 1, 35, 1, 1, 0, 0, 0, 36, 37, 5, 1, 0, 0,
-		37, 38, 5, 2, 0, 0, 38, 39, 3, 4, 2, 0, 39, 40, 5, 3, 0, 0, 40, 41, 3,
-		4, 2, 0, 41, 42, 5, 4, 0, 0, 42, 3, 1, 0, 0, 0, 43, 44, 6, 2, -1, 0, 44,
-		45, 5, 31, 0, 0, 45, 58, 3, 4, 2, 15, 46, 47, 5, 47, 0, 0, 47, 58, 3, 4,
-		2, 14, 48, 58, 5, 33, 0, 0, 49, 58, 5, 32, 0, 0, 50, 58, 3, 18, 9, 0, 51,
-		58, 3, 6, 3, 0, 52, 58, 5, 50, 0, 0, 53, 58, 5, 38, 0, 0, 54, 58, 5, 49,
-		0, 0, 55, 58, 3, 20, 10, 0, 56, 58, 3, 2, 1, 0, 57, 43, 1, 0, 0, 0, 57,
-		46, 1, 0, 0, 0, 57, 48, 1, 0, 0, 0, 57, 49, 1, 0, 0, 0, 57, 50, 1, 0, 0,
-		0, 57, 51, 1, 0, 0, 0, 57, 52, 1, 0, 0, 0, 57, 53, 1, 0, 0, 0, 57, 54,
-		1, 0, 0, 0, 57, 55, 1, 0, 0, 0, 57, 56, 1, 0, 0, 0, 58, 176, 1, 0, 0, 0,
-		59, 60, 10, 13, 0, 0, 60, 61, 7, 0, 0, 0, 61, 175, 3, 4, 2, 14, 62, 63,
-		10, 12, 0, 0, 63, 64, 7, 1, 0, 0, 64, 175, 3, 4, 2, 13, 65, 66, 10, 11,
-		0, 0, 66, 67, 7, 2, 0, 0, 67, 175, 3, 4, 2, 12, 68, 69, 10, 10, 0, 0, 69,
-		70, 7, 3, 0, 0, 70, 175, 3, 4, 2, 11, 71, 72, 10, 34, 0, 0, 72, 73, 5,
-		37, 0, 0, 73, 175, 5, 5, 0, 0, 74, 75, 10, 33, 0, 0, 75, 76, 5, 37, 0,
-		0, 76, 77, 5, 6, 0, 0, 77, 78, 5, 2, 0, 0, 78, 79, 3, 4, 2, 0, 79, 80,
-		5, 4, 0, 0, 80, 175, 1, 0, 0, 0, 81, 82, 10, 32, 0, 0, 82, 83, 5, 37, 0,
-		0, 83, 84, 5, 7, 0, 0, 84, 85, 5, 2, 0, 0, 85, 86, 3, 4, 2, 0, 86, 87,
-		5, 4, 0, 0, 87, 175, 1, 0, 0, 0, 88, 89, 10, 31, 0, 0, 89, 90, 5, 37, 0,
-		0, 90, 91, 5, 8, 0, 0, 91, 92, 5, 2, 0, 0, 92, 93, 3, 4, 2, 0, 93, 94,
-		5, 4, 0, 0, 94, 175, 1, 0, 0, 0, 95, 96, 10, 30, 0, 0, 96, 97, 5, 37, 0,
-		0, 97, 98, 5, 9, 0, 0, 98, 99, 5, 2, 0, 0, 99, 100, 3, 4, 2, 0, 100, 101,
-		5, 4, 0, 0, 101, 175, 1, 0, 0, 0, 102, 103, 10, 29, 0, 0, 103, 104, 5,
-		37, 0, 0, 104, 105, 5, 10, 0, 0, 105, 106, 5, 2, 0, 0, 106, 107, 3, 4,
-		2, 0, 107, 108, 5, 4, 0, 0, 108, 175, 1, 0, 0, 0, 109, 110, 10, 28, 0,
-		0, 110, 111, 5, 37, 0, 0, 111, 112, 5, 11, 0, 0, 112, 113, 5, 2, 0, 0,
-		113, 114, 3, 4, 2, 0, 114, 115, 5, 4, 0, 0, 115, 175, 1, 0, 0, 0, 116,
-		117, 10, 27, 0, 0, 117, 118, 5, 37, 0, 0, 118, 119, 5, 12, 0, 0, 119, 120,
-		5, 2, 0, 0, 120, 121, 3, 4, 2, 0, 121, 122, 5, 4, 0, 0, 122, 175, 1, 0,
-		0, 0, 123, 124, 10, 26, 0, 0, 124, 125, 5, 37, 0, 0, 125, 126, 5, 13, 0,
-		0, 126, 127, 5, 2, 0, 0, 127, 128, 3, 4, 2, 0, 128, 129, 5, 3, 0, 0, 129,
-		130, 3, 4, 2, 0, 130, 131, 5, 4, 0, 0, 131, 175, 1, 0, 0, 0, 132, 133,
-		10, 25, 0, 0, 133, 134, 5, 37, 0, 0, 134, 175, 5, 14, 0, 0, 135, 136, 10,
-		24, 0, 0, 136, 137, 5, 37, 0, 0, 137, 175, 5, 15, 0, 0, 138, 139, 10, 23,
-		0, 0, 139, 140, 5, 37, 0, 0, 140, 175, 5, 16, 0, 0, 141, 142, 10, 22, 0,
-		0, 142, 143, 5, 37, 0, 0, 143, 175, 5, 17, 0, 0, 144, 145, 10, 21, 0, 0,
-		145, 146, 5, 37, 0, 0, 146, 147, 5, 18, 0, 0, 147, 148, 5, 2, 0, 0, 148,
-		149, 3, 4, 2, 0, 149, 150, 5, 4, 0, 0, 150, 175, 1, 0, 0, 0, 151, 152,
-		10, 20, 0, 0, 152, 153, 5, 37, 0, 0, 153, 154, 5, 19, 0, 0, 154, 155, 5,
-		2, 0, 0, 155, 156, 3, 4, 2, 0, 156, 157, 5, 4, 0, 0, 157, 175, 1, 0, 0,
-		0, 158, 159, 10, 19, 0, 0, 159, 160, 5, 37, 0, 0, 160, 161, 5, 20, 0, 0,
-		161, 162, 5, 2, 0, 0, 162, 163, 3, 4, 2, 0, 163, 164, 5, 4, 0, 0, 164,
-		175, 1, 0, 0, 0, 165, 166, 10, 18, 0, 0, 166, 167, 5, 37, 0, 0, 167, 175,
-		5, 21, 0, 0, 168, 169, 10, 17, 0, 0, 169, 170, 5, 37, 0, 0, 170, 175, 5,
-		22, 0, 0, 171, 172, 10, 16, 0, 0, 172, 173, 5, 37, 0, 0, 173, 175, 5, 23,
-		0, 0, 174, 59, 1, 0, 0, 0, 174, 62, 1, 0, 0, 0, 174, 65, 1, 0, 0, 0, 174,
-		68, 1, 0, 0, 0, 174, 71, 1, 0, 0, 0, 174, 74, 1, 0, 0, 0, 174, 81, 1, 0,
-		0, 0, 174, 88, 1, 0, 0, 0, 174, 95, 1, 0, 0, 0, 174, 102, 1, 0, 0, 0, 174,
-		109, 1, 0, 0, 0, 174, 116, 1, 0, 0, 0, 174, 123, 1, 0, 0, 0, 174, 132,
-		1, 0, 0, 0, 174, 135, 1, 0, 0, 0, 174, 138, 1, 0, 0, 0, 174, 141, 1, 0,
-		0, 0, 174, 144, 1, 0, 0, 0, 174, 151, 1, 0, 0, 0, 174, 158, 1, 0, 0, 0,
-		174, 165, 1, 0, 0, 0, 174, 168, 1, 0, 0, 0, 174, 171, 1, 0, 0, 0, 175,
-		178, 1, 0, 0, 0, 176, 174, 1, 0, 0, 0, 176, 177, 1, 0, 0, 0, 177, 5, 1,
-		0, 0, 0, 178, 176, 1, 0, 0, 0, 179, 180, 5, 52, 0, 0, 180, 181, 3, 8, 4,
-		0, 181, 7, 1, 0, 0, 0, 182, 183, 5, 35, 0, 0, 183, 184, 3, 16, 8, 0, 184,
-		191, 5, 36, 0, 0, 185, 186, 5, 35, 0, 0, 186, 187, 3, 16, 8, 0, 187, 188,
-		5, 36, 0, 0, 188, 190, 1, 0, 0, 0, 189, 185, 1, 0, 0, 0, 190, 193, 1, 0,
-		0, 0, 191, 189, 1, 0, 0, 0, 191, 192, 1, 0, 0, 0, 192, 195, 1, 0, 0, 0,
-		193, 191, 1, 0, 0, 0, 194, 182, 1, 0, 0, 0, 194, 195, 1, 0, 0, 0, 195,
-		198, 1, 0, 0, 0, 196, 197, 5, 37, 0, 0, 197, 199, 3, 10, 5, 0, 198, 196,
-		1, 0, 0, 0, 198, 199, 1, 0, 0, 0, 199, 9, 1, 0, 0, 0, 200, 205, 3, 12,
-		6, 0, 201, 202, 5, 37, 0, 0, 202, 204, 3, 12, 6, 0, 203, 201, 1, 0, 0,
-		0, 204, 207, 1, 0, 0, 0, 205, 203, 1, 0, 0, 0, 205, 206, 1, 0, 0, 0, 206,
-		11, 1, 0, 0, 0, 207, 205, 1, 0, 0, 0, 208, 211, 3, 14, 7, 0, 209, 211,
-		5, 53, 0, 0, 210, 208, 1, 0, 0, 0, 210, 209, 1, 0, 0, 0, 211, 13, 1, 0,
-		0, 0, 212, 213, 5, 53, 0, 0, 213, 214, 5, 35, 0, 0, 214, 215, 3, 16, 8,
-		0, 215, 222, 5, 36, 0, 0, 216, 217, 5, 35, 0, 0, 217, 218, 3, 16, 8, 0,
-		218, 219, 5, 36, 0, 0, 219, 221, 1, 0, 0, 0, 220, 216, 1, 0, 0, 0, 221,
-		224, 1, 0, 0, 0, 222, 220, 1, 0, 0, 0, 222, 223, 1, 0, 0, 0, 223, 15, 1,
-		0, 0, 0, 224, 222, 1, 0, 0, 0, 225, 226, 3, 4, 2, 0, 226, 17, 1, 0, 0,
-		0, 227, 230, 5, 2, 0, 0, 228, 231, 3, 18, 9, 0, 229, 231, 3, 4, 2, 0, 230,
-		228, 1, 0, 0, 0, 230, 229, 1, 0, 0, 0, 231, 232, 1, 0, 0, 0, 232, 233,
-		5, 4, 0, 0, 233, 19, 1, 0, 0, 0, 234, 237, 3, 22, 11, 0, 235, 237, 3, 26,
-		13, 0, 236, 234, 1, 0, 0, 0, 236, 235, 1, 0, 0, 0, 237, 21, 1, 0, 0, 0,
-		238, 239, 5, 24, 0, 0, 239, 244, 3, 24, 12, 0, 240, 241, 5, 3, 0, 0, 241,
-		243, 3, 24, 12, 0, 242, 240, 1, 0, 0, 0, 243, 246, 1, 0, 0, 0, 244, 242,
-		1, 0, 0, 0, 244, 245, 1, 0, 0, 0, 245, 247, 1, 0, 0, 0, 246, 244, 1, 0,
-		0, 0, 247, 248, 5, 25, 0, 0, 248, 252, 1, 0, 0, 0, 249, 250, 5, 24, 0,
-		0, 250, 252, 5, 25, 0, 0, 251, 238, 1, 0, 0, 0, 251, 249, 1, 0, 0, 0, 252,
-		23, 1, 0, 0, 0, 253, 254, 5, 49, 0, 0, 254, 255, 5, 26, 0, 0, 255, 256,
-		3, 28, 14, 0, 256, 25, 1, 0, 0, 0, 257, 258, 5, 35, 0, 0, 258, 263, 3,
-		28, 14, 0, 259, 260, 5, 3, 0, 0, 260, 262, 3, 28, 14, 0, 261, 259, 1, 0,
-		0, 0, 262, 265, 1, 0, 0, 0, 263, 261, 1, 0, 0, 0, 263, 264, 1, 0, 0, 0,
-		264, 266, 1, 0, 0, 0, 265, 263, 1, 0, 0, 0, 266, 267, 5, 36, 0, 0, 267,
-		271, 1, 0, 0, 0, 268, 269, 5, 35, 0, 0, 269, 271, 5, 36, 0, 0, 270, 257,
-		1, 0, 0, 0, 270, 268, 1, 0, 0, 0, 271, 27, 1, 0, 0, 0, 272, 275, 3, 20,
-		10, 0, 273, 275, 3, 4, 2, 0, 274, 272, 1, 0, 0, 0, 274, 273, 1, 0, 0, 0,
-		275, 29, 1, 0, 0, 0, 17, 32, 57, 174, 176, 191, 194, 198, 205, 210, 222,
-		230, 236, 244, 251, 263, 270, 274,
+		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 1, 0, 1, 0, 1, 0, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 38, 8, 1, 10, 1, 12, 1, 41, 9, 1, 3, 1,
+		43, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 3, 1, 58, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 85, 8, 1, 10, 1, 12, 1, 88, 9,
+		1, 3, 1, 90, 8, 1, 1, 1, 5, 1, 93, 8, 1, 10, 1, 12, 1, 96, 9, 1, 1, 2,
+		1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 5, 3, 108, 8, 3,
+		10, 3, 12, 3, 111, 9, 3, 3, 3, 113, 8, 3, 1, 3, 1, 3, 3, 3, 117, 8, 3,
+		1, 4, 1, 4, 1, 4, 5, 4, 122, 8, 4, 10, 4, 12, 4, 125, 9, 4, 1, 5, 1, 5,
+		3, 5, 129, 8, 5, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 5, 6,
+		139, 8, 6, 10, 6, 12, 6, 142, 9, 6, 1, 7, 1, 7, 1, 8, 1, 8, 1, 8, 3, 8,
+		149, 8, 8, 1, 8, 1, 8, 1, 9, 1, 9, 3, 9, 155, 8, 9, 1, 10, 1, 10, 1, 10,
+		1, 10, 5, 10, 161, 8, 10, 10, 10, 12, 10, 164, 9, 10, 1, 10, 1, 10, 1,
+		10, 1, 10, 3, 10, 170, 8, 10, 1, 11, 1, 11, 1, 11, 1, 11, 1, 12, 1, 12,
+		1, 12, 1, 12, 5, 12, 180, 8, 12, 10, 12, 12, 12, 183, 9, 12, 1, 12, 1,
+		12, 1, 12, 1, 12, 3, 12, 189, 8, 12, 1, 13, 1, 13, 3, 13, 193, 8, 13, 1,
+		13, 0, 1, 2, 14, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 0,
+		4, 1, 0, 7, 9, 1, 0, 10, 11, 2, 0, 19, 20, 23, 24, 1, 0, 21, 22, 214, 0,
+		28, 1, 0, 0, 0, 2, 57, 1, 0, 0, 0, 4, 97, 1, 0, 0, 0, 6, 112, 1, 0, 0,
+		0, 8, 118, 1, 0, 0, 0, 10, 128, 1, 0, 0, 0, 12, 130, 1, 0, 0, 0, 14, 143,
+		1, 0, 0, 0, 16, 145, 1, 0, 0, 0, 18, 154, 1, 0, 0, 0, 20, 169, 1, 0, 0,
+		0, 22, 171, 1, 0, 0, 0, 24, 188, 1, 0, 0, 0, 26, 192, 1, 0, 0, 0, 28, 29,
+		3, 2, 1, 0, 29, 30, 5, 0, 0, 1, 30, 1, 1, 0, 0, 0, 31, 32, 6, 1, -1, 0,
+		32, 33, 5, 33, 0, 0, 33, 42, 5, 1, 0, 0, 34, 39, 3, 2, 1, 0, 35, 36, 5,
+		2, 0, 0, 36, 38, 3, 2, 1, 0, 37, 35, 1, 0, 0, 0, 38, 41, 1, 0, 0, 0, 39,
+		37, 1, 0, 0, 0, 39, 40, 1, 0, 0, 0, 40, 43, 1, 0, 0, 0, 41, 39, 1, 0, 0,
+		0, 42, 34, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 44, 1, 0, 0, 0, 44, 58,
+		5, 3, 0, 0, 45, 46, 5, 11, 0, 0, 46, 58, 3, 2, 1, 16, 47, 48, 5, 27, 0,
+		0, 48, 58, 3, 2, 1, 15, 49, 58, 5, 13, 0, 0, 50, 58, 5, 12, 0, 0, 51, 58,
+		3, 16, 8, 0, 52, 58, 3, 4, 2, 0, 53, 58, 5, 30, 0, 0, 54, 58, 5, 18, 0,
+		0, 55, 58, 5, 29, 0, 0, 56, 58, 3, 18, 9, 0, 57, 31, 1, 0, 0, 0, 57, 45,
+		1, 0, 0, 0, 57, 47, 1, 0, 0, 0, 57, 49, 1, 0, 0, 0, 57, 50, 1, 0, 0, 0,
+		57, 51, 1, 0, 0, 0, 57, 52, 1, 0, 0, 0, 57, 53, 1, 0, 0, 0, 57, 54, 1,
+		0, 0, 0, 57, 55, 1, 0, 0, 0, 57, 56, 1, 0, 0, 0, 58, 94, 1, 0, 0, 0, 59,
+		60, 10, 14, 0, 0, 60, 61, 7, 0, 0, 0, 61, 93, 3, 2, 1, 15, 62, 63, 10,
+		13, 0, 0, 63, 64, 7, 1, 0, 0, 64, 93, 3, 2, 1, 14, 65, 66, 10, 12, 0, 0,
+		66, 67, 7, 2, 0, 0, 67, 93, 3, 2, 1, 13, 68, 69, 10, 11, 0, 0, 69, 70,
+		7, 3, 0, 0, 70, 93, 3, 2, 1, 12, 71, 72, 10, 10, 0, 0, 72, 73, 5, 25, 0,
+		0, 73, 93, 3, 2, 1, 11, 74, 75, 10, 9, 0, 0, 75, 76, 5, 26, 0, 0, 76, 93,
+		3, 2, 1, 10, 77, 78, 10, 18, 0, 0, 78, 79, 5, 17, 0, 0, 79, 80, 5, 33,
+		0, 0, 80, 89, 5, 1, 0, 0, 81, 86, 3, 2, 1, 0, 82, 83, 5, 2, 0, 0, 83, 85,
+		3, 2, 1, 0, 84, 82, 1, 0, 0, 0, 85, 88, 1, 0, 0, 0, 86, 84, 1, 0, 0, 0,
+		86, 87, 1, 0, 0, 0, 87, 90, 1, 0, 0, 0, 88, 86, 1, 0, 0, 0, 89, 81, 1,
+		0, 0, 0, 89, 90, 1, 0, 0, 0, 90, 91, 1, 0, 0, 0, 91, 93, 5, 3, 0, 0, 92,
+		59, 1, 0, 0, 0, 92, 62, 1, 0, 0, 0, 92, 65, 1, 0, 0, 0, 92, 68, 1, 0, 0,
+		0, 92, 71, 1, 0, 0, 0, 92, 74, 1, 0, 0, 0, 92, 77, 1, 0, 0, 0, 93, 96,
+		1, 0, 0, 0, 94, 92, 1, 0, 0, 0, 94, 95, 1, 0, 0, 0, 95, 3, 1, 0, 0, 0,
+		96, 94, 1, 0, 0, 0, 97, 98, 5, 32, 0, 0, 98, 99, 3, 6, 3, 0, 99, 5, 1,
+		0, 0, 0, 100, 101, 5, 15, 0, 0, 101, 102, 3, 14, 7, 0, 102, 109, 5, 16,
+		0, 0, 103, 104, 5, 15, 0, 0, 104, 105, 3, 14, 7, 0, 105, 106, 5, 16, 0,
+		0, 106, 108, 1, 0, 0, 0, 107, 103, 1, 0, 0, 0, 108, 111, 1, 0, 0, 0, 109,
+		107, 1, 0, 0, 0, 109, 110, 1, 0, 0, 0, 110, 113, 1, 0, 0, 0, 111, 109,
+		1, 0, 0, 0, 112, 100, 1, 0, 0, 0, 112, 113, 1, 0, 0, 0, 113, 116, 1, 0,
+		0, 0, 114, 115, 5, 17, 0, 0, 115, 117, 3, 8, 4, 0, 116, 114, 1, 0, 0, 0,
+		116, 117, 1, 0, 0, 0, 117, 7, 1, 0, 0, 0, 118, 123, 3, 10, 5, 0, 119, 120,
+		5, 17, 0, 0, 120, 122, 3, 10, 5, 0, 121, 119, 1, 0, 0, 0, 122, 125, 1,
+		0, 0, 0, 123, 121, 1, 0, 0, 0, 123, 124, 1, 0, 0, 0, 124, 9, 1, 0, 0, 0,
+		125, 123, 1, 0, 0, 0, 126, 129, 3, 12, 6, 0, 127, 129, 5, 33, 0, 0, 128,
+		126, 1, 0, 0, 0, 128, 127, 1, 0, 0, 0, 129, 11, 1, 0, 0, 0, 130, 131, 5,
+		33, 0, 0, 131, 132, 5, 15, 0, 0, 132, 133, 3, 14, 7, 0, 133, 140, 5, 16,
+		0, 0, 134, 135, 5, 15, 0, 0, 135, 136, 3, 14, 7, 0, 136, 137, 5, 16, 0,
+		0, 137, 139, 1, 0, 0, 0, 138, 134, 1, 0, 0, 0, 139, 142, 1, 0, 0, 0, 140,
+		138, 1, 0, 0, 0, 140, 141, 1, 0, 0, 0, 141, 13, 1, 0, 0, 0, 142, 140, 1,
+		0, 0, 0, 143, 144, 3, 2, 1, 0, 144, 15, 1, 0, 0, 0, 145, 148, 5, 1, 0,
+		0, 146, 149, 3, 16, 8, 0, 147, 149, 3, 2, 1, 0, 148, 146, 1, 0, 0, 0, 148,
+		147, 1, 0, 0, 0, 149, 150, 1, 0, 0, 0, 150, 151, 5, 3, 0, 0, 151, 17, 1,
+		0, 0, 0, 152, 155, 3, 20, 10, 0, 153, 155, 3, 24, 12, 0, 154, 152, 1, 0,
+		0, 0, 154, 153, 1, 0, 0, 0, 155, 19, 1, 0, 0, 0, 156, 157, 5, 4, 0, 0,
+		157, 162, 3, 22, 11, 0, 158, 159, 5, 2, 0, 0, 159, 161, 3, 22, 11, 0, 160,
+		158, 1, 0, 0, 0, 161, 164, 1, 0, 0, 0, 162, 160, 1, 0, 0, 0, 162, 163,
+		1, 0, 0, 0, 163, 165, 1, 0, 0, 0, 164, 162, 1, 0, 0, 0, 165, 166, 5, 5,
+		0, 0, 166, 170, 1, 0, 0, 0, 167, 168, 5, 4, 0, 0, 168, 170, 5, 5, 0, 0,
+		169, 156, 1, 0, 0, 0, 169, 167, 1, 0, 0, 0, 170, 21, 1, 0, 0, 0, 171, 172,
+		5, 29, 0, 0, 172, 173, 5, 6, 0, 0, 173, 174, 3, 26, 13, 0, 174, 23, 1,
+		0, 0, 0, 175, 176, 5, 15, 0, 0, 176, 181, 3, 26, 13, 0, 177, 178, 5, 2,
+		0, 0, 178, 180, 3, 26, 13, 0, 179, 177, 1, 0, 0, 0, 180, 183, 1, 0, 0,
+		0, 181, 179, 1, 0, 0, 0, 181, 182, 1, 0, 0, 0, 182, 184, 1, 0, 0, 0, 183,
+		181, 1, 0, 0, 0, 184, 185, 5, 16, 0, 0, 185, 189, 1, 0, 0, 0, 186, 187,
+		5, 15, 0, 0, 187, 189, 5, 16, 0, 0, 188, 175, 1, 0, 0, 0, 188, 186, 1,
+		0, 0, 0, 189, 25, 1, 0, 0, 0, 190, 193, 3, 18, 9, 0, 191, 193, 3, 2, 1,
+		0, 192, 190, 1, 0, 0, 0, 192, 191, 1, 0, 0, 0, 193, 27, 1, 0, 0, 0, 20,
+		39, 42, 57, 86, 89, 92, 94, 109, 112, 116, 123, 128, 140, 148, 154, 162,
+		169, 181, 188, 192,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -224,75 +180,54 @@ const (
 	TafexprParserT__3               = 4
 	TafexprParserT__4               = 5
 	TafexprParserT__5               = 6
-	TafexprParserT__6               = 7
-	TafexprParserT__7               = 8
-	TafexprParserT__8               = 9
-	TafexprParserT__9               = 10
-	TafexprParserT__10              = 11
-	TafexprParserT__11              = 12
-	TafexprParserT__12              = 13
-	TafexprParserT__13              = 14
-	TafexprParserT__14              = 15
-	TafexprParserT__15              = 16
-	TafexprParserT__16              = 17
-	TafexprParserT__17              = 18
-	TafexprParserT__18              = 19
-	TafexprParserT__19              = 20
-	TafexprParserT__20              = 21
-	TafexprParserT__21              = 22
-	TafexprParserT__22              = 23
-	TafexprParserT__23              = 24
-	TafexprParserT__24              = 25
-	TafexprParserT__25              = 26
-	TafexprParserMUL                = 27
-	TafexprParserDIV                = 28
-	TafexprParserMOD                = 29
-	TafexprParserADD                = 30
-	TafexprParserSUB                = 31
-	TafexprParserDOUBLE             = 32
-	TafexprParserINTEGER            = 33
-	TafexprParserWHITESPACE         = 34
-	TafexprParserLBR                = 35
-	TafexprParserRBR                = 36
-	TafexprParserCON                = 37
-	TafexprParserNULL_TOKEN         = 38
-	TafexprParserLESSER_THAN        = 39
-	TafexprParserLESSER_THAN_EQUAL  = 40
-	TafexprParserEQUAL              = 41
-	TafexprParserUNEQUAL            = 42
-	TafexprParserGREATER_THAN       = 43
-	TafexprParserGREATER_THAN_EQUAL = 44
-	TafexprParserLOGICAL_AND        = 45
-	TafexprParserLOGICAL_OR         = 46
-	TafexprParserLOGICAL_NOT        = 47
-	TafexprParserDOLLAR             = 48
-	TafexprParserSTRING             = 49
-	TafexprParserBOOLEAN            = 50
-	TafexprParserNUMBER             = 51
-	TafexprParserVARIABLE_NAME      = 52
-	TafexprParserPROP               = 53
-	TafexprParserJSON_NUMBER        = 54
-	TafexprParserWS                 = 55
-	TafexprParserUNKNOWN            = 56
+	TafexprParserMUL                = 7
+	TafexprParserDIV                = 8
+	TafexprParserMOD                = 9
+	TafexprParserADD                = 10
+	TafexprParserSUB                = 11
+	TafexprParserDOUBLE             = 12
+	TafexprParserINTEGER            = 13
+	TafexprParserWHITESPACE         = 14
+	TafexprParserLBR                = 15
+	TafexprParserRBR                = 16
+	TafexprParserCON                = 17
+	TafexprParserNULL_TOKEN         = 18
+	TafexprParserLESSER_THAN        = 19
+	TafexprParserLESSER_THAN_EQUAL  = 20
+	TafexprParserEQUAL              = 21
+	TafexprParserUNEQUAL            = 22
+	TafexprParserGREATER_THAN       = 23
+	TafexprParserGREATER_THAN_EQUAL = 24
+	TafexprParserLOGICAL_AND        = 25
+	TafexprParserLOGICAL_OR         = 26
+	TafexprParserLOGICAL_NOT        = 27
+	TafexprParserDOLLAR             = 28
+	TafexprParserSTRING             = 29
+	TafexprParserBOOLEAN            = 30
+	TafexprParserNUMBER             = 31
+	TafexprParserVARIABLE_NAME      = 32
+	TafexprParserPROP               = 33
+	TafexprParserJSON_NUMBER        = 34
+	TafexprParserWS                 = 35
+	TafexprParserUNKNOWN            = 36
 )
 
 // TafexprParser rules.
 const (
 	TafexprParserRULE_taf_expression          = 0
-	TafexprParserRULE_libfunc                 = 1
-	TafexprParserRULE_expression              = 2
-	TafexprParserRULE_var_expression          = 3
-	TafexprParserRULE_indx_expr               = 4
-	TafexprParserRULE_var_path                = 5
-	TafexprParserRULE_jsonpath_expr           = 6
-	TafexprParserRULE_identifierWithQualifier = 7
-	TafexprParserRULE_index_expression        = 8
-	TafexprParserRULE_parenthesisExpression   = 9
-	TafexprParserRULE_json                    = 10
-	TafexprParserRULE_obj                     = 11
-	TafexprParserRULE_pair                    = 12
-	TafexprParserRULE_arr                     = 13
-	TafexprParserRULE_value                   = 14
+	TafexprParserRULE_expression              = 1
+	TafexprParserRULE_var_expression          = 2
+	TafexprParserRULE_indx_expr               = 3
+	TafexprParserRULE_var_path                = 4
+	TafexprParserRULE_jsonpath_expr           = 5
+	TafexprParserRULE_identifierWithQualifier = 6
+	TafexprParserRULE_index_expression        = 7
+	TafexprParserRULE_parenthesisExpression   = 8
+	TafexprParserRULE_json                    = 9
+	TafexprParserRULE_obj                     = 10
+	TafexprParserRULE_pair                    = 11
+	TafexprParserRULE_arr                     = 12
+	TafexprParserRULE_value                   = 13
 )
 
 // ITaf_expressionContext is an interface to support dynamic dispatch.
@@ -303,9 +238,8 @@ type ITaf_expressionContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	EOF() antlr.TerminalNode
-	Libfunc() ILibfuncContext
 	Expression() IExpressionContext
+	EOF() antlr.TerminalNode
 
 	// IsTaf_expressionContext differentiates from other interfaces.
 	IsTaf_expressionContext()
@@ -343,26 +277,6 @@ func NewTaf_expressionContext(parser antlr.Parser, parent antlr.ParserRuleContex
 
 func (s *Taf_expressionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *Taf_expressionContext) EOF() antlr.TerminalNode {
-	return s.GetToken(TafexprParserEOF, 0)
-}
-
-func (s *Taf_expressionContext) Libfunc() ILibfuncContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILibfuncContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILibfuncContext)
-}
-
 func (s *Taf_expressionContext) Expression() IExpressionContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
@@ -377,6 +291,10 @@ func (s *Taf_expressionContext) Expression() IExpressionContext {
 	}
 
 	return t.(IExpressionContext)
+}
+
+func (s *Taf_expressionContext) EOF() antlr.TerminalNode {
+	return s.GetToken(TafexprParserEOF, 0)
 }
 
 func (s *Taf_expressionContext) GetRuleContext() antlr.RuleContext {
@@ -403,215 +321,13 @@ func (p *TafexprParser) Taf_expression() (localctx ITaf_expressionContext) {
 	localctx = NewTaf_expressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, TafexprParserRULE_taf_expression)
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(32)
-	p.GetErrorHandler().Sync(p)
-	if p.HasError() {
-		goto errorExit
-	}
-
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 0, p.GetParserRuleContext()) {
-	case 1:
-		{
-			p.SetState(30)
-			p.Libfunc()
-		}
-
-	case 2:
-		{
-			p.SetState(31)
-			p.expression(0)
-		}
-
-	case antlr.ATNInvalidAltNumber:
-		goto errorExit
+	{
+		p.SetState(28)
+		p.expression(0)
 	}
 	{
-		p.SetState(34)
+		p.SetState(29)
 		p.Match(TafexprParserEOF)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// ILibfuncContext is an interface to support dynamic dispatch.
-type ILibfuncContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-	// IsLibfuncContext differentiates from other interfaces.
-	IsLibfuncContext()
-}
-
-type LibfuncContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyLibfuncContext() *LibfuncContext {
-	var p = new(LibfuncContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = TafexprParserRULE_libfunc
-	return p
-}
-
-func InitEmptyLibfuncContext(p *LibfuncContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = TafexprParserRULE_libfunc
-}
-
-func (*LibfuncContext) IsLibfuncContext() {}
-
-func NewLibfuncContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LibfuncContext {
-	var p = new(LibfuncContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = TafexprParserRULE_libfunc
-
-	return p
-}
-
-func (s *LibfuncContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *LibfuncContext) CopyAll(ctx *LibfuncContext) {
-	s.CopyFrom(&ctx.BaseParserRuleContext)
-}
-
-func (s *LibfuncContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *LibfuncContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-type HandleRandomDoubleInRangeContext struct {
-	LibfuncContext
-}
-
-func NewHandleRandomDoubleInRangeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleRandomDoubleInRangeContext {
-	var p = new(HandleRandomDoubleInRangeContext)
-
-	InitEmptyLibfuncContext(&p.LibfuncContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*LibfuncContext))
-
-	return p
-}
-
-func (s *HandleRandomDoubleInRangeContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleRandomDoubleInRangeContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleRandomDoubleInRangeContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleRandomDoubleInRangeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleRandomDoubleInRange(s)
-	}
-}
-
-func (s *HandleRandomDoubleInRangeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleRandomDoubleInRange(s)
-	}
-}
-
-func (p *TafexprParser) Libfunc() (localctx ILibfuncContext) {
-	localctx = NewLibfuncContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, TafexprParserRULE_libfunc)
-	localctx = NewHandleRandomDoubleInRangeContext(p, localctx)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(36)
-		p.Match(TafexprParserT__0)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(37)
-		p.Match(TafexprParserT__1)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(38)
-		p.expression(0)
-	}
-	{
-		p.SetState(39)
-		p.Match(TafexprParserT__2)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(40)
-		p.expression(0)
-	}
-	{
-		p.SetState(41)
-		p.Match(TafexprParserT__3)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -685,12 +401,12 @@ func (s *ExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-type HandleFindOneByXPATHContext struct {
+type HandleLogicalNegationContext struct {
 	ExpressionContext
 }
 
-func NewHandleFindOneByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindOneByXPATHContext {
-	var p = new(HandleFindOneByXPATHContext)
+func NewHandleLogicalNegationContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLogicalNegationContext {
+	var p = new(HandleLogicalNegationContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -699,86 +415,15 @@ func NewHandleFindOneByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleCon
 	return p
 }
 
-func (s *HandleFindOneByXPATHContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleLogicalNegationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleFindOneByXPATHContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
+func (s *HandleLogicalNegationContext) LOGICAL_NOT() antlr.TerminalNode {
+	return s.GetToken(TafexprParserLOGICAL_NOT, 0)
 }
 
-func (s *HandleFindOneByXPATHContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleFindOneByXPATHContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleFindOneByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindOneByXPATH(s)
-	}
-}
-
-func (s *HandleFindOneByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindOneByXPATH(s)
-	}
-}
-
-type HandleTrimContext struct {
-	ExpressionContext
-}
-
-func NewHandleTrimContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleTrimContext {
-	var p = new(HandleTrimContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleTrimContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleTrimContext) Expression() IExpressionContext {
+func (s *HandleLogicalNegationContext) Expression() IExpressionContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IExpressionContext); ok {
@@ -794,19 +439,65 @@ func (s *HandleTrimContext) Expression() IExpressionContext {
 	return t.(IExpressionContext)
 }
 
-func (s *HandleTrimContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleTrimContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleLogicalNegationContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleTrim(s)
+		listenerT.EnterHandleLogicalNegation(s)
 	}
 }
 
-func (s *HandleTrimContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleLogicalNegationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleTrim(s)
+		listenerT.ExitHandleLogicalNegation(s)
+	}
+}
+
+type HandleNegationContext struct {
+	ExpressionContext
+}
+
+func NewHandleNegationContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleNegationContext {
+	var p = new(HandleNegationContext)
+
+	InitEmptyExpressionContext(&p.ExpressionContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExpressionContext))
+
+	return p
+}
+
+func (s *HandleNegationContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *HandleNegationContext) SUB() antlr.TerminalNode {
+	return s.GetToken(TafexprParserSUB, 0)
+}
+
+func (s *HandleNegationContext) Expression() IExpressionContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExpressionContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *HandleNegationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.EnterHandleNegation(s)
+	}
+}
+
+func (s *HandleNegationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.ExitHandleNegation(s)
 	}
 }
 
@@ -856,12 +547,12 @@ func (s *HandleVarExpressionContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
-type HandleFindOneDoubleByXPATHContext struct {
+type HandleMethodCallContext struct {
 	ExpressionContext
 }
 
-func NewHandleFindOneDoubleByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindOneDoubleByXPATHContext {
-	var p = new(HandleFindOneDoubleByXPATHContext)
+func NewHandleMethodCallContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleMethodCallContext {
+	var p = new(HandleMethodCallContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -870,11 +561,11 @@ func NewHandleFindOneDoubleByXPATHContext(parser antlr.Parser, ctx antlr.ParserR
 	return p
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleMethodCallContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) AllExpression() []IExpressionContext {
+func (s *HandleMethodCallContext) AllExpression() []IExpressionContext {
 	children := s.GetChildren()
 	len := 0
 	for _, ctx := range children {
@@ -895,7 +586,7 @@ func (s *HandleFindOneDoubleByXPATHContext) AllExpression() []IExpressionContext
 	return tst
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) Expression(i int) IExpressionContext {
+func (s *HandleMethodCallContext) Expression(i int) IExpressionContext {
 	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
@@ -915,19 +606,23 @@ func (s *HandleFindOneDoubleByXPATHContext) Expression(i int) IExpressionContext
 	return t.(IExpressionContext)
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) CON() antlr.TerminalNode {
+func (s *HandleMethodCallContext) CON() antlr.TerminalNode {
 	return s.GetToken(TafexprParserCON, 0)
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleMethodCallContext) PROP() antlr.TerminalNode {
+	return s.GetToken(TafexprParserPROP, 0)
+}
+
+func (s *HandleMethodCallContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindOneDoubleByXPATH(s)
+		listenerT.EnterHandleMethodCall(s)
 	}
 }
 
-func (s *HandleFindOneDoubleByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleMethodCallContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindOneDoubleByXPATH(s)
+		listenerT.ExitHandleMethodCall(s)
 	}
 }
 
@@ -1019,884 +714,6 @@ func (s *MulDivContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-type HandleFindOneStringByXPATHContext struct {
-	ExpressionContext
-}
-
-func NewHandleFindOneStringByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindOneStringByXPATHContext {
-	var p = new(HandleFindOneStringByXPATHContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleFindOneStringByXPATHContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleFindOneStringByXPATHContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleFindOneStringByXPATHContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleFindOneStringByXPATHContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleFindOneStringByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindOneStringByXPATH(s)
-	}
-}
-
-func (s *HandleFindOneStringByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindOneStringByXPATH(s)
-	}
-}
-
-type HandleToStringContext struct {
-	ExpressionContext
-}
-
-func NewHandleToStringContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleToStringContext {
-	var p = new(HandleToStringContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleToStringContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleToStringContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleToStringContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleToStringContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleToString(s)
-	}
-}
-
-func (s *HandleToStringContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleToString(s)
-	}
-}
-
-type HandleLibfuncContext struct {
-	ExpressionContext
-}
-
-func NewHandleLibfuncContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLibfuncContext {
-	var p = new(HandleLibfuncContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleLibfuncContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleLibfuncContext) Libfunc() ILibfuncContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILibfuncContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILibfuncContext)
-}
-
-func (s *HandleLibfuncContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleLibfunc(s)
-	}
-}
-
-func (s *HandleLibfuncContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleLibfunc(s)
-	}
-}
-
-type HandleFindByXPATHContext struct {
-	ExpressionContext
-}
-
-func NewHandleFindByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindByXPATHContext {
-	var p = new(HandleFindByXPATHContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleFindByXPATHContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleFindByXPATHContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleFindByXPATHContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleFindByXPATHContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleFindByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindByXPATH(s)
-	}
-}
-
-func (s *HandleFindByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindByXPATH(s)
-	}
-}
-
-type HandleStringContext struct {
-	ExpressionContext
-}
-
-func NewHandleStringContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleStringContext {
-	var p = new(HandleStringContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleStringContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleStringContext) STRING() antlr.TerminalNode {
-	return s.GetToken(TafexprParserSTRING, 0)
-}
-
-func (s *HandleStringContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleString(s)
-	}
-}
-
-func (s *HandleStringContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleString(s)
-	}
-}
-
-type HandleExtractOneByREGEXContext struct {
-	ExpressionContext
-}
-
-func NewHandleExtractOneByREGEXContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleExtractOneByREGEXContext {
-	var p = new(HandleExtractOneByREGEXContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleExtractOneByREGEXContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleExtractOneByREGEXContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleExtractOneByREGEXContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleExtractOneByREGEXContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleExtractOneByREGEXContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleExtractOneByREGEX(s)
-	}
-}
-
-func (s *HandleExtractOneByREGEXContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleExtractOneByREGEX(s)
-	}
-}
-
-type HandleBoolContext struct {
-	ExpressionContext
-}
-
-func NewHandleBoolContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleBoolContext {
-	var p = new(HandleBoolContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleBoolContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleBoolContext) BOOLEAN() antlr.TerminalNode {
-	return s.GetToken(TafexprParserBOOLEAN, 0)
-}
-
-func (s *HandleBoolContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleBool(s)
-	}
-}
-
-func (s *HandleBoolContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleBool(s)
-	}
-}
-
-type NumberContext struct {
-	ExpressionContext
-}
-
-func NewNumberContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *NumberContext {
-	var p = new(NumberContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *NumberContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *NumberContext) INTEGER() antlr.TerminalNode {
-	return s.GetToken(TafexprParserINTEGER, 0)
-}
-
-func (s *NumberContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterNumber(s)
-	}
-}
-
-func (s *NumberContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitNumber(s)
-	}
-}
-
-type HandleJsonContext struct {
-	ExpressionContext
-}
-
-func NewHandleJsonContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleJsonContext {
-	var p = new(HandleJsonContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleJsonContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleJsonContext) Json() IJsonContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IJsonContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IJsonContext)
-}
-
-func (s *HandleJsonContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleJson(s)
-	}
-}
-
-func (s *HandleJsonContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleJson(s)
-	}
-}
-
-type HandleLogicalContext struct {
-	ExpressionContext
-	op antlr.Token
-}
-
-func NewHandleLogicalContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLogicalContext {
-	var p = new(HandleLogicalContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleLogicalContext) GetOp() antlr.Token { return s.op }
-
-func (s *HandleLogicalContext) SetOp(v antlr.Token) { s.op = v }
-
-func (s *HandleLogicalContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleLogicalContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleLogicalContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleLogicalContext) LOGICAL_AND() antlr.TerminalNode {
-	return s.GetToken(TafexprParserLOGICAL_AND, 0)
-}
-
-func (s *HandleLogicalContext) LOGICAL_OR() antlr.TerminalNode {
-	return s.GetToken(TafexprParserLOGICAL_OR, 0)
-}
-
-func (s *HandleLogicalContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleLogical(s)
-	}
-}
-
-func (s *HandleLogicalContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleLogical(s)
-	}
-}
-
-type HandleToBooleanContext struct {
-	ExpressionContext
-}
-
-func NewHandleToBooleanContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleToBooleanContext {
-	var p = new(HandleToBooleanContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleToBooleanContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleToBooleanContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleToBooleanContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleToBooleanContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleToBoolean(s)
-	}
-}
-
-func (s *HandleToBooleanContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleToBoolean(s)
-	}
-}
-
-type HandleTrimLeftContext struct {
-	ExpressionContext
-}
-
-func NewHandleTrimLeftContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleTrimLeftContext {
-	var p = new(HandleTrimLeftContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleTrimLeftContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleTrimLeftContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleTrimLeftContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleTrimLeftContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleTrimLeft(s)
-	}
-}
-
-func (s *HandleTrimLeftContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleTrimLeft(s)
-	}
-}
-
-type HandleFindOneBooleanByXPATHContext struct {
-	ExpressionContext
-}
-
-func NewHandleFindOneBooleanByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindOneBooleanByXPATHContext {
-	var p = new(HandleFindOneBooleanByXPATHContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindOneBooleanByXPATH(s)
-	}
-}
-
-func (s *HandleFindOneBooleanByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindOneBooleanByXPATH(s)
-	}
-}
-
-type HandleLogicalNegationContext struct {
-	ExpressionContext
-}
-
-func NewHandleLogicalNegationContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLogicalNegationContext {
-	var p = new(HandleLogicalNegationContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleLogicalNegationContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleLogicalNegationContext) LOGICAL_NOT() antlr.TerminalNode {
-	return s.GetToken(TafexprParserLOGICAL_NOT, 0)
-}
-
-func (s *HandleLogicalNegationContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleLogicalNegationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleLogicalNegation(s)
-	}
-}
-
-func (s *HandleLogicalNegationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleLogicalNegation(s)
-	}
-}
-
-type HandleLengthContext struct {
-	ExpressionContext
-}
-
-func NewHandleLengthContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLengthContext {
-	var p = new(HandleLengthContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleLengthContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleLengthContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleLengthContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleLengthContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleLength(s)
-	}
-}
-
-func (s *HandleLengthContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleLength(s)
-	}
-}
-
-type HandleNegationContext struct {
-	ExpressionContext
-}
-
-func NewHandleNegationContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleNegationContext {
-	var p = new(HandleNegationContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleNegationContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleNegationContext) SUB() antlr.TerminalNode {
-	return s.GetToken(TafexprParserSUB, 0)
-}
-
-func (s *HandleNegationContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleNegationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleNegation(s)
-	}
-}
-
-func (s *HandleNegationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleNegation(s)
-	}
-}
-
 type AddSubContext struct {
 	ExpressionContext
 	op antlr.Token
@@ -1981,12 +798,12 @@ func (s *AddSubContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-type HandleFindOneIntegerByXPATHContext struct {
+type HandleFunctionCallContext struct {
 	ExpressionContext
 }
 
-func NewHandleFindOneIntegerByXPATHContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFindOneIntegerByXPATHContext {
-	var p = new(HandleFindOneIntegerByXPATHContext)
+func NewHandleFunctionCallContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleFunctionCallContext {
+	var p = new(HandleFunctionCallContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -1995,11 +812,15 @@ func NewHandleFindOneIntegerByXPATHContext(parser antlr.Parser, ctx antlr.Parser
 	return p
 }
 
-func (s *HandleFindOneIntegerByXPATHContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleFunctionCallContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleFindOneIntegerByXPATHContext) AllExpression() []IExpressionContext {
+func (s *HandleFunctionCallContext) PROP() antlr.TerminalNode {
+	return s.GetToken(TafexprParserPROP, 0)
+}
+
+func (s *HandleFunctionCallContext) AllExpression() []IExpressionContext {
 	children := s.GetChildren()
 	len := 0
 	for _, ctx := range children {
@@ -2020,7 +841,7 @@ func (s *HandleFindOneIntegerByXPATHContext) AllExpression() []IExpressionContex
 	return tst
 }
 
-func (s *HandleFindOneIntegerByXPATHContext) Expression(i int) IExpressionContext {
+func (s *HandleFunctionCallContext) Expression(i int) IExpressionContext {
 	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
@@ -2040,19 +861,15 @@ func (s *HandleFindOneIntegerByXPATHContext) Expression(i int) IExpressionContex
 	return t.(IExpressionContext)
 }
 
-func (s *HandleFindOneIntegerByXPATHContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleFindOneIntegerByXPATHContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleFunctionCallContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleFindOneIntegerByXPATH(s)
+		listenerT.EnterHandleFunctionCall(s)
 	}
 }
 
-func (s *HandleFindOneIntegerByXPATHContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleFunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleFindOneIntegerByXPATH(s)
+		listenerT.ExitHandleFunctionCall(s)
 	}
 }
 
@@ -2090,12 +907,12 @@ func (s *HandleNullContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-type HandleToDoubleContext struct {
+type HandleStringContext struct {
 	ExpressionContext
 }
 
-func NewHandleToDoubleContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleToDoubleContext {
-	var p = new(HandleToDoubleContext)
+func NewHandleStringContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleStringContext {
+	var p = new(HandleStringContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -2104,189 +921,23 @@ func NewHandleToDoubleContext(parser antlr.Parser, ctx antlr.ParserRuleContext) 
 	return p
 }
 
-func (s *HandleToDoubleContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleStringContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleToDoubleContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
+func (s *HandleStringContext) STRING() antlr.TerminalNode {
+	return s.GetToken(TafexprParserSTRING, 0)
 }
 
-func (s *HandleToDoubleContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleToDoubleContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleStringContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleToDouble(s)
+		listenerT.EnterHandleString(s)
 	}
 }
 
-func (s *HandleToDoubleContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleStringContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleToDouble(s)
-	}
-}
-
-type HandleEndsWithContext struct {
-	ExpressionContext
-}
-
-func NewHandleEndsWithContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleEndsWithContext {
-	var p = new(HandleEndsWithContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleEndsWithContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleEndsWithContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleEndsWithContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleEndsWithContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleEndsWithContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleEndsWith(s)
-	}
-}
-
-func (s *HandleEndsWithContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleEndsWith(s)
-	}
-}
-
-type HandleContainsStringContext struct {
-	ExpressionContext
-}
-
-func NewHandleContainsStringContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleContainsStringContext {
-	var p = new(HandleContainsStringContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleContainsStringContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleContainsStringContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleContainsStringContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleContainsStringContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleContainsStringContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleContainsString(s)
-	}
-}
-
-func (s *HandleContainsStringContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleContainsString(s)
+		listenerT.ExitHandleString(s)
 	}
 }
 
@@ -2408,16 +1059,16 @@ func (s *LogicalOperationContext) LESSER_THAN_EQUAL() antlr.TerminalNode {
 	return s.GetToken(TafexprParserLESSER_THAN_EQUAL, 0)
 }
 
-func (s *LogicalOperationContext) EQUAL() antlr.TerminalNode {
-	return s.GetToken(TafexprParserEQUAL, 0)
-}
-
 func (s *LogicalOperationContext) GREATER_THAN() antlr.TerminalNode {
 	return s.GetToken(TafexprParserGREATER_THAN, 0)
 }
 
 func (s *LogicalOperationContext) GREATER_THAN_EQUAL() antlr.TerminalNode {
 	return s.GetToken(TafexprParserGREATER_THAN_EQUAL, 0)
+}
+
+func (s *LogicalOperationContext) EQUAL() antlr.TerminalNode {
+	return s.GetToken(TafexprParserEQUAL, 0)
 }
 
 func (s *LogicalOperationContext) UNEQUAL() antlr.TerminalNode {
@@ -2436,12 +1087,12 @@ func (s *LogicalOperationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-type HandleToIntegerContext struct {
+type HandleBoolContext struct {
 	ExpressionContext
 }
 
-func NewHandleToIntegerContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleToIntegerContext {
-	var p = new(HandleToIntegerContext)
+func NewHandleBoolContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleBoolContext {
+	var p = new(HandleBoolContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -2450,14 +1101,82 @@ func NewHandleToIntegerContext(parser antlr.Parser, ctx antlr.ParserRuleContext)
 	return p
 }
 
-func (s *HandleToIntegerContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleBoolContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleToIntegerContext) Expression() IExpressionContext {
+func (s *HandleBoolContext) BOOLEAN() antlr.TerminalNode {
+	return s.GetToken(TafexprParserBOOLEAN, 0)
+}
+
+func (s *HandleBoolContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.EnterHandleBool(s)
+	}
+}
+
+func (s *HandleBoolContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.ExitHandleBool(s)
+	}
+}
+
+type NumberContext struct {
+	ExpressionContext
+}
+
+func NewNumberContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *NumberContext {
+	var p = new(NumberContext)
+
+	InitEmptyExpressionContext(&p.ExpressionContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExpressionContext))
+
+	return p
+}
+
+func (s *NumberContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *NumberContext) INTEGER() antlr.TerminalNode {
+	return s.GetToken(TafexprParserINTEGER, 0)
+}
+
+func (s *NumberContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.EnterNumber(s)
+	}
+}
+
+func (s *NumberContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TafexprListener); ok {
+		listenerT.ExitNumber(s)
+	}
+}
+
+type HandleJsonContext struct {
+	ExpressionContext
+}
+
+func NewHandleJsonContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleJsonContext {
+	var p = new(HandleJsonContext)
+
+	InitEmptyExpressionContext(&p.ExpressionContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExpressionContext))
+
+	return p
+}
+
+func (s *HandleJsonContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *HandleJsonContext) Json() IJsonContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
+		if _, ok := ctx.(IJsonContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2467,147 +1186,18 @@ func (s *HandleToIntegerContext) Expression() IExpressionContext {
 		return nil
 	}
 
-	return t.(IExpressionContext)
+	return t.(IJsonContext)
 }
 
-func (s *HandleToIntegerContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleToIntegerContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleJsonContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleToInteger(s)
+		listenerT.EnterHandleJson(s)
 	}
 }
 
-func (s *HandleToIntegerContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleJsonContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleToInteger(s)
-	}
-}
-
-type HandleTrimRightContext struct {
-	ExpressionContext
-}
-
-func NewHandleTrimRightContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleTrimRightContext {
-	var p = new(HandleTrimRightContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleTrimRightContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleTrimRightContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleTrimRightContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleTrimRightContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleTrimRight(s)
-	}
-}
-
-func (s *HandleTrimRightContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleTrimRight(s)
-	}
-}
-
-type HandleStartsWithContext struct {
-	ExpressionContext
-}
-
-func NewHandleStartsWithContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleStartsWithContext {
-	var p = new(HandleStartsWithContext)
-
-	InitEmptyExpressionContext(&p.ExpressionContext)
-	p.parser = parser
-	p.CopyAll(ctx.(*ExpressionContext))
-
-	return p
-}
-
-func (s *HandleStartsWithContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *HandleStartsWithContext) AllExpression() []IExpressionContext {
-	children := s.GetChildren()
-	len := 0
-	for _, ctx := range children {
-		if _, ok := ctx.(IExpressionContext); ok {
-			len++
-		}
-	}
-
-	tst := make([]IExpressionContext, len)
-	i := 0
-	for _, ctx := range children {
-		if t, ok := ctx.(IExpressionContext); ok {
-			tst[i] = t.(IExpressionContext)
-			i++
-		}
-	}
-
-	return tst
-}
-
-func (s *HandleStartsWithContext) Expression(i int) IExpressionContext {
-	var t antlr.RuleContext
-	j := 0
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			if j == i {
-				t = ctx.(antlr.RuleContext)
-				break
-			}
-			j++
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *HandleStartsWithContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
-}
-
-func (s *HandleStartsWithContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleStartsWith(s)
-	}
-}
-
-func (s *HandleStartsWithContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleStartsWith(s)
+		listenerT.ExitHandleJson(s)
 	}
 }
 
@@ -2645,12 +1235,13 @@ func (s *DoubleValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-type HandleReplaceAllStringOccurrencesContext struct {
+type HandleLogicalContext struct {
 	ExpressionContext
+	op antlr.Token
 }
 
-func NewHandleReplaceAllStringOccurrencesContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleReplaceAllStringOccurrencesContext {
-	var p = new(HandleReplaceAllStringOccurrencesContext)
+func NewHandleLogicalContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *HandleLogicalContext {
+	var p = new(HandleLogicalContext)
 
 	InitEmptyExpressionContext(&p.ExpressionContext)
 	p.parser = parser
@@ -2659,11 +1250,15 @@ func NewHandleReplaceAllStringOccurrencesContext(parser antlr.Parser, ctx antlr.
 	return p
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) GetRuleContext() antlr.RuleContext {
+func (s *HandleLogicalContext) GetOp() antlr.Token { return s.op }
+
+func (s *HandleLogicalContext) SetOp(v antlr.Token) { s.op = v }
+
+func (s *HandleLogicalContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) AllExpression() []IExpressionContext {
+func (s *HandleLogicalContext) AllExpression() []IExpressionContext {
 	children := s.GetChildren()
 	len := 0
 	for _, ctx := range children {
@@ -2684,7 +1279,7 @@ func (s *HandleReplaceAllStringOccurrencesContext) AllExpression() []IExpression
 	return tst
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) Expression(i int) IExpressionContext {
+func (s *HandleLogicalContext) Expression(i int) IExpressionContext {
 	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
@@ -2704,19 +1299,23 @@ func (s *HandleReplaceAllStringOccurrencesContext) Expression(i int) IExpression
 	return t.(IExpressionContext)
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) CON() antlr.TerminalNode {
-	return s.GetToken(TafexprParserCON, 0)
+func (s *HandleLogicalContext) LOGICAL_AND() antlr.TerminalNode {
+	return s.GetToken(TafexprParserLOGICAL_AND, 0)
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *HandleLogicalContext) LOGICAL_OR() antlr.TerminalNode {
+	return s.GetToken(TafexprParserLOGICAL_OR, 0)
+}
+
+func (s *HandleLogicalContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.EnterHandleReplaceAllStringOccurrences(s)
+		listenerT.EnterHandleLogical(s)
 	}
 }
 
-func (s *HandleReplaceAllStringOccurrencesContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *HandleLogicalContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(TafexprListener); ok {
-		listenerT.ExitHandleReplaceAllStringOccurrences(s)
+		listenerT.ExitHandleLogical(s)
 	}
 }
 
@@ -2731,8 +1330,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExpressionContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 4
-	p.EnterRecursionRule(localctx, 4, TafexprParserRULE_expression, _p)
+	_startState := 2
+	p.EnterRecursionRule(localctx, 2, TafexprParserRULE_expression, _p)
 	var _la int
 
 	var _alt int
@@ -2745,13 +1344,84 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case TafexprParserSUB:
-		localctx = NewHandleNegationContext(p, localctx)
+	case TafexprParserPROP:
+		localctx = NewHandleFunctionCallContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 
 		{
+			p.SetState(32)
+			p.Match(TafexprParserPROP)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(33)
+			p.Match(TafexprParserT__0)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		p.SetState(42)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&14630041618) != 0 {
+			{
+				p.SetState(34)
+				p.expression(0)
+			}
+			p.SetState(39)
+			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
+			_la = p.GetTokenStream().LA(1)
+
+			for _la == TafexprParserT__1 {
+				{
+					p.SetState(35)
+					p.Match(TafexprParserT__1)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				{
+					p.SetState(36)
+					p.expression(0)
+				}
+
+				p.SetState(41)
+				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
+				_la = p.GetTokenStream().LA(1)
+			}
+
+		}
+		{
 			p.SetState(44)
+			p.Match(TafexprParserT__2)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case TafexprParserSUB:
+		localctx = NewHandleNegationContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
+		{
+			p.SetState(45)
 			p.Match(TafexprParserSUB)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2759,8 +1429,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 			}
 		}
 		{
-			p.SetState(45)
-			p.expression(15)
+			p.SetState(46)
+			p.expression(16)
 		}
 
 	case TafexprParserLOGICAL_NOT:
@@ -2768,7 +1438,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(46)
+			p.SetState(47)
 			p.Match(TafexprParserLOGICAL_NOT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2776,8 +1446,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 			}
 		}
 		{
-			p.SetState(47)
-			p.expression(14)
+			p.SetState(48)
+			p.expression(15)
 		}
 
 	case TafexprParserINTEGER:
@@ -2785,7 +1455,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(48)
+			p.SetState(49)
 			p.Match(TafexprParserINTEGER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2798,7 +1468,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(49)
+			p.SetState(50)
 			p.Match(TafexprParserDOUBLE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2806,12 +1476,12 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 			}
 		}
 
-	case TafexprParserT__1:
+	case TafexprParserT__0:
 		localctx = NewOrderedEvaluationContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(50)
+			p.SetState(51)
 			p.ParenthesisExpression()
 		}
 
@@ -2820,7 +1490,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(51)
+			p.SetState(52)
 			p.Var_expression()
 		}
 
@@ -2829,7 +1499,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(52)
+			p.SetState(53)
 			p.Match(TafexprParserBOOLEAN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2842,7 +1512,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(53)
+			p.SetState(54)
 			p.Match(TafexprParserNULL_TOKEN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2855,7 +1525,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(54)
+			p.SetState(55)
 			p.Match(TafexprParserSTRING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2863,22 +1533,13 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 			}
 		}
 
-	case TafexprParserT__23, TafexprParserLBR:
+	case TafexprParserT__3, TafexprParserLBR:
 		localctx = NewHandleJsonContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(55)
-			p.Json()
-		}
-
-	case TafexprParserT__0:
-		localctx = NewHandleLibfuncContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
 			p.SetState(56)
-			p.Libfunc()
+			p.Json()
 		}
 
 	default:
@@ -2886,12 +1547,12 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(176)
+	p.SetState(94)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 3, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 6, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
@@ -2901,20 +1562,20 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(174)
+			p.SetState(92)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
 			}
 
-			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 2, p.GetParserRuleContext()) {
+			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 5, p.GetParserRuleContext()) {
 			case 1:
-				localctx = NewHandleLogicalContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewMulDivContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(59)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 14)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 14)", ""))
 					goto errorExit
 				}
 				{
@@ -2922,43 +1583,11 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 
 					var _lt = p.GetTokenStream().LT(1)
 
-					localctx.(*HandleLogicalContext).op = _lt
-
-					_la = p.GetTokenStream().LA(1)
-
-					if !(_la == TafexprParserLOGICAL_AND || _la == TafexprParserLOGICAL_OR) {
-						var _ri = p.GetErrorHandler().RecoverInline(p)
-
-						localctx.(*HandleLogicalContext).op = _ri
-					} else {
-						p.GetErrorHandler().ReportMatch(p)
-						p.Consume()
-					}
-				}
-				{
-					p.SetState(61)
-					p.expression(14)
-				}
-
-			case 2:
-				localctx = NewMulDivContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(62)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(63)
-
-					var _lt = p.GetTokenStream().LT(1)
-
 					localctx.(*MulDivContext).op = _lt
 
 					_la = p.GetTokenStream().LA(1)
 
-					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&939524096) != 0) {
+					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&896) != 0) {
 						var _ri = p.GetErrorHandler().RecoverInline(p)
 
 						localctx.(*MulDivContext).op = _ri
@@ -2968,21 +1597,21 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
-					p.SetState(64)
-					p.expression(13)
+					p.SetState(61)
+					p.expression(15)
 				}
 
-			case 3:
+			case 2:
 				localctx = NewAddSubContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(65)
+				p.SetState(62)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 13)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 13)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(66)
+					p.SetState(63)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -3000,8 +1629,40 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
+					p.SetState(64)
+					p.expression(14)
+				}
+
+			case 3:
+				localctx = NewLogicalOperationContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
+				p.SetState(65)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 12)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 12)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(66)
+
+					var _lt = p.GetTokenStream().LT(1)
+
+					localctx.(*LogicalOperationContext).op = _lt
+
+					_la = p.GetTokenStream().LA(1)
+
+					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&26738688) != 0) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
+
+						localctx.(*LogicalOperationContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
+				}
+				{
 					p.SetState(67)
-					p.expression(12)
+					p.expression(13)
 				}
 
 			case 4:
@@ -3009,8 +1670,8 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(68)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
 					goto errorExit
 				}
 				{
@@ -3022,7 +1683,7 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 
 					_la = p.GetTokenStream().LA(1)
 
-					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&34634616274944) != 0) {
+					if !(_la == TafexprParserEQUAL || _la == TafexprParserUNEQUAL) {
 						var _ri = p.GetErrorHandler().RecoverInline(p)
 
 						localctx.(*LogicalOperationContext).op = _ri
@@ -3033,21 +1694,24 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(70)
-					p.expression(11)
+					p.expression(12)
 				}
 
 			case 5:
-				localctx = NewHandleLengthContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewHandleLogicalContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(71)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 34)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 34)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(72)
-					p.Match(TafexprParserCON)
+
+					var _m = p.Match(TafexprParserLOGICAL_AND)
+
+					localctx.(*HandleLogicalContext).op = _m
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -3055,25 +1719,24 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(73)
-					p.Match(TafexprParserT__4)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
+					p.expression(11)
 				}
 
 			case 6:
-				localctx = NewHandleFindOneByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewHandleLogicalContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
 				p.SetState(74)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 33)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 33)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 9)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 9)", ""))
 					goto errorExit
 				}
 				{
 					p.SetState(75)
-					p.Match(TafexprParserCON)
+
+					var _m = p.Match(TafexprParserLOGICAL_OR)
+
+					localctx.(*HandleLogicalContext).op = _m
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -3081,620 +1744,20 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 				}
 				{
 					p.SetState(76)
-					p.Match(TafexprParserT__5)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(77)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(78)
-					p.expression(0)
-				}
-				{
-					p.SetState(79)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
+					p.expression(10)
 				}
 
 			case 7:
-				localctx = NewHandleFindOneStringByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
+				localctx = NewHandleMethodCallContext(p, NewExpressionContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(81)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 32)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 32)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(82)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(83)
-					p.Match(TafexprParserT__6)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(84)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(85)
-					p.expression(0)
-				}
-				{
-					p.SetState(86)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 8:
-				localctx = NewHandleFindOneDoubleByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(88)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 31)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 31)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(89)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(90)
-					p.Match(TafexprParserT__7)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(91)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(92)
-					p.expression(0)
-				}
-				{
-					p.SetState(93)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 9:
-				localctx = NewHandleFindOneIntegerByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(95)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 30)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 30)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(96)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(97)
-					p.Match(TafexprParserT__8)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(98)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(99)
-					p.expression(0)
-				}
-				{
-					p.SetState(100)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 10:
-				localctx = NewHandleFindOneBooleanByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(102)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 29)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 29)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(103)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(104)
-					p.Match(TafexprParserT__9)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(105)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(106)
-					p.expression(0)
-				}
-				{
-					p.SetState(107)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 11:
-				localctx = NewHandleFindByXPATHContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(109)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 28)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 28)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(110)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(111)
-					p.Match(TafexprParserT__10)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(112)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(113)
-					p.expression(0)
-				}
-				{
-					p.SetState(114)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 12:
-				localctx = NewHandleExtractOneByREGEXContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(116)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 27)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 27)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(117)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(118)
-					p.Match(TafexprParserT__11)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(119)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(120)
-					p.expression(0)
-				}
-				{
-					p.SetState(121)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 13:
-				localctx = NewHandleReplaceAllStringOccurrencesContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(123)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 26)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 26)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(124)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(125)
-					p.Match(TafexprParserT__12)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(126)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(127)
-					p.expression(0)
-				}
-				{
-					p.SetState(128)
-					p.Match(TafexprParserT__2)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(129)
-					p.expression(0)
-				}
-				{
-					p.SetState(130)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 14:
-				localctx = NewHandleToStringContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(132)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 25)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 25)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(133)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(134)
-					p.Match(TafexprParserT__13)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 15:
-				localctx = NewHandleToBooleanContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(135)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 24)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 24)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(136)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(137)
-					p.Match(TafexprParserT__14)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 16:
-				localctx = NewHandleToIntegerContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(138)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 23)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 23)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(139)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(140)
-					p.Match(TafexprParserT__15)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 17:
-				localctx = NewHandleToDoubleContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(141)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 22)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 22)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(142)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(143)
-					p.Match(TafexprParserT__16)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 18:
-				localctx = NewHandleContainsStringContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(144)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 21)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 21)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(145)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(146)
-					p.Match(TafexprParserT__17)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(147)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(148)
-					p.expression(0)
-				}
-				{
-					p.SetState(149)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 19:
-				localctx = NewHandleStartsWithContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(151)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 20)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 20)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(152)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(153)
-					p.Match(TafexprParserT__18)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(154)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(155)
-					p.expression(0)
-				}
-				{
-					p.SetState(156)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 20:
-				localctx = NewHandleEndsWithContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(158)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 19)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 19)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(159)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(160)
-					p.Match(TafexprParserT__19)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(161)
-					p.Match(TafexprParserT__1)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(162)
-					p.expression(0)
-				}
-				{
-					p.SetState(163)
-					p.Match(TafexprParserT__3)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-
-			case 21:
-				localctx = NewHandleTrimLeftContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(165)
+				p.SetState(77)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 18)) {
 					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 18)", ""))
 					goto errorExit
 				}
 				{
-					p.SetState(166)
+					p.SetState(78)
 					p.Match(TafexprParserCON)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -3702,60 +1765,66 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 					}
 				}
 				{
-					p.SetState(167)
-					p.Match(TafexprParserT__20)
+					p.SetState(79)
+					p.Match(TafexprParserPROP)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
 					}
 				}
-
-			case 22:
-				localctx = NewHandleTrimRightContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(168)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 17)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 17)", ""))
+				{
+					p.SetState(80)
+					p.Match(TafexprParserT__0)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
+				}
+				p.SetState(89)
+				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
 					goto errorExit
 				}
-				{
-					p.SetState(169)
-					p.Match(TafexprParserCON)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
-				{
-					p.SetState(170)
-					p.Match(TafexprParserT__21)
-					if p.HasError() {
-						// Recognition error - abort rule
-						goto errorExit
-					}
-				}
+				_la = p.GetTokenStream().LA(1)
 
-			case 23:
-				localctx = NewHandleTrimContext(p, NewExpressionContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, TafexprParserRULE_expression)
-				p.SetState(171)
-
-				if !(p.Precpred(p.GetParserRuleContext(), 16)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 16)", ""))
-					goto errorExit
-				}
-				{
-					p.SetState(172)
-					p.Match(TafexprParserCON)
+				if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&14630041618) != 0 {
+					{
+						p.SetState(81)
+						p.expression(0)
+					}
+					p.SetState(86)
+					p.GetErrorHandler().Sync(p)
 					if p.HasError() {
-						// Recognition error - abort rule
 						goto errorExit
 					}
+					_la = p.GetTokenStream().LA(1)
+
+					for _la == TafexprParserT__1 {
+						{
+							p.SetState(82)
+							p.Match(TafexprParserT__1)
+							if p.HasError() {
+								// Recognition error - abort rule
+								goto errorExit
+							}
+						}
+						{
+							p.SetState(83)
+							p.expression(0)
+						}
+
+						p.SetState(88)
+						p.GetErrorHandler().Sync(p)
+						if p.HasError() {
+							goto errorExit
+						}
+						_la = p.GetTokenStream().LA(1)
+					}
+
 				}
 				{
-					p.SetState(173)
-					p.Match(TafexprParserT__22)
+					p.SetState(91)
+					p.Match(TafexprParserT__2)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -3767,12 +1836,12 @@ func (p *TafexprParser) expression(_p int) (localctx IExpressionContext) {
 			}
 
 		}
-		p.SetState(178)
+		p.SetState(96)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 3, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 6, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -3880,10 +1949,10 @@ func (s *Var_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Var_expression() (localctx IVar_expressionContext) {
 	localctx = NewVar_expressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, TafexprParserRULE_var_expression)
+	p.EnterRule(localctx, 4, TafexprParserRULE_var_expression)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(179)
+		p.SetState(97)
 		p.Match(TafexprParserVARIABLE_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3891,7 +1960,7 @@ func (p *TafexprParser) Var_expression() (localctx IVar_expressionContext) {
 		}
 	}
 	{
-		p.SetState(180)
+		p.SetState(98)
 		p.Indx_expr()
 	}
 
@@ -4060,16 +2129,16 @@ func (s *Indx_exprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 	localctx = NewIndx_exprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, TafexprParserRULE_indx_expr)
+	p.EnterRule(localctx, 6, TafexprParserRULE_indx_expr)
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(194)
+	p.SetState(112)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 5, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 8, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(182)
+			p.SetState(100)
 			p.Match(TafexprParserLBR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4077,30 +2146,30 @@ func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 			}
 		}
 		{
-			p.SetState(183)
+			p.SetState(101)
 			p.Index_expression()
 		}
 		{
-			p.SetState(184)
+			p.SetState(102)
 			p.Match(TafexprParserRBR)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
-		p.SetState(191)
+		p.SetState(109)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 4, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 7, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
 		for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			if _alt == 1 {
 				{
-					p.SetState(185)
+					p.SetState(103)
 					p.Match(TafexprParserLBR)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -4108,11 +2177,11 @@ func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 					}
 				}
 				{
-					p.SetState(186)
+					p.SetState(104)
 					p.Index_expression()
 				}
 				{
-					p.SetState(187)
+					p.SetState(105)
 					p.Match(TafexprParserRBR)
 					if p.HasError() {
 						// Recognition error - abort rule
@@ -4121,12 +2190,12 @@ func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 				}
 
 			}
-			p.SetState(193)
+			p.SetState(111)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
 			}
-			_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 4, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 7, p.GetParserRuleContext())
 			if p.HasError() {
 				goto errorExit
 			}
@@ -4135,12 +2204,12 @@ func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 	} else if p.HasError() { // JIM
 		goto errorExit
 	}
-	p.SetState(198)
+	p.SetState(116)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 6, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 9, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(196)
+			p.SetState(114)
 			p.Match(TafexprParserCON)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4148,7 +2217,7 @@ func (p *TafexprParser) Indx_expr() (localctx IIndx_exprContext) {
 			}
 		}
 		{
-			p.SetState(197)
+			p.SetState(115)
 			p.Var_path()
 		}
 
@@ -4289,27 +2358,27 @@ func (s *Var_pathContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Var_path() (localctx IVar_pathContext) {
 	localctx = NewVar_pathContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, TafexprParserRULE_var_path)
+	p.EnterRule(localctx, 8, TafexprParserRULE_var_path)
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(200)
+		p.SetState(118)
 		p.Jsonpath_expr()
 	}
-	p.SetState(205)
+	p.SetState(123)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 7, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 10, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
-				p.SetState(201)
+				p.SetState(119)
 				p.Match(TafexprParserCON)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -4317,17 +2386,17 @@ func (p *TafexprParser) Var_path() (localctx IVar_pathContext) {
 				}
 			}
 			{
-				p.SetState(202)
+				p.SetState(120)
 				p.Jsonpath_expr()
 			}
 
 		}
-		p.SetState(207)
+		p.SetState(125)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 7, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 10, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -4435,25 +2504,25 @@ func (s *Jsonpath_exprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Jsonpath_expr() (localctx IJsonpath_exprContext) {
 	localctx = NewJsonpath_exprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, TafexprParserRULE_jsonpath_expr)
-	p.SetState(210)
+	p.EnterRule(localctx, 10, TafexprParserRULE_jsonpath_expr)
+	p.SetState(128)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 8, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 11, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(208)
+			p.SetState(126)
 			p.IdentifierWithQualifier()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(209)
+			p.SetState(127)
 			p.Match(TafexprParserPROP)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -4613,12 +2682,12 @@ func (s *IdentifierWithQualifierContext) ExitRule(listener antlr.ParseTreeListen
 
 func (p *TafexprParser) IdentifierWithQualifier() (localctx IIdentifierWithQualifierContext) {
 	localctx = NewIdentifierWithQualifierContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, TafexprParserRULE_identifierWithQualifier)
+	p.EnterRule(localctx, 12, TafexprParserRULE_identifierWithQualifier)
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(212)
+		p.SetState(130)
 		p.Match(TafexprParserPROP)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4626,7 +2695,7 @@ func (p *TafexprParser) IdentifierWithQualifier() (localctx IIdentifierWithQuali
 		}
 	}
 	{
-		p.SetState(213)
+		p.SetState(131)
 		p.Match(TafexprParserLBR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4634,30 +2703,30 @@ func (p *TafexprParser) IdentifierWithQualifier() (localctx IIdentifierWithQuali
 		}
 	}
 	{
-		p.SetState(214)
+		p.SetState(132)
 		p.Index_expression()
 	}
 	{
-		p.SetState(215)
+		p.SetState(133)
 		p.Match(TafexprParserRBR)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(222)
+	p.SetState(140)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 9, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 12, p.GetParserRuleContext())
 	if p.HasError() {
 		goto errorExit
 	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
-				p.SetState(216)
+				p.SetState(134)
 				p.Match(TafexprParserLBR)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -4665,11 +2734,11 @@ func (p *TafexprParser) IdentifierWithQualifier() (localctx IIdentifierWithQuali
 				}
 			}
 			{
-				p.SetState(217)
+				p.SetState(135)
 				p.Index_expression()
 			}
 			{
-				p.SetState(218)
+				p.SetState(136)
 				p.Match(TafexprParserRBR)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -4678,12 +2747,12 @@ func (p *TafexprParser) IdentifierWithQualifier() (localctx IIdentifierWithQuali
 			}
 
 		}
-		p.SetState(224)
+		p.SetState(142)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
-		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 9, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 12, p.GetParserRuleContext())
 		if p.HasError() {
 			goto errorExit
 		}
@@ -4804,11 +2873,11 @@ func (s *IndexExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Index_expression() (localctx IIndex_expressionContext) {
 	localctx = NewIndex_expressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, TafexprParserRULE_index_expression)
+	p.EnterRule(localctx, 14, TafexprParserRULE_index_expression)
 	localctx = NewIndexExpressionContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(225)
+		p.SetState(143)
 		p.expression(0)
 	}
 
@@ -4926,32 +2995,32 @@ func (s *ParenthesisExpressionContext) ExitRule(listener antlr.ParseTreeListener
 
 func (p *TafexprParser) ParenthesisExpression() (localctx IParenthesisExpressionContext) {
 	localctx = NewParenthesisExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, TafexprParserRULE_parenthesisExpression)
+	p.EnterRule(localctx, 16, TafexprParserRULE_parenthesisExpression)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(227)
-		p.Match(TafexprParserT__1)
+		p.SetState(145)
+		p.Match(TafexprParserT__0)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(230)
+	p.SetState(148)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 10, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext()) {
 	case 1:
 		{
-			p.SetState(228)
+			p.SetState(146)
 			p.ParenthesisExpression()
 		}
 
 	case 2:
 		{
-			p.SetState(229)
+			p.SetState(147)
 			p.expression(0)
 		}
 
@@ -4959,8 +3028,8 @@ func (p *TafexprParser) ParenthesisExpression() (localctx IParenthesisExpression
 		goto errorExit
 	}
 	{
-		p.SetState(232)
-		p.Match(TafexprParserT__3)
+		p.SetState(150)
+		p.Match(TafexprParserT__2)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -5128,19 +3197,19 @@ func (s *HandleArrayContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Json() (localctx IJsonContext) {
 	localctx = NewJsonContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, TafexprParserRULE_json)
-	p.SetState(236)
+	p.EnterRule(localctx, 18, TafexprParserRULE_json)
+	p.SetState(154)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case TafexprParserT__23:
+	case TafexprParserT__3:
 		localctx = NewHandleObjectContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(234)
+			p.SetState(152)
 			p.Obj()
 		}
 
@@ -5148,7 +3217,7 @@ func (p *TafexprParser) Json() (localctx IJsonContext) {
 		localctx = NewHandleArrayContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(235)
+			p.SetState(153)
 			p.Arr()
 		}
 
@@ -5327,53 +3396,53 @@ func (s *HandleEmptyObjectDataContext) ExitRule(listener antlr.ParseTreeListener
 
 func (p *TafexprParser) Obj() (localctx IObjContext) {
 	localctx = NewObjContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, TafexprParserRULE_obj)
+	p.EnterRule(localctx, 20, TafexprParserRULE_obj)
 	var _la int
 
-	p.SetState(251)
+	p.SetState(169)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 16, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewHandleObjectDataContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(238)
-			p.Match(TafexprParserT__23)
+			p.SetState(156)
+			p.Match(TafexprParserT__3)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 		{
-			p.SetState(239)
+			p.SetState(157)
 			p.Pair()
 		}
-		p.SetState(244)
+		p.SetState(162)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == TafexprParserT__2 {
+		for _la == TafexprParserT__1 {
 			{
-				p.SetState(240)
-				p.Match(TafexprParserT__2)
+				p.SetState(158)
+				p.Match(TafexprParserT__1)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
 				}
 			}
 			{
-				p.SetState(241)
+				p.SetState(159)
 				p.Pair()
 			}
 
-			p.SetState(246)
+			p.SetState(164)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -5381,8 +3450,8 @@ func (p *TafexprParser) Obj() (localctx IObjContext) {
 			_la = p.GetTokenStream().LA(1)
 		}
 		{
-			p.SetState(247)
-			p.Match(TafexprParserT__24)
+			p.SetState(165)
+			p.Match(TafexprParserT__4)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -5393,16 +3462,16 @@ func (p *TafexprParser) Obj() (localctx IObjContext) {
 		localctx = NewHandleEmptyObjectDataContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(249)
-			p.Match(TafexprParserT__23)
+			p.SetState(167)
+			p.Match(TafexprParserT__3)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 		{
-			p.SetState(250)
-			p.Match(TafexprParserT__24)
+			p.SetState(168)
+			p.Match(TafexprParserT__4)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -5532,11 +3601,11 @@ func (s *HandleObjectPairContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Pair() (localctx IPairContext) {
 	localctx = NewPairContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 24, TafexprParserRULE_pair)
+	p.EnterRule(localctx, 22, TafexprParserRULE_pair)
 	localctx = NewHandleObjectPairContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(253)
+		p.SetState(171)
 		p.Match(TafexprParserSTRING)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5544,15 +3613,15 @@ func (p *TafexprParser) Pair() (localctx IPairContext) {
 		}
 	}
 	{
-		p.SetState(254)
-		p.Match(TafexprParserT__25)
+		p.SetState(172)
+		p.Match(TafexprParserT__5)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(255)
+		p.SetState(173)
 		p.Value()
 	}
 
@@ -5689,20 +3758,20 @@ func (s *ArrContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Arr() (localctx IArrContext) {
 	localctx = NewArrContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 26, TafexprParserRULE_arr)
+	p.EnterRule(localctx, 24, TafexprParserRULE_arr)
 	var _la int
 
-	p.SetState(270)
+	p.SetState(188)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 15, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 18, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(257)
+			p.SetState(175)
 			p.Match(TafexprParserLBR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5710,31 +3779,31 @@ func (p *TafexprParser) Arr() (localctx IArrContext) {
 			}
 		}
 		{
-			p.SetState(258)
+			p.SetState(176)
 			p.Value()
 		}
-		p.SetState(263)
+		p.SetState(181)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == TafexprParserT__2 {
+		for _la == TafexprParserT__1 {
 			{
-				p.SetState(259)
-				p.Match(TafexprParserT__2)
+				p.SetState(177)
+				p.Match(TafexprParserT__1)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
 				}
 			}
 			{
-				p.SetState(260)
+				p.SetState(178)
 				p.Value()
 			}
 
-			p.SetState(265)
+			p.SetState(183)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -5742,7 +3811,7 @@ func (p *TafexprParser) Arr() (localctx IArrContext) {
 			_la = p.GetTokenStream().LA(1)
 		}
 		{
-			p.SetState(266)
+			p.SetState(184)
 			p.Match(TafexprParserRBR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5753,7 +3822,7 @@ func (p *TafexprParser) Arr() (localctx IArrContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(268)
+			p.SetState(186)
 			p.Match(TafexprParserLBR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5761,7 +3830,7 @@ func (p *TafexprParser) Arr() (localctx IArrContext) {
 			}
 		}
 		{
-			p.SetState(269)
+			p.SetState(187)
 			p.Match(TafexprParserRBR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5934,19 +4003,19 @@ func (s *HandleFooContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TafexprParser) Value() (localctx IValueContext) {
 	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, TafexprParserRULE_value)
-	p.SetState(274)
+	p.EnterRule(localctx, 26, TafexprParserRULE_value)
+	p.SetState(192)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 16, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 19, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewHandleJJContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(272)
+			p.SetState(190)
 			p.Json()
 		}
 
@@ -5954,7 +4023,7 @@ func (p *TafexprParser) Value() (localctx IValueContext) {
 		localctx = NewHandleFooContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(273)
+			p.SetState(191)
 			p.expression(0)
 		}
 
@@ -5977,7 +4046,7 @@ errorExit:
 
 func (p *TafexprParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
-	case 2:
+	case 1:
 		var t *ExpressionContext = nil
 		if localctx != nil {
 			t = localctx.(*ExpressionContext)
@@ -5992,73 +4061,25 @@ func (p *TafexprParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex
 func (p *TafexprParser) Expression_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 13)
+		return p.Precpred(p.GetParserRuleContext(), 14)
 
 	case 1:
-		return p.Precpred(p.GetParserRuleContext(), 12)
+		return p.Precpred(p.GetParserRuleContext(), 13)
 
 	case 2:
-		return p.Precpred(p.GetParserRuleContext(), 11)
+		return p.Precpred(p.GetParserRuleContext(), 12)
 
 	case 3:
-		return p.Precpred(p.GetParserRuleContext(), 10)
+		return p.Precpred(p.GetParserRuleContext(), 11)
 
 	case 4:
-		return p.Precpred(p.GetParserRuleContext(), 34)
+		return p.Precpred(p.GetParserRuleContext(), 10)
 
 	case 5:
-		return p.Precpred(p.GetParserRuleContext(), 33)
+		return p.Precpred(p.GetParserRuleContext(), 9)
 
 	case 6:
-		return p.Precpred(p.GetParserRuleContext(), 32)
-
-	case 7:
-		return p.Precpred(p.GetParserRuleContext(), 31)
-
-	case 8:
-		return p.Precpred(p.GetParserRuleContext(), 30)
-
-	case 9:
-		return p.Precpred(p.GetParserRuleContext(), 29)
-
-	case 10:
-		return p.Precpred(p.GetParserRuleContext(), 28)
-
-	case 11:
-		return p.Precpred(p.GetParserRuleContext(), 27)
-
-	case 12:
-		return p.Precpred(p.GetParserRuleContext(), 26)
-
-	case 13:
-		return p.Precpred(p.GetParserRuleContext(), 25)
-
-	case 14:
-		return p.Precpred(p.GetParserRuleContext(), 24)
-
-	case 15:
-		return p.Precpred(p.GetParserRuleContext(), 23)
-
-	case 16:
-		return p.Precpred(p.GetParserRuleContext(), 22)
-
-	case 17:
-		return p.Precpred(p.GetParserRuleContext(), 21)
-
-	case 18:
-		return p.Precpred(p.GetParserRuleContext(), 20)
-
-	case 19:
-		return p.Precpred(p.GetParserRuleContext(), 19)
-
-	case 20:
 		return p.Precpred(p.GetParserRuleContext(), 18)
-
-	case 21:
-		return p.Precpred(p.GetParserRuleContext(), 17)
-
-	case 22:
-		return p.Precpred(p.GetParserRuleContext(), 16)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

@@ -63,7 +63,7 @@ func TestToStringExpressionInList(t *testing.T) {
 	p := SetupParser()
 	p.VariableContext = SetupMockVariableContext()
 	p.VariableContext.(*variablecontext.MockVariableContext).SetValue("$options", 10)
-	assert.Equal(t, true, p.Parse("[$options.toString]"))
+	assert.Equal(t, true, p.Parse("[$options.toString()]"))
 	assert.Equal(t, "10", p.JSONArray[0].(string))
 }
 
@@ -76,7 +76,7 @@ func TestToStringJSONExpressionInList(t *testing.T) {
 			Set("addr", "localhost:6379").
 			Set("db", 0).Build())
 
-	assert.Equal(t, true, p.Parse("[$options.toString]"))
+	assert.Equal(t, true, p.Parse("[$options.toString()]"))
 	assert.Equal(t, `{"addr":"localhost:6379","db":0}`, p.JSONArray[0].(string))
 }
 

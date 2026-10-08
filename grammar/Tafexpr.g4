@@ -58,50 +58,27 @@ VARIABLE_NAME :
     DOLLAR SINGLELETTER (SINGLELETTER|INTEGER|UNDERSCORE)*
 ;
 
-taf_expression: (libfunc | expression) EOF;
-libfunc:  'randomDoubleInRange' '(' expression ',' expression ')' #HandleRandomDoubleInRange;
+taf_expression: expression EOF;
 
 expression
-   : 
-
-    expression '.' 'length' #HandleLength
-   | expression '.' 'findOneByXPATH' '(' expression ')'#HandleFindOneByXPATH
-   | expression '.' 'findOneStringByXPATH' '(' expression ')'#HandleFindOneStringByXPATH
-   | expression '.' 'findOneDoubleByXPATH' '(' expression ')'#HandleFindOneDoubleByXPATH
-   | expression '.' 'findOneIntegerByXPATH' '(' expression ')'#HandleFindOneIntegerByXPATH
-   | expression '.' 'findOneBooleanByXPATH' '(' expression ')'#HandleFindOneBooleanByXPATH
-   | expression '.' 'findByXPATH' '(' expression ')'#HandleFindByXPATH
-   | expression '.' 'extractOneByREGEX' '(' expression ')'#HandleExtractOneByREGEX
-   | expression '.' 'replaceAllStringOccurrences' '(' expression  ',' expression ')'#HandleReplaceAllStringOccurrences
-   | expression '.' 'toString'#HandleToString
-   | expression '.' 'toBoolean'#HandleToBoolean
-   | expression '.' 'toInteger'#HandleToInteger
-   | expression '.' 'toDouble'#HandleToDouble
-      | expression '.' 'containsString' '(' expression ')'#HandleContainsString
-   | expression '.' 'startsWith' '(' expression ')'#HandleStartsWith
-   | expression '.' 'endsWith' '(' expression ')'#HandleEndsWith
-   | expression '.' 'trimLeft'#HandleTrimLeft
-   | expression '.' 'trimRight'#HandleTrimRight
-   | expression '.' 'trim'#HandleTrim
-
-
-|       SUB expression #HandleNegation
-       | LOGICAL_NOT expression #HandleLogicalNegation
-   | expression op=(LOGICAL_AND|LOGICAL_OR) expression #HandleLogical
-   | expression op=(MUL|DIV|MOD) expression #MulDiv
-   | expression op=(ADD|SUB) expression #AddSub
-   | expression op=(LESSER_THAN|LESSER_THAN_EQUAL|EQUAL|GREATER_THAN|GREATER_THAN_EQUAL|UNEQUAL) expression #LogicalOperation
-
-   | INTEGER                             #Number
-   | DOUBLE                              #DoubleValue
-   | parenthesisExpression              #OrderedEvaluation
-   | var_expression #HandleVarExpression
-   | BOOLEAN #HandleBool 
-   | NULL_TOKEN #HandleNull
-   | STRING #HandleString
-     | json #HandleJson
-   | libfunc #HandleLibfunc
-
+   : expression '.' PROP '(' (expression (',' expression)*)? ')' #HandleMethodCall
+   | PROP '(' (expression (',' expression)*)? ')'                #HandleFunctionCall
+   | SUB expression                                              #HandleNegation
+   | LOGICAL_NOT expression                                      #HandleLogicalNegation
+   | expression op=(MUL|DIV|MOD) expression                      #MulDiv
+   | expression op=(ADD|SUB) expression                          #AddSub
+   | expression op=(LESSER_THAN|LESSER_THAN_EQUAL|GREATER_THAN|GREATER_THAN_EQUAL) expression #LogicalOperation
+   | expression op=(EQUAL|UNEQUAL) expression                    #LogicalOperation
+   | expression op=LOGICAL_AND expression                        #HandleLogical
+   | expression op=LOGICAL_OR expression                         #HandleLogical
+   | INTEGER                                                     #Number
+   | DOUBLE                                                      #DoubleValue
+   | parenthesisExpression                                       #OrderedEvaluation
+   | var_expression                                              #HandleVarExpression
+   | BOOLEAN                                                     #HandleBool
+   | NULL_TOKEN                                                  #HandleNull
+   | STRING                                                      #HandleString
+   | json                                                        #HandleJson
    ;
    
 
