@@ -151,8 +151,15 @@ func canonical(name string) string {
 
 // Invoke runs recv.name(args...).
 func Invoke(recv stackvalue.StackValue, name string, args []stackvalue.StackValue) (stackvalue.StackValue, error) {
+	written := name // the name as the script spelled it, for messages
 	name = canonical(name)
 	t := recv.GetType()
+	if t == stackvalue.NULL {
+		// One rule, no exceptions: a method acts on the content of a value, so calling one on
+		// null is an error, never a silent result. Null checks are expressions ($x == null),
+		// not methods.
+		return nil, fmt.Errorf("cannot call method %q on null", written)
+	}
 	m, ok := byRecv[key{t, name}]
 	if !ok {
 		m, ok = anyRecv[name]
@@ -294,6 +301,44 @@ func (m Method) bounds() (min, max int) {
 		}
 	}
 	return min, len(m.Params)
+}
+
+func (m Method) accepts(n int) bool {
+	min, max := m.bounds()
+	return n >= min && n <= max
+}
+
+// lookupFor finds the method called name for a receiver of the given type: a receiver-specific
+// method first, then one that is valid on every receiver.
+func lookupFor(t stackvalue.StackValueType, name string) (Method, bool) {
+	name = canonical(name)
+	if m, ok := byRecv[key{t, name}]; ok {
+		return m, true
+	}
+	m, ok := anyRecv[name]
+	return m, ok
+}
+
+// HasMethodFor reports whether a receiver of the given type has a method called name that
+// takes argc arguments.
+func HasMethodFor(recvType stackvalue.StackValueType, name string, argc int) bool {
+	m, ok := lookupFor(recvType, name)
+	return ok && m.accepts(argc)
+}
+
+// ReceiverTypes lists the receiver types that have a method called name, sorted by name.
+// every is true when the method is valid on every receiver. Used by error messages that say
+// "trim is a method, but it only works on String values".
+func ReceiverTypes(name string) (types []stackvalue.StackValueType, every bool) {
+	name = canonical(name)
+	for k := range byRecv {
+		if k.name == name {
+			types = append(types, k.recv)
+		}
+	}
+	sort.Slice(types, func(i, j int) bool { return types[i].String() < types[j].String() })
+	_, every = anyRecv[name]
+	return types, every
 }
 
 func methodsNamed(name string) []Method {

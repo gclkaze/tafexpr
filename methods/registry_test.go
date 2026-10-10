@@ -181,11 +181,15 @@ func TestAliasAndAnyReceiver(t *testing.T) {
 	if err != nil || r.ToString() != "true" {
 		t.Fatalf("alias failed: %v %v", r, err)
 	}
-	for _, v := range []stackvalue.StackValue{str("x"), num("1"), null()} {
+	for _, v := range []stackvalue.StackValue{str("x"), num("1")} {
 		r, err := Invoke(v, "type", nil)
 		if err != nil || r.ToString() != v.GetType().String() {
 			t.Fatalf("type() failed on %v: %v %v", v.GetType(), r, err)
 		}
+	}
+	// the null rule has no exception, not even for an any-receiver method
+	if _, err := Invoke(null(), "type", nil); err == nil {
+		t.Fatal("type() on null must be an error")
 	}
 }
 
@@ -406,6 +410,12 @@ func TestReceiverNamesInMessages(t *testing.T) {
 		stackvalue.JSON_ARRAY: "JSONArray", stackvalue.USER_DEFINED: "UserDefined",
 	} {
 		_, err := Invoke(mk(typ, ""), "noSuchMethod", nil)
+		if typ == stackvalue.NULL { // null has its own rule: no method is looked up at all
+			if err == nil || err.Error() != `cannot call method "noSuchMethod" on null` {
+				t.Errorf("Null: got %v", err)
+			}
+			continue
+		}
 		if err == nil || !strings.HasPrefix(err.Error(), want+` has no method "noSuchMethod"`) {
 			t.Errorf("%v: want a message starting with %q, got %v", typ, want, err)
 		}
