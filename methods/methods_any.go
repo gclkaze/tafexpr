@@ -1,6 +1,8 @@
 package methods
 
 import (
+	"strings"
+
 	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 	mine "github.com/gclkaze/tafexpr/stackvalue"
 )
@@ -56,6 +58,18 @@ func init() {
 				return nil, err
 			}
 			return mine.NewIntegerStackValue(n), nil
+		},
+	})
+
+	// The data type of the value: lowercase, one word (string, integer, double, bool, jsonobject,
+	// jsonarray, userdefined, ...). The names are part of the language, because scripts compare
+	// against them. They are StackValueType.String() in lowercase. Null has no type: like every
+	// method, type() on null is an error ($x == null is how a script tests for null).
+	Register("type", Method{
+		Group: "introspection", Returns: "String",
+		Doc: "The data type of the value, lowercase and one word: string, integer, double, bool, jsonobject, jsonarray, userdefined. Fails on null.",
+		Fn: func(c *Call) (stackvalue.StackValue, error) {
+			return mine.NewStringStackValue(strings.ToLower(c.Recv.GetType().String())), nil
 		},
 	})
 }
