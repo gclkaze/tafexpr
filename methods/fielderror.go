@@ -8,9 +8,9 @@ import (
 	"github.com/gclkaze/evalang-globals/globals/stackvalue"
 )
 
-// FieldReadError explains why  receiver.field  (written WITHOUT parentheses, so it is a field
-// read) could not be read. It says what the receiver actually holds. When the field name is
-// also a method name the message depends on the receiver's type:
+// FieldReadError explains why  receiver.field  (written WITHOUT parentheses, so it is a property
+// read) could not be read. It says what the receiver actually holds. When the property name
+// is also a method name the message depends on the receiver's type:
 //
 //   - the method works on this type:      Did you mean the method "trim"? Call it with parentheses: $s.trim()
 //   - it works on this type but needs
@@ -23,13 +23,13 @@ func FieldReadError(receiver, field string, parent stackvalue.StackValue) error 
 	var msg string
 	switch {
 	case parent == nil:
-		msg = fmt.Sprintf("cannot read field %q of %s", field, receiver)
+		msg = fmt.Sprintf("cannot read property %q of %s", field, receiver)
 	case parent.GetType() == stackvalue.JSON_OBJECT:
-		msg = fmt.Sprintf("%s has no field %q", receiver, field)
+		msg = fmt.Sprintf("%s has no property %q", receiver, field)
 	case parent.GetType() == stackvalue.NULL:
-		msg = fmt.Sprintf("%s is null, so it has no field %q", receiver, field)
+		msg = fmt.Sprintf("%s is null, so it has no property %q", receiver, field)
 	default:
-		msg = fmt.Sprintf("%s is of type %s, not an object, so it has no field %q", receiver, parent.GetType(), field)
+		msg = fmt.Sprintf("%s is of type %s, not an object, so it has no property %q", receiver, parent.GetType(), field)
 	}
 	return errors.New(msg + methodHint(receiver, field, parent))
 }

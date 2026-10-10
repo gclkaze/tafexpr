@@ -871,7 +871,7 @@ func (l *TAFArgumentListener) ExitVar_expression(c *parser.Var_expressionContext
 		if l.onVariableStorageDeclarationMode {
 			return
 		}
-		l.ErrorMsgs = append(l.ErrorMsgs, TAFParserArgumentError{Msg: fmt.Errorf("couldnt' obtain path %s from variable %s", path, varName), Type: tafargumentlistenererrortypes.RUNTIME_ERROR})
+		l.ErrorMsgs = append(l.ErrorMsgs, TAFParserArgumentError{Msg: l.pathError(varName, path), Type: tafargumentlistenererrortypes.RUNTIME_ERROR})
 		l.OnError = true
 		return
 	}
