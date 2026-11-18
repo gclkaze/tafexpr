@@ -3,6 +3,7 @@ package stackvalue
 import (
 	"fmt"
 	"strconv"
+	"strings"
 	"syscall"
 	"unsafe"
 
@@ -96,8 +97,24 @@ func (s StringStackValue) Equals(other stackvalue.StackValue) bool {
 	return s.value == strV.value
 }
 
+// Add: + does not join text. The error names both operands' types (this
+// String on the left, other on the right) and says how text is built instead.
 func (s StringStackValue) Add(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
-	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible add operation between a string and a %s", s.GetType().String())
+	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR,
+		fmt.Errorf("incompatible add operation between a String and %s: + does not join text; use {{...}} to build text, e.g. \"{{$a}}{{$b}}\"", aValueOfType(other))
+}
+
+// aValueOfType is how an error names the type of an operand: "a String",
+// "an Integer", "a JSONObject"; "Null" for null.
+func aValueOfType(v stackvalue.StackValue) string {
+	if v == nil || v.GetType() == stackvalue.NULL {
+		return "Null"
+	}
+	name := v.GetType().String()
+	if strings.ContainsAny(name[:1], "AEIOU") {
+		return "an " + name
+	}
+	return "a " + name
 }
 func (s StringStackValue) Sub(other stackvalue.StackValue) (result stackvalue.StackValue, errorType tafargumentlistenererrortypes.TAFArgumentListenerError, err error) {
 	return nil, tafargumenetlistenererrortypes.INVALID_OPERATION_ERROR, fmt.Errorf("incompatible sub operation between a string and a %s", s.GetType().String())
