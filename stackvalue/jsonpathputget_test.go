@@ -15,7 +15,7 @@ import (
 )
 
 func getJSON(t *testing.T) globals.JSONStruct {
-	sample := utils.ReadFile("samplejsons\\sample.json")
+	sample := utils.ReadFile("samplejsons/sample.json")
 	var payload globals.JSONStruct
 	err := json.Unmarshal([]byte(*sample), &payload)
 	assert.Nil(t, err)
@@ -23,7 +23,7 @@ func getJSON(t *testing.T) globals.JSONStruct {
 }
 
 func getPlainJSON(t *testing.T) string {
-	sample := utils.ReadFile("samplejsons\\sample.json")
+	sample := utils.ReadFile("samplejsons/sample.json")
 	return *sample
 }
 

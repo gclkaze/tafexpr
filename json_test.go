@@ -10,7 +10,7 @@ import (
 
 func TestJsonObject(t *testing.T) {
 	p := SetupParser()
-	s := utils.ReadFile("jsonexprs\\simple.json")
+	s := utils.ReadFile("jsonexprs/simple.json")
 	res := p.Parse(*s)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.JSONValue)
@@ -18,7 +18,7 @@ func TestJsonObject(t *testing.T) {
 
 func TestJsonArray(t *testing.T) {
 	p := SetupParser()
-	s := utils.ReadFile("jsonexprs\\array.json")
+	s := utils.ReadFile("jsonexprs/array.json")
 	res := p.Parse(*s)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.JSONArray)
@@ -34,7 +34,7 @@ func TestJsonArrayScalar(t *testing.T) {
 
 func TestJsonComplex(t *testing.T) {
 	p := SetupParser()
-	s := utils.ReadFile("jsonexprs\\complex.json")
+	s := utils.ReadFile("jsonexprs/complex.json")
 	res := p.Parse(*s)
 	assert.Equal(t, true, res)
 	assert.NotNil(t, p.JSONValue)
@@ -42,7 +42,7 @@ func TestJsonComplex(t *testing.T) {
 
 func TestJsonToString(t *testing.T) {
 	p := SetupParser()
-	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	//	s := utils.ReadFile("jsonexprs/complex.json")
 	expr := "{\"2\":3}.toString()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
@@ -51,7 +51,7 @@ func TestJsonToString(t *testing.T) {
 
 func TestJJsonToString(t *testing.T) {
 	p := SetupParser()
-	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	//	s := utils.ReadFile("jsonexprs/complex.json")
 	expr := "{\"a\":{\"b\":{\"c\":666}}}.toString()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
@@ -60,7 +60,7 @@ func TestJJsonToString(t *testing.T) {
 
 func TestJSONArrayLength(t *testing.T) {
 	p := SetupParser()
-	//	s := utils.ReadFile("jsonexprs\\complex.json")
+	//	s := utils.ReadFile("jsonexprs/complex.json")
 	expr := "[1,2,3].length() == [4,5,6].length()"
 	res := p.Parse(expr)
 	assert.Equal(t, true, res)
