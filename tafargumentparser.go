@@ -541,9 +541,7 @@ func (ap *TAFArgumentParser) Parse(arg string) bool {
 		}
 		ap.StringValue = i.GetValue()
 		if toBeEscaped {
-			fmt.Println(ap.StringValue)
 			ap.StringValue = strings.ReplaceAll(ap.StringValue, "\\\"", "\"")
-			fmt.Println(ap.StringValue)
 			ap.StringValue = "\"" + ap.StringValue + "\""
 		}
 	}
